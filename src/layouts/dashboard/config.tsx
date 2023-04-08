@@ -7,14 +7,32 @@ import UserPlusIcon from '@heroicons/react/24/solid/UserPlusIcon';
 import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
 import { SvgIcon } from '@mui/material';
+import { ReactNode } from 'react';
 
-export const items = [
+interface NavItem {
+  title: string;
+  path: string;
+  icon: ReactNode;
+  disabled?: boolean;
+  external?: boolean;
+}
+
+export const items: NavItem[] = [
   {
     title: 'Overview',
     path: '/',
     icon: (
       <SvgIcon fontSize="small">
         <ChartBarIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Rooms',
+    path: '/rooms',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ShoppingBagIcon />
       </SvgIcon>
     )
   },
@@ -28,15 +46,6 @@ export const items = [
     )
   },
   {
-    title: 'Companies',
-    path: '/companies',
-    icon: (
-      <SvgIcon fontSize="small">
-        <ShoppingBagIcon />
-      </SvgIcon>
-    )
-  },
-  {
     title: 'Account',
     path: '/account',
     icon: (
@@ -45,40 +54,4 @@ export const items = [
       </SvgIcon>
     )
   },
-  {
-    title: 'Settings',
-    path: '/settings',
-    icon: (
-      <SvgIcon fontSize="small">
-        <CogIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Login',
-    path: '/auth/login',
-    icon: (
-      <SvgIcon fontSize="small">
-        <LockClosedIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Register',
-    path: '/auth/register',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserPlusIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Error',
-    path: '/404',
-    icon: (
-      <SvgIcon fontSize="small">
-        <XCircleIcon />
-      </SvgIcon>
-    )
-  }
 ];

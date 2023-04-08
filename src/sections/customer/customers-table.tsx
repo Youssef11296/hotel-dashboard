@@ -14,8 +14,8 @@ import {
   TableRow,
   Typography
 } from '@mui/material';
-import { Scrollbar } from 'src/components/scrollbar';
-import { getInitials } from 'src/utils/get-initials';
+import { Scrollbar } from '../../components/scrollbar';
+import { getInitials } from '../../utils/get-initials';
 
 export const CustomersTable = (props) => {
   const {
@@ -23,7 +23,7 @@ export const CustomersTable = (props) => {
     items = [],
     onDeselectAll,
     onDeselectOne,
-    onPageChange = () => {},
+    onPageChange = () => { },
     onRowsPerPageChange,
     onSelectAll,
     onSelectOne,
