@@ -6,7 +6,7 @@ import UserIcon from '@heroicons/react/24/solid/UserIcon';
 import UserPlusIcon from '@heroicons/react/24/solid/UserPlusIcon';
 import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
-import { SvgIcon } from '@mui/material';
+import { IconButton, SvgIcon } from '@mui/material';
 import { ReactNode } from 'react';
 
 interface NavItem {
@@ -50,7 +50,7 @@ export const items: NavItem[] = [
     path: '/bookings',
     icon: (
       <SvgIcon fontSize="small">
-        <UsersIcon />
+        <CogIcon />
       </SvgIcon>
     )
   },

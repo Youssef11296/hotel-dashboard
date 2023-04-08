@@ -4,5 +4,8 @@ export interface Customer {
   name: string;
   email: string;
   phone: string;
+  whatsApp?: string;
+  address: string;
+  nationalId: string | number;
   age: number;
 }

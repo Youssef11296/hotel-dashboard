@@ -17,7 +17,7 @@ import { Logo } from '../../components/logo';
 import { Scrollbar } from '../../components/scrollbar';
 import { items } from './config';
 import { SideNavItem } from './side-nav-item';
-import { BRAND_NAME } from '../../constants';
+import { BRAND_MAIL, BRAND_NAME } from '../../constants';
 
 export const SideNav = (props) => {
   const { open, onClose } = props;
@@ -75,7 +75,7 @@ export const SideNav = (props) => {
                 {BRAND_NAME}
               </Typography>
               <Typography variant="caption">
-                Your hotel management assist.
+                Your hotel management assistant.
               </Typography>
             </div>
           </Box>
@@ -116,6 +116,12 @@ export const SideNav = (props) => {
           </Stack>
         </Box>
         <Divider sx={{ borderColor: 'neutral.700' }} />
+        <Box
+          py={2}
+          pl={3}
+        >
+          {BRAND_MAIL}
+        </Box>
       </Box>
     </Scrollbar>
   );

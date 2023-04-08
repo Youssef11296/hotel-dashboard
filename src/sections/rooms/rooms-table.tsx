@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import {
   Avatar,
   Box,
+  Button,
   Card,
   Checkbox,
   Stack,
@@ -71,6 +72,9 @@ export const RoomsTable = (props) => {
                 <TableCell>
                   Status
                 </TableCell>
+                <TableCell>
+                  Actions
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -109,6 +113,14 @@ export const RoomsTable = (props) => {
                     </TableCell>
                     <TableCell>
                       {room.isReserved ? "Reserved" : "Available"}
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                        variant="contained"
+                        disabled={room.isReserved}
+                      >
+                        Book Now
+                      </Button>
                     </TableCell>
                   </TableRow>
                 );

@@ -6,6 +6,9 @@ export const customers: Customer[] = [
     name: "Tarek",
     email: "tarek@test.com",
     phone: "+0201020303030",
+    whatsApp: "+0201020303030",
+    address: "Cairo, Egypt",
+    nationalId: "30003033327279",
     age: 23,
   },
   {
@@ -13,6 +16,9 @@ export const customers: Customer[] = [
     name: "Ayman",
     email: "memeo@test.com",
     phone: "+0201020303030",
+    whatsApp: "+0201020303030",
+    address: "Cairo, Egypt",
+    nationalId: "30023033327279",
     age: 24,
   },
   {
@@ -20,6 +26,9 @@ export const customers: Customer[] = [
     name: "Mina",
     email: "monmon@test.com",
     phone: "+0201020303030",
+    whatsApp: "+0201020303030",
+    address: "Cairo, Egypt",
+    nationalId: "30002233327279",
     age: 40,
   },
 ];
