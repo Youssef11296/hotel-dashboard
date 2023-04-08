@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import { Scrollbar } from '../../components/scrollbar';
 import { getInitials } from '../../utils/get-initials';
+import { Customer } from '../../models/Customer';
 
 export const CustomersTable = (props) => {
   const {
@@ -62,20 +63,16 @@ export const CustomersTable = (props) => {
                   Email
                 </TableCell>
                 <TableCell>
-                  Location
+                  Age
                 </TableCell>
                 <TableCell>
                   Phone
                 </TableCell>
-                <TableCell>
-                  Signed Up
-                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {items.map((customer) => {
+              {items.map((customer: Customer) => {
                 const isSelected = selected.includes(customer.id);
-                const createdAt = format(customer.createdAt, 'dd/MM/yyyy');
 
                 return (
                   <TableRow
@@ -101,7 +98,7 @@ export const CustomersTable = (props) => {
                         direction="row"
                         spacing={2}
                       >
-                        <Avatar src={customer.avatar}>
+                        <Avatar>
                           {getInitials(customer.name)}
                         </Avatar>
                         <Typography variant="subtitle2">
@@ -113,13 +110,10 @@ export const CustomersTable = (props) => {
                       {customer.email}
                     </TableCell>
                     <TableCell>
-                      {customer.address.city}, {customer.address.state}, {customer.address.country}
+                      {customer.age}
                     </TableCell>
                     <TableCell>
                       {customer.phone}
-                    </TableCell>
-                    <TableCell>
-                      {createdAt}
                     </TableCell>
                   </TableRow>
                 );

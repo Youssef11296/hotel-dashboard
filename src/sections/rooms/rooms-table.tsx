@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import { Scrollbar } from '../../components/scrollbar';
 import { getInitials } from '../../utils/get-initials';
+import { Room } from '../../models/Room';
 
 export const RoomsTable = (props) => {
     const {
@@ -56,26 +57,16 @@ export const RoomsTable = (props) => {
                                     />
                                 </TableCell>
                                 <TableCell>
-                                    Name
+                                    Day Cost
                                 </TableCell>
                                 <TableCell>
-                                    Email
-                                </TableCell>
-                                <TableCell>
-                                    Location
-                                </TableCell>
-                                <TableCell>
-                                    Phone
-                                </TableCell>
-                                <TableCell>
-                                    Signed Up
+                                    Status
                                 </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {items.map((room) => {
+                            {items.map((room: Room) => {
                                 const isSelected = selected.includes(room.id);
-                                const createdAt = format(room.createdAt, 'dd/MM/yyyy');
 
                                 return (
                                     <TableRow
@@ -101,25 +92,13 @@ export const RoomsTable = (props) => {
                                                 direction="row"
                                                 spacing={2}
                                             >
-                                                <Avatar src={room.avatar}>
-                                                    {getInitials(room.name)}
-                                                </Avatar>
                                                 <Typography variant="subtitle2">
-                                                    {room.name}
+                                                    {room.dayCost}
                                                 </Typography>
                                             </Stack>
                                         </TableCell>
                                         <TableCell>
-                                            {room.email}
-                                        </TableCell>
-                                        <TableCell>
-                                            {room.address.city}, {room.address.state}, {room.address.country}
-                                        </TableCell>
-                                        <TableCell>
-                                            {room.phone}
-                                        </TableCell>
-                                        <TableCell>
-                                            {createdAt}
+                                            {room.isReserved ? "Reserved" : "Available"}
                                         </TableCell>
                                     </TableRow>
                                 );
