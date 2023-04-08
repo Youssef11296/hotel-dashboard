@@ -57,7 +57,16 @@ export const RoomsTable = (props) => {
                   />
                 </TableCell>
                 <TableCell>
+                  Room Number
+                </TableCell>
+                <TableCell>
                   Day Cost
+                </TableCell>
+                <TableCell>
+                  Capacity
+                </TableCell>
+                <TableCell>
+                  Total Beds
                 </TableCell>
                 <TableCell>
                   Status
@@ -87,15 +96,16 @@ export const RoomsTable = (props) => {
                       />
                     </TableCell>
                     <TableCell>
-                      <Stack
-                        alignItems="center"
-                        direction="row"
-                        spacing={2}
-                      >
-                        <Typography variant="subtitle2">
-                          {room.dayCost}
-                        </Typography>
-                      </Stack>
+                      {room.number}
+                    </TableCell>
+                    <TableCell>
+                      {room.dayCost}
+                    </TableCell>
+                    <TableCell>
+                      {room.capacity} Individuals
+                    </TableCell>
+                    <TableCell>
+                      {room.numOfBeds} Beds
                     </TableCell>
                     <TableCell>
                       {room.isReserved ? "Reserved" : "Available"}

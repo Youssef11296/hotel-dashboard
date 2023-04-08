@@ -3,6 +3,7 @@ import { Room } from "../models/Room";
 export const rooms: Room[] = [
   {
     id: "111",
+    number: "#290",
     dayCost: "200 EGP",
     isReserved: true,
     numOfBeds: 3,
@@ -10,6 +11,7 @@ export const rooms: Room[] = [
   },
   {
     id: "222",
+    number: "#300",
     dayCost: "500 EGP",
     isReserved: false,
     numOfBeds: 2,
@@ -17,6 +19,7 @@ export const rooms: Room[] = [
   },
   {
     id: "300",
+    number: "#390",
     dayCost: "300 EGP",
     isReserved: true,
     numOfBeds: 1,
