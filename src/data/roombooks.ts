@@ -1,19 +1,25 @@
 import { RoomBook } from "../models/RoomBook";
+import { customers } from "./customers";
+import { rooms } from "./rooms";
 
 export const roombooks: RoomBook[] = [
   {
     id: "#111",
-    customerId: "111",
-    roomId: "111",
+    number: "#201",
+    customer: customers[0],
+    roomNumber: rooms[0].number,
     from: "Mon 20 April 2022",
     to: "Wed 22 April 2022",
     pets: [],
+    participants: [],
     securityCode: "testcode",
+    totalCost: "1000 EGP",
   },
   {
     id: "#222",
-    customerId: "222",
-    roomId: "333",
+    number: "#201",
+    customer: customers[1],
+    roomNumber: rooms[1].number,
     from: "Mon 20 April 2022",
     to: "Wed 22 April 2022",
     pets: [
@@ -23,6 +29,8 @@ export const roombooks: RoomBook[] = [
         relationToCustomer: "daughter",
       },
     ],
+    participants: [],
     securityCode: "testcode",
+    totalCost: "1000 EGP",
   },
 ];

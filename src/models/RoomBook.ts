@@ -1,6 +1,9 @@
+import { Customer } from "./Customer";
+import { Room } from "./Room";
+
 type RelationToCustomer = "son" | "daughter" | "sister" | "brother";
 
-type Pet = {
+type Individual = {
   name: string;
   age: number;
   relationToCustomer: RelationToCustomer;
@@ -8,10 +11,13 @@ type Pet = {
 
 export interface RoomBook {
   id: string;
-  customerId: string;
-  roomId: string;
+  number: string;
+  customer: Customer;
+  participants?: Individual[];
+  roomNumber: Room["number"];
   from: string;
   to: string;
-  pets: Pet[];
+  pets?: Individual[];
   securityCode: string;
+  totalCost: string;
 }

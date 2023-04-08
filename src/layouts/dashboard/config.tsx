@@ -46,6 +46,15 @@ export const items: NavItem[] = [
     )
   },
   {
+    title: 'Bookings',
+    path: '/bookings',
+    icon: (
+      <SvgIcon fontSize="small">
+        <UsersIcon />
+      </SvgIcon>
+    )
+  },
+  {
     title: 'Account',
     path: '/account',
     icon: (
