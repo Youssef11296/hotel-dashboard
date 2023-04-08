@@ -1,14 +1,15 @@
 import Head from 'next/head';
 import { Box, Container, Stack, Typography, Unstable_Grid2 as Grid } from '@mui/material';
-import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
-import { AccountProfile } from 'src/sections/account/account-profile';
-import { AccountProfileDetails } from 'src/sections/account/account-profile-details';
+import { Layout as DashboardLayout } from '../layouts/dashboard/layout';
+import { AccountProfile } from '../sections/account/account-profile';
+import { AccountProfileDetails } from '../sections/account/account-profile-details';
+import { BRAND_NAME } from '../constants';
 
 const Page = () => (
   <>
     <Head>
       <title>
-        Account | Devias Kit
+        Account | {BRAND_NAME}
       </title>
     </Head>
     <Box

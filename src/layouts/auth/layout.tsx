@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 import { Box, Typography, Unstable_Grid2 as Grid } from '@mui/material';
-import { Logo } from 'src/components/logo';
+import { Logo } from '../../components/logo';
+import { BRAND_NAME } from '../../constants';
 
 // TODO: Change subtitle text
 
@@ -85,7 +86,7 @@ export const Layout = (props) => {
                 sx={{ color: '#15B79E' }}
                 target="_blank"
               >
-                Devias Kit
+                {BRAND_NAME}
               </Box>
             </Typography>
             <Typography

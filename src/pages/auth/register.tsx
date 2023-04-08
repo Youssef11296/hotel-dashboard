@@ -4,13 +4,14 @@ import { useRouter } from 'next/navigation';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Link, Stack, TextField, Typography } from '@mui/material';
-import { useAuth } from 'src/hooks/use-auth';
-import { Layout as AuthLayout } from 'src/layouts/auth/layout';
+import { useAuth } from '../../hooks/use-auth';
+import { Layout as AuthLayout } from '../../layouts/auth/layout';
+import { BRAND_NAME } from '../../constants';
 
 const Page = () => {
   const router = useRouter();
-  const auth = useAuth();
-  const formik = useFormik({
+  const auth: any = useAuth();
+  const formik: any = useFormik({
     initialValues: {
       email: '',
       name: '',
@@ -48,7 +49,7 @@ const Page = () => {
     <>
       <Head>
         <title>
-          Register | Devias Kit
+          Register | {BRAND_NAME}
         </title>
       </Head>
       <Box

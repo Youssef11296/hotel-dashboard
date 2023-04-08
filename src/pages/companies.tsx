@@ -12,9 +12,10 @@ import {
   Typography,
   Unstable_Grid2 as Grid
 } from '@mui/material';
-import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
-import { CompanyCard } from 'src/sections/companies/company-card';
-import { CompaniesSearch } from 'src/sections/companies/companies-search';
+import { Layout as DashboardLayout } from '../layouts/dashboard/layout';
+import { CompanyCard } from '../sections/companies/company-card';
+import { CompaniesSearch } from '../sections/companies/companies-search';
+import { BRAND_NAME } from '../constants';
 
 const companies = [
   {
@@ -71,7 +72,7 @@ const Page = () => (
   <>
     <Head>
       <title>
-        Companies | Devias Kit
+        Companies | {BRAND_NAME}
       </title>
     </Head>
     <Box

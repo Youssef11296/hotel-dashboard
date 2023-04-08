@@ -2,12 +2,13 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 import ArrowLeftIcon from '@heroicons/react/24/solid/ArrowLeftIcon';
 import { Box, Button, Container, SvgIcon, Typography } from '@mui/material';
+import { BRAND_NAME } from '../constants';
 
 const Page = () => (
   <>
     <Head>
       <title>
-        404 | Devias Kit
+        404 | {BRAND_NAME}
       </title>
     </Head>
     <Box
