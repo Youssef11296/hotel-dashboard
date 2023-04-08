@@ -26,7 +26,7 @@ const Page = () => {
   const [method, setMethod] = useState('email');
   const formik: any = useFormik({
     initialValues: {
-      email: 'demo@devias.io',
+      email: 'demo@hotelmanager.io',
       password: 'Password123!',
       submit: null
     },
@@ -116,20 +116,6 @@ const Page = () => {
                 </Link>
               </Typography>
             </Stack>
-            <Tabs
-              onChange={handleMethodChange}
-              sx={{ mb: 3 }}
-              value={method}
-            >
-              <Tab
-                label="Email"
-                value="email"
-              />
-              <Tab
-                label="Phone Number"
-                value="phoneNumber"
-              />
-            </Tabs>
             <form
               noValidate
               onSubmit={formik.handleSubmit}
@@ -158,9 +144,6 @@ const Page = () => {
                   value={formik.values.password}
                 />
               </Stack>
-              <FormHelperText sx={{ mt: 1 }}>
-                Optionally you can skip.
-              </FormHelperText>
               {formik.errors.submit && (
                 <Typography
                   color="error"
