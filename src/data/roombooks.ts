@@ -4,7 +4,7 @@ import { rooms } from "./rooms";
 
 export const roombooks: RoomBook[] = [
   {
-    id: "#111",
+    id: "111",
     number: "#201",
     customer: customers[0],
     roomNumber: rooms[0].number,
@@ -16,7 +16,7 @@ export const roombooks: RoomBook[] = [
     totalCost: "1000 EGP",
   },
   {
-    id: "#222",
+    id: "222",
     number: "#201",
     customer: customers[1],
     roomNumber: rooms[1].number,

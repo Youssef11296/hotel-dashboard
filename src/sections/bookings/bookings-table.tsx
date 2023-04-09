@@ -1,22 +1,21 @@
 import PropTypes from 'prop-types';
-import { format } from 'date-fns';
 import {
-    Avatar,
+    Button,
     Box,
     Card,
     Checkbox,
-    Stack,
     Table,
     TableBody,
     TableCell,
     TableHead,
     TablePagination,
     TableRow,
-    Typography
 } from '@mui/material';
 import { Scrollbar } from '../../components/scrollbar';
-import { getInitials } from '../../utils/get-initials';
 import { RoomBook } from '../../models/RoomBook';
+import Link from 'next/link';
+
+const LinkStyle = { color: "#fff", textDecoration: 'none' }
 
 export const BookingsTable = (props) => {
     const {
@@ -66,19 +65,13 @@ export const BookingsTable = (props) => {
                                     Room Number
                                 </TableCell>
                                 <TableCell>
-                                    Total individuals
-                                </TableCell>
-                                <TableCell>
-                                    From
-                                </TableCell>
-                                <TableCell>
-                                    To
-                                </TableCell>
-                                <TableCell>
                                     Security Code
                                 </TableCell>
                                 <TableCell>
                                     Total Cost
+                                </TableCell>
+                                <TableCell>
+                                    More
                                 </TableCell>
                             </TableRow>
                         </TableHead>
@@ -114,19 +107,17 @@ export const BookingsTable = (props) => {
                                             {booking.roomNumber}
                                         </TableCell>
                                         <TableCell>
-                                            {booking.pets?.length + booking.participants?.length + 1}
-                                        </TableCell>
-                                        <TableCell>
-                                            {booking.from}
-                                        </TableCell>
-                                        <TableCell>
-                                            {booking.to}
-                                        </TableCell>
-                                        <TableCell>
                                             {booking.securityCode}
                                         </TableCell>
                                         <TableCell>
                                             {booking.totalCost}
+                                        </TableCell>
+                                        <TableCell>
+                                            <Button variant="contained" size="small">
+                                                <Link href={`/bookings/${booking.id}`} style={LinkStyle}>
+                                                    View
+                                                </Link>
+                                            </Button>
                                         </TableCell>
                                     </TableRow>
                                 );

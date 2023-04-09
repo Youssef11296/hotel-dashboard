@@ -13,11 +13,12 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
 } from '@mui/material';
 import { Scrollbar } from '../../components/scrollbar';
-import { getInitials } from '../../utils/get-initials';
 import { Room } from '../../models/Room';
+import Link from 'next/link';
+
+const LinkStyle = { color: "#fff", textDecoration: 'none' }
 
 export const RoomsTable = (props) => {
   const {
@@ -73,7 +74,7 @@ export const RoomsTable = (props) => {
                   Status
                 </TableCell>
                 <TableCell>
-                  Actions
+                  More
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -115,11 +116,10 @@ export const RoomsTable = (props) => {
                       {room.isReserved ? "Reserved" : "Available"}
                     </TableCell>
                     <TableCell>
-                      <Button
-                        variant="contained"
-                        disabled={room.isReserved}
-                      >
-                        Book Now
+                      <Button variant="contained" color="primary" size="small">
+                        <Link href={`/rooms/${room.id}`} style={LinkStyle}>
+                          View
+                        </Link>
                       </Button>
                     </TableCell>
                   </TableRow>

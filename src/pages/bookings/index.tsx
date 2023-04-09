@@ -1,18 +1,15 @@
 import { useCallback, useMemo, useState } from 'react';
 import Head from 'next/head';
-import { subDays, subHours } from 'date-fns';
-import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
-import ArrowUpOnSquareIcon from '@heroicons/react/24/solid/ArrowUpOnSquareIcon';
 import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
 import { Box, Button, Container, Stack, SvgIcon, Typography } from '@mui/material';
-import { useSelection } from '../hooks/use-selection';
-import { Layout as DashboardLayout } from '../layouts/dashboard/layout';
-import { BookingsTable } from '../sections/bookings/bookings-table';
-import { BookingsSearch } from '../sections/bookings/bookings-search';
-import { applyPagination } from '../utils/apply-pagination';
-import { BRAND_NAME } from '../constants';
-import { roombooks } from '../data/roombooks';
-import { RoomBook } from '../models/RoomBook';
+import { useSelection } from '../../hooks/use-selection';
+import { Layout as DashboardLayout } from '../../layouts/dashboard/layout';
+import { BookingsTable } from '../../sections/bookings/bookings-table';
+import { BookingsSearch } from '../../sections/bookings/bookings-search';
+import { applyPagination } from '../../utils/apply-pagination';
+import { BRAND_NAME } from '../../constants';
+import { roombooks } from '../../data/roombooks';
+import { RoomBook } from '../../models/RoomBook';
 
 const now = new Date();
 
