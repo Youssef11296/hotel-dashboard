@@ -5,14 +5,10 @@ import { useRouter } from 'next/navigation';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
-  Alert,
   Box,
   Button,
-  FormHelperText,
   Link,
   Stack,
-  Tab,
-  Tabs,
   TextField,
   Typography
 } from '@mui/material';
@@ -23,7 +19,6 @@ import { BRAND_NAME } from '../../constants';
 const Page = () => {
   const router = useRouter();
   const auth: any = useAuth();
-  const [method, setMethod] = useState('email');
   const formik: any = useFormik({
     initialValues: {
       email: 'demo@hotelmanager.io',
@@ -52,21 +47,6 @@ const Page = () => {
       }
     }
   });
-
-  const handleMethodChange = useCallback(
-    (event, value) => {
-      setMethod(value);
-    },
-    []
-  );
-
-  const handleSkip = useCallback(
-    () => {
-      auth.skip();
-      router.push('/');
-    },
-    [auth, router]
-  );
 
   return (
     <>
