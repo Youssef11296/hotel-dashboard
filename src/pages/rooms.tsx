@@ -1,10 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import Head from 'next/head';
-import { subDays, subHours } from 'date-fns';
-import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
-import ArrowUpOnSquareIcon from '@heroicons/react/24/solid/ArrowUpOnSquareIcon';
 import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
-import { Box, Button, Container, Stack, SvgIcon, Typography } from '@mui/material';
+import { Box, Button, Container, Stack, SvgIcon, Typography, Dialog } from '@mui/material';
 import { useSelection } from '../hooks/use-selection';
 import { Layout as DashboardLayout } from '../layouts/dashboard/layout';
 import { RoomsTable } from '../sections/rooms/rooms-table';
@@ -13,6 +10,7 @@ import { applyPagination } from '../utils/apply-pagination';
 import { BRAND_NAME } from '../constants';
 import { Room } from '../models/Room';
 import { rooms } from '../data/rooms';
+import AddRoomForm from '../sections/rooms/AddRoomForm';
 
 const now = new Date();
 
@@ -57,6 +55,11 @@ const Rooms = () => {
         []
     );
 
+    const [openAddRoomForm, setOpenAddRoomForm] = useState<boolean>(false)
+
+    const openAddRoomFormHandler = () => setOpenAddRoomForm(true)
+    const closeAddRoomFormHandler = () => setOpenAddRoomForm(false)
+
     return (
         <>
             <Head>
@@ -83,18 +86,24 @@ const Rooms = () => {
                                     Rooms
                                 </Typography>
                             </Stack>
-                            <div>
-                                <Button
-                                    startIcon={(
-                                        <SvgIcon fontSize="small">
-                                            <PlusIcon />
-                                        </SvgIcon>
-                                    )}
-                                    variant="contained"
-                                >
-                                    Add
-                                </Button>
-                            </div>
+                            <Button
+                                startIcon={(
+                                    <SvgIcon fontSize="small">
+                                        <PlusIcon />
+                                    </SvgIcon>
+                                )}
+                                variant="contained"
+                                onClick={openAddRoomFormHandler}
+                            >
+                                Add
+                            </Button>
+                            <Dialog
+                                open={openAddRoomForm}
+                                onClose={closeAddRoomFormHandler}
+                            >
+                                <AddRoomForm />
+                            </Dialog>
+
                         </Stack>
                         <RoomsSearch />
                         <RoomsTable
