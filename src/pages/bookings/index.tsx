@@ -10,6 +10,7 @@ import { applyPagination } from '../../utils/apply-pagination';
 import { BRAND_NAME } from '../../constants';
 import { roombooks } from '../../data/roombooks';
 import { RoomBook } from '../../models/RoomBook';
+import { useAuth } from '../../hooks/use-auth';
 
 const now = new Date();
 
@@ -54,6 +55,11 @@ const Page = () => {
         []
     );
 
+
+    const auth: any = useAuth()
+    const user = auth.user
+    const isAdmin = user.role === "Admin"
+
     return (
         <>
             <Head>
@@ -81,16 +87,20 @@ const Page = () => {
                                 </Typography>
                             </Stack>
                             <div>
-                                <Button
-                                    startIcon={(
-                                        <SvgIcon fontSize="small">
-                                            <PlusIcon />
-                                        </SvgIcon>
-                                    )}
-                                    variant="contained"
-                                >
-                                    Add
-                                </Button>
+                                {
+                                    isAdmin ? <>
+                                        <Button
+                                            startIcon={(
+                                                <SvgIcon fontSize="small">
+                                                    <PlusIcon />
+                                                </SvgIcon>
+                                            )}
+                                            variant="contained"
+                                        >
+                                            Add
+                                        </Button>
+                                    </> : null
+                                }
                             </div>
                         </Stack>
                         <BookingsSearch />

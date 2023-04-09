@@ -1,6 +1,18 @@
-import { Customer } from "../models/Customer";
+import { User } from "../models/User";
 
-export const customers: Customer[] = [
+export const users: User[] = [
+  {
+    id: "0111",
+    name: "Admin",
+    email: "admon@test.com",
+    phone: "+0201020303030",
+    whatsApp: "+0201020303030",
+    address: "Cairo, Egypt",
+    password: "123123",
+    nationalId: "30003033327279",
+    age: 23,
+    role: "Admin",
+  },
   {
     id: "111",
     name: "Tarek",
@@ -8,8 +20,10 @@ export const customers: Customer[] = [
     phone: "+0201020303030",
     whatsApp: "+0201020303030",
     address: "Cairo, Egypt",
+    password: "123123",
     nationalId: "30003033327279",
     age: 23,
+    role: "Customer",
   },
   {
     id: "333",
@@ -18,8 +32,10 @@ export const customers: Customer[] = [
     phone: "+0201020303030",
     whatsApp: "+0201020303030",
     address: "Cairo, Egypt",
+    password: "123123",
     nationalId: "30023033327279",
     age: 24,
+    role: "Customer",
   },
   {
     id: "444",
@@ -28,7 +44,9 @@ export const customers: Customer[] = [
     phone: "+0201020303030",
     whatsApp: "+0201020303030",
     address: "Cairo, Egypt",
+    password: "123123",
     nationalId: "30002233327279",
     age: 40,
+    role: "Customer",
   },
 ];

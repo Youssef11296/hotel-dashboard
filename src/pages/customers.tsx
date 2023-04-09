@@ -11,12 +11,13 @@ import { CustomersTable } from '../sections/customer/customers-table';
 import { CustomersSearch } from '../sections/customer/customers-search';
 import { applyPagination } from '../utils/apply-pagination';
 import { BRAND_NAME } from '../constants';
-import { customers } from '../data/customers';
-import { Customer } from '../models/Customer';
+import { users } from '../data/users';
+import { User } from '../models/User';
+import { useAuth } from '../hooks/use-auth';
 
 const now = new Date();
 
-const data: Customer[] = customers
+const data: User[] = users
 
 const useCustomers = (page, rowsPerPage) => {
   return useMemo(
@@ -57,6 +58,10 @@ const Page = () => {
     []
   );
 
+  const auth: any = useAuth()
+  const user = auth.user
+  const isAdmin = user.role === "Admin"
+
   return (
     <>
       <Head>
@@ -83,18 +88,20 @@ const Page = () => {
                   Customers
                 </Typography>
               </Stack>
-              <div>
-                <Button
-                  startIcon={(
-                    <SvgIcon fontSize="small">
-                      <PlusIcon />
-                    </SvgIcon>
-                  )}
-                  variant="contained"
-                >
-                  Add
-                </Button>
-              </div>
+              {
+                isAdmin ? <>
+                  <Button
+                    startIcon={(
+                      <SvgIcon fontSize="small">
+                        <PlusIcon />
+                      </SvgIcon>
+                    )}
+                    variant="contained"
+                  >
+                    Add
+                  </Button>
+                </> : null
+              }
             </Stack>
             <CustomersSearch />
             <CustomersTable

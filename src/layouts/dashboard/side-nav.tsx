@@ -15,14 +15,25 @@ import {
 } from '@mui/material';
 import { Logo } from '../../components/logo';
 import { Scrollbar } from '../../components/scrollbar';
-import { items } from './config';
+import { items, publicItems } from './config';
 import { SideNavItem } from './side-nav-item';
 import { BRAND_MAIL, BRAND_NAME } from '../../constants';
+import { useAuth } from '../../hooks/use-auth';
+import { useEffect, useState } from 'react';
 
 export const SideNav = (props) => {
   const { open, onClose } = props;
   const pathname = usePathname();
   const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));
+  const [navItems, setNavItems] = useState(publicItems)
+
+  const auth: any = useAuth()
+  const { user } = auth
+  const isAdmin = user?.role === "Admin"
+
+  useEffect(() => {
+    isAdmin ? setNavItems(items) : setNavItems(publicItems)
+  }, [user])
 
   const content = (
     <Scrollbar
@@ -98,7 +109,7 @@ export const SideNav = (props) => {
               m: 0
             }}
           >
-            {items.map((item) => {
+            {navItems.map((item) => {
               const active = item.path ? (pathname === item.path) : false;
 
               return (

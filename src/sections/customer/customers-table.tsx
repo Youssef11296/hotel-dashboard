@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import { Scrollbar } from '../../components/scrollbar';
 import { getInitials } from '../../utils/get-initials';
-import { Customer } from '../../models/Customer';
+import { Customer } from '../../models/User';
 
 export const CustomersTable = (props) => {
   const {

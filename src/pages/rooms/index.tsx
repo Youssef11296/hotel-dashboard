@@ -11,6 +11,7 @@ import { BRAND_NAME } from '../../constants';
 import { Room } from '../../models/Room';
 import { rooms } from '../../data/rooms';
 import AddRoomForm from '../../sections/rooms/AddRoomForm';
+import { useAuth } from '../../hooks/use-auth';
 
 const now = new Date();
 
@@ -60,6 +61,10 @@ const Rooms = () => {
     const openAddRoomFormHandler = () => setOpenAddRoomForm(true)
     const closeAddRoomFormHandler = () => setOpenAddRoomForm(false)
 
+    const auth: any = useAuth()
+    const user = auth.user
+    const isAdmin = user.role === "Admin"
+
     return (
         <>
             <Head>
@@ -86,24 +91,27 @@ const Rooms = () => {
                                     Rooms
                                 </Typography>
                             </Stack>
-                            <Button
-                                startIcon={(
-                                    <SvgIcon fontSize="small">
-                                        <PlusIcon />
-                                    </SvgIcon>
-                                )}
-                                variant="contained"
-                                onClick={openAddRoomFormHandler}
-                            >
-                                Add
-                            </Button>
-                            <Dialog
-                                open={openAddRoomForm}
-                                onClose={closeAddRoomFormHandler}
-                            >
-                                <AddRoomForm />
-                            </Dialog>
-
+                            {
+                                isAdmin ? <>
+                                    <Button
+                                        startIcon={(
+                                            <SvgIcon fontSize="small">
+                                                <PlusIcon />
+                                            </SvgIcon>
+                                        )}
+                                        variant="contained"
+                                        onClick={openAddRoomFormHandler}
+                                    >
+                                        Add
+                                    </Button>
+                                    <Dialog
+                                        open={openAddRoomForm}
+                                        onClose={closeAddRoomFormHandler}
+                                    >
+                                        <AddRoomForm />
+                                    </Dialog>
+                                </> : null
+                            }
                         </Stack>
                         <RoomsSearch />
                         <RoomsTable

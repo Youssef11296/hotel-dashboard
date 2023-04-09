@@ -17,6 +17,7 @@ import {
 import { Scrollbar } from '../../components/scrollbar';
 import { Room } from '../../models/Room';
 import Link from 'next/link';
+import { SeverityPill } from '../../components/severity-pill';
 
 const LinkStyle = { color: "#fff", textDecoration: 'none' }
 
@@ -113,7 +114,9 @@ export const RoomsTable = (props) => {
                       {room.numOfBeds} Beds
                     </TableCell>
                     <TableCell>
-                      {room.isReserved ? "Reserved" : "Available"}
+                      <SeverityPill color={room.isReserved ? "primary" : "success"}>
+                        {room.isReserved ? "Reserved" : "Available"}
+                      </SeverityPill>
                     </TableCell>
                     <TableCell>
                       <Button variant="contained" color="primary" size="small">

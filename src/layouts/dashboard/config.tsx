@@ -17,6 +17,27 @@ interface NavItem {
   external?: boolean;
 }
 
+export const publicItems: NavItem[] = [
+  {
+    title: 'Rooms',
+    path: '/rooms',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ShoppingBagIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Account',
+    path: '/account',
+    icon: (
+      <SvgIcon fontSize="small">
+        <UserIcon />
+      </SvgIcon>
+    )
+  },
+];
+
 export const items: NavItem[] = [
   {
     title: 'Overview',
@@ -43,7 +64,7 @@ export const items: NavItem[] = [
       <SvgIcon fontSize="small">
         <UsersIcon />
       </SvgIcon>
-    )
+    ),
   },
   {
     title: 'Bookings',

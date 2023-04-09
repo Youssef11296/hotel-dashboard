@@ -1,4 +1,4 @@
-import { Customer } from "./Customer";
+import { Customer } from "./User";
 import { Room } from "./Room";
 
 type RelationToCustomer = "son" | "daughter" | "sister" | "brother";

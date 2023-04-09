@@ -10,35 +10,30 @@ import {
   TextField,
   Unstable_Grid2 as Grid
 } from '@mui/material';
+import { useAuth } from '../../hooks/use-auth';
 
 const states = [
   {
-    value: 'alabama',
-    label: 'Alabama'
+    value: 'cairo',
+    label: 'Cairo'
   },
   {
-    value: 'new-york',
-    label: 'New York'
+    value: 'alexandria',
+    label: 'Alexandria'
   },
   {
-    value: 'san-francisco',
-    label: 'San Francisco'
+    value: 'red-sea',
+    label: 'Red Sea'
   },
   {
-    value: 'los-angeles',
-    label: 'Los Angeles'
+    value: 'kafr-al-shiekh',
+    label: 'Kafr El-Shiekh'
   }
 ];
 
 export const AccountProfileDetails = () => {
-  const [values, setValues] = useState({
-    firstName: 'Anika',
-    lastName: 'Visser',
-    email: 'demo@hotelmanager.io',
-    phone: '',
-    state: 'los-angeles',
-    country: 'USA'
-  });
+  const auth: any = useAuth()
+  const [values, setValues] = useState(auth.user)
 
   const handleChange = useCallback(
     (event) => {
@@ -86,19 +81,6 @@ export const AccountProfileDetails = () => {
                   onChange={handleChange}
                   required
                   value={values.firstName}
-                />
-              </Grid>
-              <Grid
-                xs={12}
-                md={6}
-              >
-                <TextField
-                  fullWidth
-                  label="Last name"
-                  name="lastName"
-                  onChange={handleChange}
-                  required
-                  value={values.lastName}
                 />
               </Grid>
               <Grid
