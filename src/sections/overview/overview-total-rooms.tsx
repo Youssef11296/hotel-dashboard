@@ -10,9 +10,11 @@ import {
   SvgIcon,
   Typography
 } from '@mui/material';
+import { rooms } from '../../data/rooms';
 
-export const OverviewTasksProgress = (props) => {
-  const { value, sx } = props;
+export const OverviewTotalRooms = (props) => {
+  const { sx } = props;
+  const value = rooms.length
 
   return (
     <Card sx={sx}>
@@ -29,10 +31,10 @@ export const OverviewTasksProgress = (props) => {
               gutterBottom
               variant="overline"
             >
-              Task Progress
+              Total Rooms
             </Typography>
             <Typography variant="h4">
-              {value}%
+              {value}
             </Typography>
           </Stack>
           <Avatar
@@ -47,18 +49,12 @@ export const OverviewTasksProgress = (props) => {
             </SvgIcon>
           </Avatar>
         </Stack>
-        <Box sx={{ mt: 3 }}>
-          <LinearProgress
-            value={value}
-            variant="determinate"
-          />
-        </Box>
       </CardContent>
     </Card>
   );
 };
 
-OverviewTasksProgress.propTypes = {
+OverviewTotalRooms.propTypes = {
   value: PropTypes.number.isRequired,
   sx: PropTypes.object
 };

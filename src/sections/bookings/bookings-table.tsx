@@ -7,16 +7,17 @@ import {
     Table,
     TableBody,
     TableCell,
+    Grid,
     TableHead,
     TablePagination,
     TableRow,
+    Dialog,
 } from '@mui/material';
 import { Scrollbar } from '../../components/scrollbar';
 import { RoomBook } from '../../models/RoomBook';
-import Link from 'next/link';
 import { SeverityPill } from '../../components/severity-pill';
-
-const LinkStyle = { color: "#fff", textDecoration: 'none' }
+import BookingItem from './BookingItem';
+import { useState } from 'react'
 
 export const BookingsTable = (props) => {
     const {
@@ -35,6 +36,10 @@ export const BookingsTable = (props) => {
 
     const selectedSome = (selected.length > 0) && (selected.length < items.length);
     const selectedAll = (items.length > 0) && (selected.length === items.length);
+
+    const [viewBooking, setViewBooking] = useState<boolean>(false)
+    const viewBookingHandler = () => setViewBooking(true)
+    const closeViewBookingHandler = () => setViewBooking(false)
 
     return (
         <Card>
@@ -126,15 +131,33 @@ export const BookingsTable = (props) => {
                                             </SeverityPill>
                                         </TableCell>
                                         <TableCell>
-                                            <Button
-                                                variant="contained"
-                                                size="small"
-                                                disabled={booking.status !== "PENDING"}
-                                            >
-                                                <Link href={`/bookings/${booking.id}`} style={LinkStyle}>
-                                                    Accept
-                                                </Link>
-                                            </Button>
+                                            <Grid container spacing={2}>
+                                                <Grid item xs={12} md={6}>
+                                                    <Button
+                                                        variant="contained"
+                                                        size="small"
+                                                        disabled={booking.status !== "PENDING"}
+                                                    >
+                                                        Accept
+                                                    </Button>
+                                                </Grid>
+                                                <Grid item xs={12} md={6}>
+                                                    <Button
+                                                        variant="contained"
+                                                        size="small"
+                                                        onClick={viewBookingHandler}
+                                                    >
+                                                        View
+                                                    </Button>
+                                                </Grid>
+                                                <Dialog
+                                                    open={viewBooking}
+                                                    onClose={closeViewBookingHandler}
+                                                    sx={{ width: '100vw' }}
+                                                >
+                                                    <BookingItem booking={booking} />
+                                                </Dialog>
+                                            </Grid>
                                         </TableCell>
                                     </TableRow>
                                 );

@@ -11,7 +11,7 @@ import {
   SvgIcon
 } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
-import { Chart } from 'src/components/chart';
+import { Chart } from '../../components/chart';
 
 const useChartOptions = () => {
   const theme = useTheme();
@@ -111,19 +111,6 @@ export const OverviewSales = (props) => {
   return (
     <Card sx={sx}>
       <CardHeader
-        action={(
-          <Button
-            color="inherit"
-            size="small"
-            startIcon={(
-              <SvgIcon fontSize="small">
-                <ArrowPathIcon />
-              </SvgIcon>
-            )}
-          >
-            Sync
-          </Button>
-        )}
         title="Sales"
       />
       <CardContent>
@@ -135,20 +122,6 @@ export const OverviewSales = (props) => {
           width="100%"
         />
       </CardContent>
-      <Divider />
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <Button
-          color="inherit"
-          endIcon={(
-            <SvgIcon fontSize="small">
-              <ArrowRightIcon />
-            </SvgIcon>
-          )}
-          size="small"
-        >
-          Overview
-        </Button>
-      </CardActions>
     </Card>
   );
 };

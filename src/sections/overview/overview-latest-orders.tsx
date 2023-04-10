@@ -17,6 +17,8 @@ import {
 } from '@mui/material';
 import { Scrollbar } from '../../components/scrollbar';
 import { SeverityPill } from '../../components/severity-pill';
+import { RoomBook } from '../../models/RoomBook';
+import Link from 'next/link';
 
 const statusMap = {
   pending: 'warning',
@@ -24,19 +26,19 @@ const statusMap = {
   refunded: 'error'
 };
 
-export const OverviewLatestOrders = (props) => {
+export const OverviewLatestBookings = (props) => {
   const { orders = [], sx } = props;
 
   return (
     <Card sx={sx}>
-      <CardHeader title="Latest Orders" />
+      <CardHeader title="Latest Bookings" />
       <Scrollbar sx={{ flexGrow: 1 }}>
         <Box sx={{ minWidth: 800 }}>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>
-                  Order
+                  #.
                 </TableCell>
                 <TableCell>
                   Customer
@@ -50,25 +52,23 @@ export const OverviewLatestOrders = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((order) => {
-                const createdAt = format(order.createdAt, 'dd/MM/yyyy');
-
+              {orders.map((order: RoomBook) => {
                 return (
                   <TableRow
                     hover
                     key={order.id}
                   >
                     <TableCell>
-                      {order.ref}
+                      {order.number}
                     </TableCell>
                     <TableCell>
                       {order.customer.name}
                     </TableCell>
                     <TableCell>
-                      {createdAt}
+                      {new Date().getFullYear()}
                     </TableCell>
                     <TableCell>
-                      <SeverityPill color={statusMap[order.status]}>
+                      <SeverityPill color='primary'>
                         {order.status}
                       </SeverityPill>
                     </TableCell>
@@ -91,14 +91,16 @@ export const OverviewLatestOrders = (props) => {
           size="small"
           variant="text"
         >
-          View all
+          <Link href="/bookings" style={{ color: "#000", textDecoration: 'none' }}>
+            View all
+          </Link>
         </Button>
       </CardActions>
     </Card>
   );
 };
 
-OverviewLatestOrders.prototype = {
+OverviewLatestBookings.prototype = {
   orders: PropTypes.array,
   sx: PropTypes.object
 };

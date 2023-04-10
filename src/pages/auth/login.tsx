@@ -21,8 +21,8 @@ const Page = () => {
   const auth: any = useAuth();
   const formik: any = useFormik({
     initialValues: {
-      email: 'demo@hotelmanager.io',
-      password: 'Password123!',
+      email: 'admon@test.com',
+      password: '123123',
       submit: null
     },
     validationSchema: Yup.object({
