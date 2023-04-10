@@ -14,6 +14,7 @@ import {
 import { Scrollbar } from '../../components/scrollbar';
 import { RoomBook } from '../../models/RoomBook';
 import Link from 'next/link';
+import { SeverityPill } from '../../components/severity-pill';
 
 const LinkStyle = { color: "#fff", textDecoration: 'none' }
 
@@ -71,6 +72,9 @@ export const BookingsTable = (props) => {
                                     Total Cost
                                 </TableCell>
                                 <TableCell>
+                                    Status
+                                </TableCell>
+                                <TableCell>
                                     More
                                 </TableCell>
                             </TableRow>
@@ -113,9 +117,22 @@ export const BookingsTable = (props) => {
                                             {booking.totalCost}
                                         </TableCell>
                                         <TableCell>
-                                            <Button variant="contained" size="small">
+                                            <SeverityPill color={
+                                                booking.status === "ACCEPTED" ? "success" :
+                                                    booking.status === "REJECTED" ? "error" :
+                                                        booking.status === "PENDING" ? 'primary' : ''
+                                            }>
+                                                {booking.status}
+                                            </SeverityPill>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Button
+                                                variant="contained"
+                                                size="small"
+                                                disabled={booking.status !== "PENDING"}
+                                            >
                                                 <Link href={`/bookings/${booking.id}`} style={LinkStyle}>
-                                                    View
+                                                    Accept
                                                 </Link>
                                             </Button>
                                         </TableCell>

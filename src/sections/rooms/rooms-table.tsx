@@ -5,6 +5,7 @@ import {
   Button,
   Card,
   Checkbox,
+  Dialog,
   Grid,
   Stack,
   Table,
@@ -18,6 +19,8 @@ import { Scrollbar } from '../../components/scrollbar';
 import { Room } from '../../models/Room';
 import Link from 'next/link';
 import { SeverityPill } from '../../components/severity-pill';
+import BookForm from './BookForm';
+import { useState } from 'react'
 
 const LinkStyle = { color: "#fff", textDecoration: 'none' }
 
@@ -38,6 +41,10 @@ export const RoomsTable = (props) => {
 
   const selectedSome = (selected.length > 0) && (selected.length < items.length);
   const selectedAll = (items.length > 0) && (selected.length === items.length);
+
+  const [openBookForm, setOpenBookForm] = useState<boolean>(false)
+  const openBookFormHandler = () => setOpenBookForm(true)
+  const closeBookFormHandler = () => setOpenBookForm(false)
 
   return (
     <Card>
@@ -121,11 +128,21 @@ export const RoomsTable = (props) => {
                     <TableCell>
                       <Grid container spacing={2}>
                         <Grid item xs={12} md={6}>
-                          <Button variant="contained" color="primary" size="small" disabled={room.isReserved}>
-                            <Link href={`/rooms/${room.id}`} style={LinkStyle}>
-                              Book now
-                            </Link>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            size="small"
+                            disabled={room.isReserved}
+                            onClick={openBookFormHandler}
+                          >
+                            Book now
                           </Button>
+                          <Dialog
+                            open={openBookForm}
+                            onClose={closeBookFormHandler}
+                          >
+                            <BookForm roomNumber={room.number} />
+                          </Dialog>
                         </Grid>
                         <Grid item xs={12} md={6}>
                           <Button variant="contained" color="primary" size="small">
