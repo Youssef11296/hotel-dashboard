@@ -18,6 +18,7 @@ import { RoomBook } from '../../models/RoomBook';
 import { SeverityPill } from '../../components/severity-pill';
 import BookingItem from './BookingItem';
 import { useState } from 'react'
+import Link from 'next/link';
 
 export const BookingsTable = (props) => {
     const {
@@ -136,27 +137,15 @@ export const BookingsTable = (props) => {
                                                     <Button
                                                         variant="contained"
                                                         size="small"
-                                                        disabled={booking.status !== "PENDING"}
-                                                    >
-                                                        Accept
-                                                    </Button>
-                                                </Grid>
-                                                <Grid item xs={12} md={6}>
-                                                    <Button
-                                                        variant="contained"
-                                                        size="small"
                                                         onClick={viewBookingHandler}
                                                     >
-                                                        View
+                                                        <Link
+                                                            href={`bookings/${booking.id}`}
+                                                            style={{ textDecoration: 'none', color: "#fff" }}>
+                                                            View
+                                                        </Link>
                                                     </Button>
                                                 </Grid>
-                                                <Dialog
-                                                    open={viewBooking}
-                                                    onClose={closeViewBookingHandler}
-                                                    sx={{ width: '100vw' }}
-                                                >
-                                                    <BookingItem booking={booking} />
-                                                </Dialog>
                                             </Grid>
                                         </TableCell>
                                     </TableRow>

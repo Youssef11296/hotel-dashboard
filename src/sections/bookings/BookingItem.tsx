@@ -9,7 +9,8 @@ interface Props {
 
 const BookingItem: FC<Props> = ({ booking }) => {
 	return (
-			<Grid sx={{width: '100%'}} container flexDirection="row">
+		<>
+			<Grid sx={{ width: '100%' }} container flexDirection="row">
 				<Grid item xs={12} md={8}>
 					<SeverityPill color={
 						booking.status === "ACCEPTED" ? "success" :
@@ -43,6 +44,7 @@ const BookingItem: FC<Props> = ({ booking }) => {
 					</Stack>
 				</Grid>
 			</Grid>
+		</>
 	)
 }
 
