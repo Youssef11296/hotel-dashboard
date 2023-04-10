@@ -30,7 +30,7 @@ export const OverviewLatestBookings = (props) => {
   const { orders = [], sx } = props;
 
   return (
-    <Card sx={sx}>
+    <Card sx={{ height: '100%' }}>
       <CardHeader title="Latest Bookings" />
       <Scrollbar sx={{ flexGrow: 1 }}>
         <Box sx={{ minWidth: 800 }}>

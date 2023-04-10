@@ -7,4 +7,8 @@ export interface Room {
   isReserved: boolean;
   numOfBeds: number;
   capacity: number;
+  sales: {
+    currentMonthInEGP: number;
+    lastMonthInEGP: number;
+  };
 }

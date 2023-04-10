@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { subDays, subHours } from 'date-fns';
 import { Box, Container, Grid } from '@mui/material';
 import { Layout as DashboardLayout } from '../layouts/dashboard/layout';
-import { OverviewLatestBookings } from '../sections/overview/overview-latest-orders';
+import { OverviewLatestBookings } from '../sections/overview/overview-latest-bookings';
 import { OverviewSales } from '../sections/overview/overview-sales';
 import { OverviewTotalRooms } from '../sections/overview/overview-total-rooms';
 import { OverviewTotalCustomers } from '../sections/overview/overview-total-customers';
@@ -11,6 +11,9 @@ import { useAuth } from '../hooks/use-auth';
 import { useRouter } from 'next/router';
 import Rooms from './rooms';
 import { roombooks } from '../data/roombooks';
+import { rooms } from '../data/rooms';
+import { OverviewTotalBookings } from '../sections/overview/overview-total-bookings';
+import { OverviewTotalProfit } from '../sections/overview/overview-total-profit';
 
 const now = new Date();
 
@@ -67,6 +70,24 @@ const Page = () => {
                 value={75.5}
               />
             </Grid>
+            <Grid
+              xs={12}
+              sm={6}
+              lg={3}
+            >
+              <OverviewTotalBookings
+                sx={{ height: '100%' }}
+              />
+            </Grid>
+            <Grid
+              xs={12}
+              sm={6}
+              lg={3}
+            >
+              <OverviewTotalProfit
+                sx={{ height: '100%' }}
+              />
+            </Grid>
             <Grid container>
               <Grid
                 item
@@ -76,12 +97,12 @@ const Page = () => {
                 <OverviewSales
                   chartSeries={[
                     {
-                      name: 'This year',
-                      data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20]
+                      name: 'This Month',
+                      data: rooms.map(room => room.sales.currentMonthInEGP)
                     },
                     {
-                      name: 'Last year',
-                      data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13]
+                      name: 'Last Month',
+                      data: rooms.map(room => room.sales.lastMonthInEGP)
                     }
                   ]}
                   sx={{ height: '100%' }}
@@ -93,8 +114,7 @@ const Page = () => {
                 md={6}
               >
                 <OverviewLatestBookings
-                  orders={roombooks}
-                  sx={{ height: '100%' }}
+                  orders={roombooks.slice(0, 6)}
                 />
               </Grid>
             </Grid>

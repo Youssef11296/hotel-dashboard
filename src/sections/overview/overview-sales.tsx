@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Chart } from '../../components/chart';
+import { rooms } from '../../data/rooms';
 
 const useChartOptions = () => {
   const theme = useTheme();
@@ -71,20 +72,7 @@ const useChartOptions = () => {
         color: theme.palette.divider,
         show: true
       },
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ],
+      categories: rooms.map(room => room.number),
       labels: {
         offsetY: 5,
         style: {
@@ -94,7 +82,7 @@ const useChartOptions = () => {
     },
     yaxis: {
       labels: {
-        formatter: (value) => (value > 0 ? `${value}K` : `${value}`),
+        formatter: (value) => (value > 0 ? `${value} EGP` : `${value}`),
         offsetX: -10,
         style: {
           colors: theme.palette.text.secondary
