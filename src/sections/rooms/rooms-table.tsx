@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { format } from 'date-fns';
 import {
   Avatar,
   Box,
   Button,
   Card,
   Checkbox,
+  Grid,
   Stack,
   Table,
   TableBody,
@@ -119,11 +119,22 @@ export const RoomsTable = (props) => {
                       </SeverityPill>
                     </TableCell>
                     <TableCell>
-                      <Button variant="contained" color="primary" size="small">
-                        <Link href={`/rooms/${room.id}`} style={LinkStyle}>
-                          View
-                        </Link>
-                      </Button>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} md={6}>
+                          <Button variant="contained" color="primary" size="small" disabled={room.isReserved}>
+                            <Link href={`/rooms/${room.id}`} style={LinkStyle}>
+                              Book now
+                            </Link>
+                          </Button>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <Button variant="contained" color="primary" size="small">
+                            <Link href={`/rooms/${room.id}`} style={LinkStyle}>
+                              View
+                            </Link>
+                          </Button>
+                        </Grid>
+                      </Grid>
                     </TableCell>
                   </TableRow>
                 );

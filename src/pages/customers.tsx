@@ -88,20 +88,6 @@ const Page = () => {
                   Customers
                 </Typography>
               </Stack>
-              {
-                isAdmin ? <>
-                  <Button
-                    startIcon={(
-                      <SvgIcon fontSize="small">
-                        <PlusIcon />
-                      </SvgIcon>
-                    )}
-                    variant="contained"
-                  >
-                    Add
-                  </Button>
-                </> : null
-              }
             </Stack>
             <CustomersSearch />
             <CustomersTable

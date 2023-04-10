@@ -102,7 +102,7 @@ const Rooms = () => {
                                         variant="contained"
                                         onClick={openAddRoomFormHandler}
                                     >
-                                        Add
+                                        Add Room
                                     </Button>
                                     <Dialog
                                         open={openAddRoomForm}

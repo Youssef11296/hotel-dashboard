@@ -86,22 +86,6 @@ const Page = () => {
                                     Bookings
                                 </Typography>
                             </Stack>
-                            <div>
-                                {
-                                    isAdmin ? <>
-                                        <Button
-                                            startIcon={(
-                                                <SvgIcon fontSize="small">
-                                                    <PlusIcon />
-                                                </SvgIcon>
-                                            )}
-                                            variant="contained"
-                                        >
-                                            Add
-                                        </Button>
-                                    </> : null
-                                }
-                            </div>
                         </Stack>
                         <BookingsSearch />
                         <BookingsTable

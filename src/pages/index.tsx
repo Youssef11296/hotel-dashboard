@@ -13,6 +13,7 @@ import { OverviewTraffic } from '../sections/overview/overview-traffic';
 import { BRAND_NAME } from '../constants';
 import { useAuth } from '../hooks/use-auth';
 import { useRouter } from 'next/router';
+import Rooms from './rooms';
 
 const now = new Date();
 
@@ -25,7 +26,7 @@ const Page = () => {
   const router = useRouter()
 
   if (!isAdmin) {
-    router.push('/rooms')
+    return <Rooms />
   }
 
   return (
