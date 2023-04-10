@@ -21,7 +21,7 @@ const Page = () => {
   const auth: any = useAuth()
   const user = auth.user
 
-  const isAdmin = user.role === "Admin"
+  const isAdmin = user?.role === "Admin"
 
   const router = useRouter()
 

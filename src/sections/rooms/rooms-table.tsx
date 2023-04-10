@@ -43,8 +43,16 @@ export const RoomsTable = (props) => {
   const selectedAll = (items.length > 0) && (selected.length === items.length);
 
   const [openBookForm, setOpenBookForm] = useState<boolean>(false)
-  const openBookFormHandler = () => setOpenBookForm(true)
-  const closeBookFormHandler = () => setOpenBookForm(false)
+  const openBookFormHandler = (room: Room) => {
+    setSelectedRoom(room)
+    setOpenBookForm(true)
+  }
+  const closeBookFormHandler = () => {
+    setSelectedRoom(null)
+    setOpenBookForm(false)
+  }
+
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
 
   return (
     <Card>
@@ -133,16 +141,10 @@ export const RoomsTable = (props) => {
                             color="primary"
                             size="small"
                             disabled={room.isReserved}
-                            onClick={openBookFormHandler}
+                            onClick={() => openBookFormHandler(room)}
                           >
                             Book now
                           </Button>
-                          <Dialog
-                            open={openBookForm}
-                            onClose={closeBookFormHandler}
-                          >
-                            <BookForm roomNumber={room.number} />
-                          </Dialog>
                         </Grid>
                         <Grid item xs={12} md={6}>
                           <Button variant="contained" color="primary" size="small">
@@ -160,6 +162,12 @@ export const RoomsTable = (props) => {
           </Table>
         </Box>
       </Scrollbar>
+      <Dialog
+        open={openBookForm}
+        onClose={closeBookFormHandler}
+      >
+        <BookForm roomNumber={selectedRoom?.number} />
+      </Dialog>
       <TablePagination
         component="div"
         count={count}
