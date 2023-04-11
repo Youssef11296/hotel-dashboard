@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { users } from '../data/users';
+import { API } from '../configs/apiConfig';
 
 const HANDLERS = {
   INITIALIZE: 'INITIALIZE',
@@ -103,8 +104,8 @@ export const AuthProvider = (props) => {
     []
   );
 
-  const signIn = async (email, password) => {
-    const user = users.find((user) => user.email === email && user.password === password)
+  const signIn = async (email: string, password: string) => {
+    const user = await API.auth.LOGIN({ email, password })
     if (!user) {
       throw new Error('Please check your email and password');
     }

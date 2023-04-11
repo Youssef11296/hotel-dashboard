@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useEffect, useCallback, useMemo, useState } from 'react';
 import Head from 'next/head';
 import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
 import { Box, Button, Container, Stack, SvgIcon, Typography, Dialog } from '@mui/material';
@@ -12,6 +12,7 @@ import { Room } from '../../models/Room';
 import { rooms } from '../../data/rooms';
 import AddRoomForm from '../../sections/rooms/AddRoomForm';
 import { useAuth } from '../../hooks/use-auth';
+import { API } from '../../configs/apiConfig';
 
 const now = new Date();
 
@@ -64,6 +65,18 @@ const Rooms = () => {
     const auth: any = useAuth()
     const user = auth.user
     const isAdmin = user?.role === "Admin"
+
+    const [list, setList] = useState<Room[]>([])
+
+    const getRooms = async () => {
+        const res = await API.rooms.GET_ROOMS()
+        // setList(res)
+        console.log({ res })
+    }
+    useEffect(() => {
+        getRooms()
+    }, [])
+
 
     return (
         <>

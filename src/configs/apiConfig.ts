@@ -1,3 +1,6 @@
+import axios from "axios";
+import { User } from "../models/User";
+
 export const baseUrl = "http://localhost:1234/api";
 
 export const END_POINT = {
@@ -21,5 +24,11 @@ export const END_POINT = {
 };
 
 export const API = {
-  auth: {},
+  auth: {
+    LOGIN: ({ email, password }: { email: string; password: string }) =>
+      axios.post(END_POINT.auth.LOGIN, { email, password }),
+  },
+  rooms: {
+    GET_ROOMS: () => axios.get(END_POINT.rooms.GET_ROOMS),
+  },
 };

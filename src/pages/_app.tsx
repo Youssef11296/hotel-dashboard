@@ -10,6 +10,8 @@ import { createTheme } from '../theme';
 import { createEmotionCache } from '../utils/create-emotion-cache';
 import 'simplebar-react/dist/simplebar.min.css';
 import { BRAND_NAME } from '../constants';
+import { useEffect } from 'react';
+import { createMockServer } from '../server';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -23,6 +25,10 @@ const App = (props) => {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   const theme = createTheme();
+
+  useEffect(() => {
+    createMockServer()
+  }, [])
 
   return (
     <CacheProvider value={emotionCache}>
