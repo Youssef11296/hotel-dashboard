@@ -11,14 +11,10 @@ import {
     TableHead,
     TablePagination,
     TableRow,
-    Dialog,
 } from '@mui/material';
 import { Scrollbar } from '../../components/scrollbar';
 import { RoomBook } from '../../models/RoomBook';
 import { SeverityPill } from '../../components/severity-pill';
-import BookingItem from './BookingItem';
-import { useState } from 'react'
-import Link from 'next/link';
 
 export const BookingsTable = (props) => {
     const {
@@ -37,10 +33,6 @@ export const BookingsTable = (props) => {
 
     const selectedSome = (selected.length > 0) && (selected.length < items.length);
     const selectedAll = (items.length > 0) && (selected.length === items.length);
-
-    const [viewBooking, setViewBooking] = useState<boolean>(false)
-    const viewBookingHandler = () => setViewBooking(true)
-    const closeViewBookingHandler = () => setViewBooking(false)
 
     return (
         <Card>
@@ -63,24 +55,24 @@ export const BookingsTable = (props) => {
                                     />
                                 </TableCell>
                                 <TableCell>
-                                    Booking Number
+                                    User
                                 </TableCell>
                                 <TableCell>
-                                    Customer Name
+                                    Room
                                 </TableCell>
                                 <TableCell>
-                                    Room Number
+                                    Date
                                 </TableCell>
                                 <TableCell>
-                                    Security Code
+                                    From
                                 </TableCell>
                                 <TableCell>
-                                    Total Cost
+                                    To
                                 </TableCell>
                                 <TableCell>
                                     Status
                                 </TableCell>
-                                <TableCell>
+                                <TableCell align="center">
                                     More
                                 </TableCell>
                             </TableRow>
@@ -108,42 +100,52 @@ export const BookingsTable = (props) => {
                                             />
                                         </TableCell>
                                         <TableCell>
-                                            {booking.number}
+                                            {booking.user_id.slice(0, 10)}
                                         </TableCell>
                                         <TableCell>
-                                            {booking.customer.name}
+                                            {booking.room_id.slice(0, 10)}
                                         </TableCell>
                                         <TableCell>
-                                            {booking.roomNumber}
+                                            {booking.booking_date}
                                         </TableCell>
                                         <TableCell>
-                                            {booking.securityCode}
+                                            {booking.booking_time_from}
                                         </TableCell>
                                         <TableCell>
-                                            {booking.totalCost}
+                                            {booking.booking_time_to}
                                         </TableCell>
                                         <TableCell>
                                             <SeverityPill color={
-                                                booking.status === "ACCEPTED" ? "success" :
-                                                    booking.status === "REJECTED" ? "error" :
-                                                        booking.status === "PENDING" ? 'primary' : ''
+                                                booking.is_approved ? "success" : 'primary'
                                             }>
-                                                {booking.status}
+                                                {booking.is_approved ? "Approved" : "Pending"}
                                             </SeverityPill>
                                         </TableCell>
                                         <TableCell>
-                                            <Grid container spacing={2}>
+                                            <Grid
+                                                container
+                                                spacing={2}
+                                            >
+                                                <Grid
+                                                    item
+                                                    xs={12}
+                                                    md={6}
+                                                >
+                                                    <Button
+                                                        variant="contained"
+                                                        size="small"
+                                                        disabled={booking.is_approved}
+                                                    >
+                                                        Approve
+                                                    </Button>
+                                                </Grid>
                                                 <Grid item xs={12} md={6}>
                                                     <Button
                                                         variant="contained"
                                                         size="small"
-                                                        onClick={viewBookingHandler}
+                                                        disabled={booking.is_approved}
                                                     >
-                                                        <Link
-                                                            href={`bookings/${booking.id}`}
-                                                            style={{ textDecoration: 'none', color: "#fff" }}>
-                                                            View
-                                                        </Link>
+                                                        Reject
                                                     </Button>
                                                 </Grid>
                                             </Grid>

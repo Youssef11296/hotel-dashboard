@@ -6,7 +6,7 @@ export const users: User[] = [
     id: faker.datatype.uuid(),
     first_name: "Admin",
     last_name: "admin",
-    email: "admon@mail.com",
+    email: "admon@test.com",
     phone_number: "+201020202020",
     password: "123123",
     google_authenticator_code: "123123",

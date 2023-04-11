@@ -31,4 +31,10 @@ export const API = {
   rooms: {
     GET_ROOMS: () => axios.get(`${baseUrl}/${END_POINT.rooms.GET_ROOMS}`),
   },
+  customers: {
+    GET_CUSTOMERS: () => axios.get(`${baseUrl}/${END_POINT.customers.GET_CUSTOMERS}`),
+  },
+  bookings: {
+    GET_BOOKINGS: () => axios.get(`${baseUrl}/${END_POINT.bookings.GET_BOOKINGS}`),
+  },
 };

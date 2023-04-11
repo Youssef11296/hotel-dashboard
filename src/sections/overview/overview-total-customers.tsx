@@ -5,7 +5,7 @@ import { users } from '../../data/users';
 
 export const OverviewTotalCustomers = (props) => {
   const { sx } = props;
-  const value = users.filter(user => user?.role === "Customer").length
+  const value = users.filter(user => user?.is_admin === "Customer").length
 
   return (
     <Card sx={sx}>

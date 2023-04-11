@@ -29,7 +29,7 @@ export const SideNav = (props) => {
 
   const auth: any = useAuth()
   const { user } = auth
-  const isAdmin = user?.role === "Admin"
+  const isAdmin = user?.is_admin
 
   useEffect(() => {
     isAdmin ? setNavItems(items) : setNavItems(publicItems)

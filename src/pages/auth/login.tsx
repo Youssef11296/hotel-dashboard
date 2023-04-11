@@ -40,7 +40,7 @@ const Page = () => {
       try {
         await auth.signIn(values.email, values.password);
         const { user } = auth
-        user?.role !== "Admin" ? router.push('/rooms') : router.push('/')
+        user?.is_admin !== "Admin" ? router.push('/rooms') : router.push('/')
       } catch (err) {
         helpers.setStatus({ success: false });
         helpers.setErrors({ submit: err.message });

@@ -57,8 +57,20 @@ const createMockServer = () => {
       this.get(END_POINT.rooms.GET_ROOMS, (schema, request) => {
         const response = { success: false, message: "", error: "" };
         const rooms = schema.all("room").models;
-        console.log({ rooms });
         return { ...response, rooms };
+      });
+
+      this.get(END_POINT.customers.GET_CUSTOMERS, (schema, request) => {
+        const response = { success: false, message: "", error: "" };
+        const users = schema.all("user").models;
+        const customers = users.filter((user: any) => user.is_admin === false);
+        return { ...response, customers };
+      });
+
+      this.get(END_POINT.bookings.GET_BOOKINGS, (schema, request) => {
+        const response = { success: false, message: "", error: "" };
+        const bookings = schema.all("roombook").models;
+        return { ...response, bookings };
       });
 
       this.get(END_POINT.rooms.GET_ROOM_BY_ID, (schema, request) => {

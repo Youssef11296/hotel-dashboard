@@ -75,7 +75,7 @@ const Page = () => {
                 sx={{ height: '100%' }}
               />
             </Grid>
-            <Grid container>
+            {/* <Grid container>
               <Grid
                 item
                 xs={12}
@@ -104,7 +104,7 @@ const Page = () => {
                   orders={roombooks.slice(0, 6)}
                 />
               </Grid>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>
