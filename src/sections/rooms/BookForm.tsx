@@ -15,7 +15,7 @@ const CardStyle = {
 }
 
 
-const BookForm: FC<{ roomNumber: string }> = ({ roomNumber }) => {
+const BookForm: FC<{ roomNumber: string, onClose: () => void }> = ({ roomNumber, onClose }) => {
 	const auth: any = useAuth()
 	const { user } = auth
 
@@ -29,8 +29,8 @@ const BookForm: FC<{ roomNumber: string }> = ({ roomNumber }) => {
 		},
 		validationSchema: Yup.object({
 			roomNumber: Yup
-				.number()
-				.max(5)
+				.string()
+				.max(20)
 				.required('Room number is required'),
 			securityCode: Yup
 				.string()
@@ -48,6 +48,7 @@ const BookForm: FC<{ roomNumber: string }> = ({ roomNumber }) => {
 		onSubmit: async (values, helpers) => {
 			try {
 				console.log("Add Book", { ...values, customer: user })
+				onClose()
 			} catch (err) {
 				helpers.setStatus({ success: false });
 				helpers.setErrors({ submit: err.message });

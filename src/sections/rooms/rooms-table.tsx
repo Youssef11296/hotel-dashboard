@@ -166,7 +166,7 @@ export const RoomsTable = (props) => {
         open={openBookForm}
         onClose={closeBookFormHandler}
       >
-        <BookForm roomNumber={selectedRoom?.number} />
+        <BookForm roomNumber={selectedRoom?.number} onClose={closeBookFormHandler} />
       </Dialog>
       <TablePagination
         component="div"
