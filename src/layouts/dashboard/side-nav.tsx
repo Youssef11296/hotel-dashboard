@@ -17,7 +17,7 @@ import { Logo } from '../../components/logo';
 import { Scrollbar } from '../../components/scrollbar';
 import { items, publicItems } from './config';
 import { SideNavItem } from './side-nav-item';
-import { BRAND_MAIL, BRAND_NAME } from '../../constants';
+import { BRAND_BRIEF, BRAND_MAIL, BRAND_NAME } from '../../constants';
 import { useAuth } from '../../hooks/use-auth';
 import { useEffect, useState } from 'react';
 
@@ -86,7 +86,7 @@ export const SideNav = (props) => {
                 {BRAND_NAME}
               </Typography>
               <Typography variant="caption">
-                Your hotel management assistant.
+                {BRAND_BRIEF}
               </Typography>
             </div>
           </Box>
