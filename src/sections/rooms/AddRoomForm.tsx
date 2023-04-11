@@ -1,5 +1,6 @@
 import { TextField, Button, Card, Box, Select, MenuItem, FormHelperText, Grid, Typography } from '@mui/material'
 import { useFormik } from 'formik';
+import { FC } from 'react';
 import * as Yup from 'yup';
 
 const CardStyle = {
@@ -9,7 +10,7 @@ const CardStyle = {
 }
 
 
-const AddRoomForm = () => {
+const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 	const formik: any = useFormik({
 		initialValues: {
 			roomNumber: '',
@@ -42,7 +43,7 @@ const AddRoomForm = () => {
 		}),
 		onSubmit: async (values, helpers) => {
 			try {
-				console.log("Add Room", { ...values, dayCost: `${values.dayCost} ${values.currency}` })
+				onClose()
 			} catch (err) {
 				helpers.setStatus({ success: false });
 				helpers.setErrors({ submit: err.message });

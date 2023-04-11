@@ -47,7 +47,6 @@ const BookForm: FC<{ roomNumber: string, onClose: () => void }> = ({ roomNumber,
 		}),
 		onSubmit: async (values, helpers) => {
 			try {
-				console.log("Add Book", { ...values, customer: user })
 				onClose()
 			} catch (err) {
 				helpers.setStatus({ success: false });

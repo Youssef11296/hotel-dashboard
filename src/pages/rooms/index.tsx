@@ -108,7 +108,7 @@ const Rooms = () => {
                                         open={openAddRoomForm}
                                         onClose={closeAddRoomFormHandler}
                                     >
-                                        <AddRoomForm />
+                                        <AddRoomForm onClose={closeAddRoomFormHandler} />
                                     </Dialog>
                                 </> : null
                             }
