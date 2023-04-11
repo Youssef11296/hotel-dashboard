@@ -135,7 +135,7 @@ export const RoomsTable = (props) => {
                     </TableCell>
                     <TableCell>
                       <Grid container spacing={2}>
-                        <Grid item xs={12} md={6}>
+                        <Grid item xs={12} md={12}>
                           <Button
                             variant="contained"
                             color="primary"
@@ -144,13 +144,6 @@ export const RoomsTable = (props) => {
                             onClick={() => openBookFormHandler(room)}
                           >
                             Book now
-                          </Button>
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                          <Button variant="contained" color="primary" size="small">
-                            <Link href={`/rooms/${room.id}`} style={LinkStyle}>
-                              View
-                            </Link>
                           </Button>
                         </Grid>
                       </Grid>
