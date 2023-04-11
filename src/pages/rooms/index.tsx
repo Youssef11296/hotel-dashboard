@@ -9,12 +9,9 @@ import { RoomsSearch } from '../../sections/rooms/rooms-search';
 import { applyPagination } from '../../utils/apply-pagination';
 import { BRAND_NAME } from '../../constants';
 import { Room } from '../../models/Room';
-import { rooms } from '../../data/rooms';
 import AddRoomForm from '../../sections/rooms/AddRoomForm';
 import { useAuth } from '../../hooks/use-auth';
 import { API } from '../../configs/apiConfig';
-
-const now = new Date();
 
 const useRooms = (page, rowsPerPage) => {
     const [rooms, setRooms] = useState<Room[]>([])

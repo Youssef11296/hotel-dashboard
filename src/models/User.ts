@@ -2,14 +2,12 @@ export type Role = "Customer" | "Admin";
 
 export interface User {
   id: string;
-  avatar?: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  phone: string;
-  whatsApp?: string;
+  phone_number: string;
   password: string;
-  address: string;
-  nationalId: string | number;
-  age: number;
-  role: Role;
+  google_authenticator_code: string;
+  is_verified: boolean;
+  is_admin: boolean;
 }

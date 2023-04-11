@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import {
   Avatar,
   Box,
+  Button,
   Card,
   Checkbox,
   Stack,
@@ -17,6 +18,7 @@ import {
 import { Scrollbar } from '../../components/scrollbar';
 import { getInitials } from '../../utils/get-initials';
 import { User as Customer } from '../../models/User';
+import { SeverityPill } from '../../components/severity-pill';
 
 export const CustomersTable = (props) => {
   const {
@@ -63,19 +65,13 @@ export const CustomersTable = (props) => {
                   Email
                 </TableCell>
                 <TableCell>
-                  National ID
-                </TableCell>
-                <TableCell>
-                  Address
-                </TableCell>
-                <TableCell>
-                  Age
-                </TableCell>
-                <TableCell>
                   Phone
                 </TableCell>
                 <TableCell>
-                  WhatsApp
+                  Verification
+                </TableCell>
+                <TableCell>
+                  More
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -107,11 +103,8 @@ export const CustomersTable = (props) => {
                         direction="row"
                         spacing={2}
                       >
-                        <Avatar>
-                          {getInitials(customer.name)}
-                        </Avatar>
                         <Typography variant="subtitle2">
-                          {customer.name}
+                          {customer.first_name} {customer.last_name}
                         </Typography>
                       </Stack>
                     </TableCell>
@@ -119,19 +112,20 @@ export const CustomersTable = (props) => {
                       {customer.email}
                     </TableCell>
                     <TableCell>
-                      {customer?.nationalId}
+                      {customer?.phone_number}
                     </TableCell>
                     <TableCell>
-                      {customer.address}
+                      <SeverityPill color={customer.is_verified ? "success" : "primary"}>
+                        {customer.is_verified ? "Verified" : "Not verified"}
+                      </SeverityPill>
                     </TableCell>
                     <TableCell>
-                      {customer.age}
-                    </TableCell>
-                    <TableCell>
-                      {customer.phone}
-                    </TableCell>
-                    <TableCell>
-                      {customer?.whatsApp}
+                      <Button
+                        variant="contained"
+                        disabled={customer.is_verified}
+                      >
+                        Verify
+                      </Button>
                     </TableCell>
                   </TableRow>
                 );
