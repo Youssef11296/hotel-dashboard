@@ -15,20 +15,20 @@ const CardStyle = {
 }
 
 
-const BookForm: FC<{ roomNumber: string, onClose: () => void }> = ({ roomNumber, onClose }) => {
+const BookForm: FC<{ roomName: string, onClose: () => void }> = ({ roomName, onClose }) => {
 	const auth: any = useAuth()
 	const { user } = auth
 
 	const formik: any = useFormik({
 		initialValues: {
-			roomNumber,
+			roomName,
 			securityCode: '',
 			from: '',
 			to: '',
 			submit: null
 		},
 		validationSchema: Yup.object({
-			roomNumber: Yup
+			roomName: Yup
 				.string()
 				.max(20)
 				.required('Room number is required'),
@@ -87,15 +87,15 @@ const BookForm: FC<{ roomNumber: string, onClose: () => void }> = ({ roomNumber,
 					mb={2}
 				>
 					<TextField
-						error={!!(formik.touched.roomNumber && formik.errors.roomNumber)}
+						error={!!(formik.touched.roomName && formik.errors.roomName)}
 						fullWidth
-						helperText={formik.touched.roomNumber && formik.errors.roomNumber}
+						helperText={formik.touched.roomName && formik.errors.roomName}
 						label="Book Number"
-						name="roomNumber"
+						name="roomName"
 						onBlur={formik.handleBlur}
 						disabled
 						type="string"
-						value={formik.values.roomNumber}
+						value={formik.values.roomName}
 					/>
 				</Box>
 				<Box

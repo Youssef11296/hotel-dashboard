@@ -75,16 +75,13 @@ export const RoomsTable = (props) => {
                   />
                 </TableCell>
                 <TableCell>
-                  Room Number
+                  Name
                 </TableCell>
                 <TableCell>
-                  Day Cost
+                  Type
                 </TableCell>
                 <TableCell>
-                  Capacity
-                </TableCell>
-                <TableCell>
-                  Total Beds
+                  Floor
                 </TableCell>
                 <TableCell>
                   Status
@@ -117,20 +114,17 @@ export const RoomsTable = (props) => {
                       />
                     </TableCell>
                     <TableCell>
-                      {room.number}
+                      {room.room_name}
                     </TableCell>
                     <TableCell>
-                      {room.dayCost}
+                      {room.room_type}
                     </TableCell>
                     <TableCell>
-                      {room.capacity} Individuals
+                      {room.floor_id}
                     </TableCell>
                     <TableCell>
-                      {room.numOfBeds} Beds
-                    </TableCell>
-                    <TableCell>
-                      <SeverityPill color={room.isReserved ? "primary" : "success"}>
-                        {room.isReserved ? "Reserved" : "Available"}
+                      <SeverityPill color={"primary"}>
+                        Available
                       </SeverityPill>
                     </TableCell>
                     <TableCell>
@@ -140,7 +134,7 @@ export const RoomsTable = (props) => {
                             variant="contained"
                             color="primary"
                             size="small"
-                            disabled={room.isReserved}
+                            disabled={false}
                             onClick={() => openBookFormHandler(room)}
                           >
                             Book now
@@ -166,7 +160,7 @@ export const RoomsTable = (props) => {
         open={openBookForm}
         onClose={closeBookFormHandler}
       >
-        <BookForm roomNumber={selectedRoom?.number} onClose={closeBookFormHandler} />
+        <BookForm roomName={selectedRoom?.room_name} onClose={closeBookFormHandler} />
       </Dialog>
       <TablePagination
         component="div"
