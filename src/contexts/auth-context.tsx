@@ -106,6 +106,7 @@ export const AuthProvider = (props) => {
 
   const signIn = async (email: string, password: string) => {
     const user = await API.auth.LOGIN({ email, password })
+    console.log({ user })
     if (!user) {
       throw new Error('Please check your email and password');
     }

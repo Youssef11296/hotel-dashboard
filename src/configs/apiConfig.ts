@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User } from "../models/User";
 
-export const baseUrl = "http://localhost:1234/api";
+export const baseUrl = "http://localhost:3000/api";
 
 export const END_POINT = {
   auth: {
