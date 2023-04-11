@@ -2,6 +2,8 @@ import { Model, createServer } from "miragejs";
 import { baseUrl } from "./configs/apiConfig";
 import { END_POINT } from "./configs/apiConfig";
 import { rooms } from "./data/rooms";
+import { users } from "./data/users";
+import { roombooks } from "./data/roombooks";
 
 const createMockServer = () => {
   const server = createServer({
@@ -14,10 +16,10 @@ const createMockServer = () => {
       rooms.map((room) => {
         server.create("room", room);
       });
-      rooms.map((user) => {
+      users.map((user) => {
         server.create("user", user);
       });
-      rooms.map((roombook) => {
+      roombooks.map((roombook) => {
         server.create("roombook", roombook);
       });
     },
@@ -28,13 +30,15 @@ const createMockServer = () => {
       this.post(END_POINT.auth.LOGIN, (schema, request) => {
         const response = { success: false, message: "", error: "" };
         const { email } = JSON.parse(request.requestBody);
+        console.log("LOGIN", email);
         const user = schema.all("user").filter((user: any) => user.email === email).models[0];
+        console.log("USER", user);
         if (user) {
           response.success = true;
         } else {
           response.message === "Invalid credentials.";
         }
-        return { ...response };
+        return { ...response, user };
       });
 
       this.post(END_POINT.auth.SIGNUP, (schema, request) => {
@@ -52,7 +56,7 @@ const createMockServer = () => {
 
       this.get(END_POINT.rooms.GET_ROOMS, (schema, request) => {
         const response = { success: false, message: "", error: "" };
-        const rooms = schema.all("room");
+        const rooms = schema.all("room").models;
         console.log({ rooms });
         return { ...response, rooms };
       });

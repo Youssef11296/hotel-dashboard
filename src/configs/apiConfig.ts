@@ -26,9 +26,9 @@ export const END_POINT = {
 export const API = {
   auth: {
     LOGIN: ({ email, password }: { email: string; password: string }) =>
-      axios.post(END_POINT.auth.LOGIN, { email, password }),
+      axios.post(`${baseUrl}/${END_POINT.auth.LOGIN}`, { email, password }),
   },
   rooms: {
-    GET_ROOMS: () => axios.get(END_POINT.rooms.GET_ROOMS),
+    GET_ROOMS: () => axios.get(`${baseUrl}/${END_POINT.rooms.GET_ROOMS}`),
   },
 };

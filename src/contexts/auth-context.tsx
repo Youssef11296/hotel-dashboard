@@ -101,12 +101,12 @@ export const AuthProvider = (props) => {
       initialize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [state.user]
   );
 
   const signIn = async (email: string, password: string) => {
-    const user = await API.auth.LOGIN({ email, password })
-    console.log({ user })
+    const response = await API.auth.LOGIN({ email, password })
+    const user = response.data.user
     if (!user) {
       throw new Error('Please check your email and password');
     }

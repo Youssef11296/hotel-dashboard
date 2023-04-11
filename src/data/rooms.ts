@@ -62,7 +62,7 @@ export const rooms: Room[] = [
     },
   },
   {
-    id: "300",
+    id: "320",
     image:
       "https://www.shutterstock.com/image-photo/poster-above-white-cabinet-plant-260nw-1173139144.jpg",
     photos: [

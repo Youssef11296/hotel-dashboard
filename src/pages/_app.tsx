@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { AuthConsumer, AuthProvider } from '../contexts/auth-context';
 import { useNProgress } from '../hooks/use-nprogress';
@@ -15,7 +15,11 @@ import { createMockServer } from '../server';
 
 const clientSideEmotionCache = createEmotionCache();
 
-const SplashScreen = () => null;
+const SplashScreen = () => {
+  return <>
+    <Typography variant="body1">Loading ...</Typography>
+  </>
+};
 
 const App = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;

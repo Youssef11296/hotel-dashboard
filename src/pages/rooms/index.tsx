@@ -16,14 +16,22 @@ import { API } from '../../configs/apiConfig';
 
 const now = new Date();
 
-const data: Room[] = rooms
-
 const useRooms = (page, rowsPerPage) => {
+    const [rooms, setRooms] = useState<Room[]>([])
+
+    const getRooms = async () => {
+        const response = await API.rooms.GET_ROOMS()
+        setRooms(response.data.rooms)
+    }
+    useEffect(() => {
+        getRooms()
+    }, [])
+
     return useMemo(
         () => {
-            return applyPagination(data, page, rowsPerPage);
+            return applyPagination(rooms, page, rowsPerPage);
         },
-        [page, rowsPerPage]
+        [page, rowsPerPage, rooms]
     );
 };
 
@@ -40,6 +48,7 @@ const Rooms = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const rooms = useRooms(page, rowsPerPage);
+    console.log({ rooms })
     const roomsIds = useRoomIds(rooms);
     const roomsSelection = useSelection(roomsIds);
 
@@ -65,18 +74,6 @@ const Rooms = () => {
     const auth: any = useAuth()
     const user = auth.user
     const isAdmin = user?.role === "Admin"
-
-    const [list, setList] = useState<Room[]>([])
-
-    const getRooms = async () => {
-        const res = await API.rooms.GET_ROOMS()
-        // setList(res)
-        console.log({ res })
-    }
-    useEffect(() => {
-        getRooms()
-    }, [])
-
 
     return (
         <>
@@ -128,7 +125,7 @@ const Rooms = () => {
                         </Stack>
                         <RoomsSearch />
                         <RoomsTable
-                            count={data.length}
+                            count={rooms.length}
                             items={rooms}
                             onDeselectAll={roomsSelection.handleDeselectAll}
                             onDeselectOne={roomsSelection.handleDeselectOne}

@@ -15,20 +15,7 @@ import { rooms } from '../data/rooms';
 import { OverviewTotalBookings } from '../sections/overview/overview-total-bookings';
 import { OverviewTotalProfit } from '../sections/overview/overview-total-profit';
 
-const now = new Date();
-
 const Page = () => {
-  const auth: any = useAuth()
-  const user = auth.user
-
-  const isAdmin = user?.role === "Admin"
-
-  const router = useRouter()
-
-  if (!isAdmin) {
-    return <Rooms />
-  }
-
   return (
     <>
       <Head>
