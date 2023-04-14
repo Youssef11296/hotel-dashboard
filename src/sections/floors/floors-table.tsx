@@ -75,10 +75,10 @@ export const FloorsTable = (props) => {
 									/>
 								</TableCell>
 								<TableCell>
-									Floor ID
+									Number
 								</TableCell>
 								<TableCell>
-									Number
+									Floor ID
 								</TableCell>
 								<TableCell>
 									Total Rooms
@@ -114,13 +114,13 @@ export const FloorsTable = (props) => {
 											/>
 										</TableCell>
 										<TableCell>
-											{floor.floorId}
-										</TableCell>
-										<TableCell>
 											{floor.number}
 										</TableCell>
 										<TableCell>
-											{floor.totalRooms}
+											{floor.floorId}
+										</TableCell>
+										<TableCell>
+											{floor.totalRooms} Rooms
 										</TableCell>
 										<TableCell>
 											<SeverityPill color={floor.isComplete ? "primary" : "success"}>

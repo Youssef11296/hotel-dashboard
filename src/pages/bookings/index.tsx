@@ -62,11 +62,6 @@ const Page = () => {
     const user = auth.user
     const isAdmin = user?.role === "Admin"
 
-    useEffect(() => {
-        const res = axios.get("https://web01.usn.no/~240179/tilkobling/booking")
-        console.log({ res })
-    }, [])
-
     return (
         <>
             <Head>
