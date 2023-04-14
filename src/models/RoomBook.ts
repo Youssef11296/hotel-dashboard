@@ -2,14 +2,14 @@ import { User } from "./User";
 import { Room } from "./Room";
 import { BOOKING_STATUS } from "../constants";
 
-type RelationToCustomer = "son" | "daughter" | "sister" | "brother";
+type RelationToCustomer = "son" | "daughter" | "sister" | "brother" | "friend";
 
-type Individual = {
+interface Individual {
   id: string;
   name: string;
   age: number;
   relationToCustomer: RelationToCustomer;
-};
+}
 
 type Status = "ACCEPTED" | "REJECTED" | "PENDING";
 

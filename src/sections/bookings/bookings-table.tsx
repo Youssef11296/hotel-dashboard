@@ -39,8 +39,17 @@ export const BookingsTable = (props) => {
     const selectedAll = (items.length > 0) && (selected.length === items.length);
 
     const [viewBooking, setViewBooking] = useState<boolean>(false)
-    const viewBookingHandler = () => setViewBooking(true)
-    const closeViewBookingHandler = () => setViewBooking(false)
+    const [selectedBooking, setSelectedBooking] = useState<RoomBook | null>(null)
+    const viewBookingHandler = (booking: RoomBook) => {
+        setSelectedBooking(booking)
+        setViewBooking(true)
+    }
+    const closeViewBookingHandler = () => {
+        setViewBooking(false)
+        setTimeout(() => {
+            setSelectedBooking(null)
+        }, 300)
+    }
 
     return (
         <Card>
@@ -137,13 +146,9 @@ export const BookingsTable = (props) => {
                                                     <Button
                                                         variant="contained"
                                                         size="small"
-                                                        onClick={viewBookingHandler}
+                                                        onClick={() => viewBookingHandler(booking)}
                                                     >
-                                                        <Link
-                                                            href={`bookings/${booking.id}`}
-                                                            style={{ textDecoration: 'none', color: "#fff" }}>
-                                                            View
-                                                        </Link>
+                                                        View
                                                     </Button>
                                                 </Grid>
                                             </Grid>
@@ -155,6 +160,14 @@ export const BookingsTable = (props) => {
                     </Table>
                 </Box>
             </Scrollbar>
+            <Dialog
+                fullWidth
+                maxWidth="md"
+                open={viewBooking}
+                onClose={closeViewBookingHandler}
+            >
+                <BookingItem booking={selectedBooking} />
+            </Dialog>
             <TablePagination
                 component="div"
                 count={count}

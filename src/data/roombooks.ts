@@ -75,7 +75,7 @@ export const roombooks: RoomBook[] = [
     participants: [],
     securityCode: "testcode",
     totalCost: "1000 EGP",
-    status: "REJECTED",
+    status: "PENDING",
   },
   {
     id: "555",
@@ -95,7 +95,7 @@ export const roombooks: RoomBook[] = [
     participants: [],
     securityCode: "testcode",
     totalCost: "1000 EGP",
-    status: "REJECTED",
+    status: "PENDING",
   },
   {
     id: "666",
@@ -115,7 +115,7 @@ export const roombooks: RoomBook[] = [
     participants: [],
     securityCode: "testcode",
     totalCost: "1000 EGP",
-    status: "REJECTED",
+    status: "PENDING",
   },
   {
     id: "777",
@@ -135,7 +135,7 @@ export const roombooks: RoomBook[] = [
     participants: [],
     securityCode: "testcode",
     totalCost: "1000 EGP",
-    status: "REJECTED",
+    status: "PENDING",
   },
   {
     id: "888",

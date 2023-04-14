@@ -7,8 +7,8 @@ const Page = () => {
 	const router = useRouter()
 	const { query } = router
 
-	const { roombookId } = query
-	const booking = roombooks.find(booking => booking.id === roombookId)
+	const { bookingId } = query
+	const booking = roombooks.find(booking => booking.id === bookingId)
 
 	return (
 		<>
