@@ -15,9 +15,6 @@ import { rooms } from '../data/rooms';
 import { OverviewTotalBookings } from '../sections/overview/overview-total-bookings';
 import { OverviewTotalProfit } from '../sections/overview/overview-total-profit';
 import { useState } from 'react';
-import { Room } from '../models/Room';
-import { User } from '../models/User';
-import { RoomBook } from '../models/RoomBook';
 
 const now = new Date();
 

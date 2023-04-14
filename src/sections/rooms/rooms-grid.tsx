@@ -90,8 +90,8 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 									flexDirection="column"
 									justifyContent="start"
 								>
-									<Typography variant="caption" color="primary">Total Residents</Typography>
-									<Typography>{room.currentTotalResidents} Residents</Typography>
+									<Typography variant="caption" color="primary">Floor Number</Typography>
+									<Typography># {room.floor.floorNumber}</Typography>
 								</Box>
 							</Box>
 							<Button

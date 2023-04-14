@@ -1,4 +1,5 @@
 import { Room } from "../models/Room";
+import { floors } from "./floors";
 
 export const rooms: Room[] = [
   {
@@ -16,6 +17,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 3,
     capacity: 3,
+    floor: {
+      floorNumber: floors[0].number,
+      floorId: floors[0].floorId,
+    },
     sales: {
       currentMonthInEGP: 4000,
       lastMonthInEGP: 1000,
@@ -36,6 +41,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 2,
     capacity: 2,
+    floor: {
+      floorNumber: floors[0].number,
+      floorId: floors[0].floorId,
+    },
     sales: {
       currentMonthInEGP: 3000,
       lastMonthInEGP: 1000,
@@ -56,6 +65,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
+    floor: {
+      floorNumber: floors[0].number,
+      floorId: floors[0].floorId,
+    },
     sales: {
       currentMonthInEGP: 2000,
       lastMonthInEGP: 1000,
@@ -76,6 +89,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
+    floor: {
+      floorNumber: floors[0].number,
+      floorId: floors[0].floorId,
+    },
     sales: {
       currentMonthInEGP: 2000,
       lastMonthInEGP: 1000,
@@ -96,6 +113,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
+    floor: {
+      floorNumber: floors[0].number,
+      floorId: floors[0].floorId,
+    },
     sales: {
       currentMonthInEGP: 6250,
       lastMonthInEGP: 1000,
@@ -116,6 +137,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
+    floor: {
+      floorNumber: floors[0].number,
+      floorId: floors[0].floorId,
+    },
     sales: {
       currentMonthInEGP: 8000,
       lastMonthInEGP: 10000,
@@ -136,6 +161,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
+    floor: {
+      floorNumber: floors[1].number,
+      floorId: floors[1].floorId,
+    },
     sales: {
       currentMonthInEGP: 10000,
       lastMonthInEGP: 3000,
@@ -156,6 +185,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
+    floor: {
+      floorNumber: floors[3].number,
+      floorId: floors[3].floorId,
+    },
     sales: {
       currentMonthInEGP: 10000,
       lastMonthInEGP: 3000,
@@ -176,6 +209,10 @@ export const rooms: Room[] = [
     currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
+    floor: {
+      floorNumber: floors[2].number,
+      floorId: floors[2].floorId,
+    },
     sales: {
       currentMonthInEGP: 10000,
       lastMonthInEGP: 3000,

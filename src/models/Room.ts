@@ -8,6 +8,10 @@ export interface Room {
   currentTotalResidents: number;
   numOfBeds: number;
   capacity: number;
+  floor: {
+    floorNumber: number;
+    floorId: string;
+  };
   sales: {
     currentMonthInEGP: number;
     lastMonthInEGP: number;
