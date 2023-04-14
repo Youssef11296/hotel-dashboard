@@ -5,10 +5,19 @@ import Link from 'next/link'
 
 const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 	return (
-		<Container>
+		<>
 			<Grid container spacing={1}>
 				{rooms.map(room => (
-					<Grid key={room.id} item xs={12} md={4} sx={{ borderRadius: 3, boxShadow: '0 4px 4px rgba(0,0,0,.2)' }}>
+					<Grid
+						key={room.id}
+						item
+						xs={12}
+						md={3}
+						sx={{
+							borderRadius: 3,
+							boxShadow: '0 4px 4px rgba(0,0,0,.2)'
+						}}
+					>
 						<Box sx={{ padding: 2 }}>
 							<Box
 								display="flex"
@@ -34,32 +43,47 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 									}}
 								/>
 							</Link>
-							<Grid container mb={3} spacing={2}>
-								<Grid item xs={12} md={6}>
-									<Box
-										display="flex"
-										flexDirection="column"
-										justifyContent="start"
-									>
-										<Typography variant="caption" color="primary">Total Beds</Typography>
-										<Typography>{room.numOfBeds} Beds</Typography>
-									</Box>
-								</Grid>
-								<Grid item xs={12} md={6}>
-									<Box
-										display="flex"
-										flexDirection="column"
-										justifyContent="start"
-									>
-										<Typography variant="caption" color="primary">Capacity</Typography>
-										<Typography>{room.capacity} Individuals</Typography>
-									</Box>
-								</Grid>
-							</Grid>
+							<Box display="flex" justifyContent="space-between" alignItems="center">
+								<Box
+									display="flex"
+									flexDirection="column"
+									justifyContent="start"
+								>
+									<Typography variant="caption" color="primary">Total Beds</Typography>
+									<Typography>{room.numOfBeds} Beds</Typography>
+								</Box>
+								<Box
+									display="flex"
+									flexDirection="column"
+									justifyContent="start"
+								>
+									<Typography variant="caption" color="primary">Capacity</Typography>
+									<Typography>{room.capacity} Individuals</Typography>
+								</Box>
+							</Box>
+							<Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>
+								<Box
+									display="flex"
+									flexDirection="column"
+									justifyContent="start"
+								>
+									<Typography variant="caption" color="primary">Status</Typography>
+									<Typography>{room.isReserved ? "Reserved" : "Available"}</Typography>
+								</Box>
+								<Box
+									display="flex"
+									flexDirection="column"
+									justifyContent="start"
+								>
+									<Typography variant="caption" color="primary">Total Residents</Typography>
+									<Typography>{room.currentTotalResidents} Residents</Typography>
+								</Box>
+							</Box>
 							<Button
 								variant="contained"
 								size="small"
-								sx={{ margin: 'auto', display: 'block' }}
+								fullWidth
+								sx={{ margin: '1rem auto 0', display: 'block' }}
 							>
 								Book Now!
 							</Button>
@@ -67,7 +91,7 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 					</Grid>
 				))}
 			</Grid>
-		</Container>
+		</>
 	)
 }
 

@@ -13,6 +13,7 @@ export const rooms: Room[] = [
     number: "Room-100",
     dayCost: "200 EGP",
     isReserved: true,
+    currentTotalResidents: 3,
     numOfBeds: 3,
     capacity: 3,
     sales: {
@@ -32,6 +33,7 @@ export const rooms: Room[] = [
     number: "Room-200",
     dayCost: "500 EGP",
     isReserved: false,
+    currentTotalResidents: 3,
     numOfBeds: 2,
     capacity: 2,
     sales: {
@@ -51,6 +53,7 @@ export const rooms: Room[] = [
     number: "Room-300",
     dayCost: "300 EGP",
     isReserved: true,
+    currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
     sales: {
@@ -70,6 +73,7 @@ export const rooms: Room[] = [
     number: "Room-400",
     dayCost: "300 EGP",
     isReserved: true,
+    currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
     sales: {
@@ -89,6 +93,7 @@ export const rooms: Room[] = [
     number: "Room-500",
     dayCost: "300 EGP",
     isReserved: true,
+    currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
     sales: {
@@ -108,6 +113,7 @@ export const rooms: Room[] = [
     number: "Room-300",
     dayCost: "300 EGP",
     isReserved: true,
+    currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
     sales: {
@@ -127,6 +133,7 @@ export const rooms: Room[] = [
     number: "Room-600",
     dayCost: "300 EGP",
     isReserved: true,
+    currentTotalResidents: 3,
     numOfBeds: 1,
     capacity: 1,
     sales: {

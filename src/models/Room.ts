@@ -5,6 +5,7 @@ export interface Room {
   number: string;
   dayCost: string;
   isReserved: boolean;
+  currentTotalResidents: number;
   numOfBeds: number;
   capacity: number;
   sales: {
