@@ -1,9 +1,24 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Room } from '../../models/Room'
-import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material'
+import { Box, Button, Container, Dialog, Grid, Stack, Typography } from '@mui/material'
 import Link from 'next/link'
+import BookForm from './BookForm'
 
 const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
+	const [openBookForm, setOpenBookForm] = useState<boolean>(false)
+	const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
+
+	const openBookFormHandler = (room: Room) => {
+		setSelectedRoom(room)
+		setOpenBookForm(true)
+	}
+	const closeBookFormHandler = () => {
+		setOpenBookForm(false)
+		setTimeout(() => {
+			setSelectedRoom(null)
+		}, 250)
+	}
+
 	return (
 		<>
 			<Grid container spacing={1}>
@@ -83,7 +98,9 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 								variant="contained"
 								size="small"
 								fullWidth
+								disabled={room.isReserved}
 								sx={{ margin: '1rem auto 0', display: 'block' }}
+								onClick={() => openBookFormHandler(room)}
 							>
 								Book Now!
 							</Button>
@@ -91,6 +108,12 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 					</Grid>
 				))}
 			</Grid>
+			<Dialog
+				open={openBookForm}
+				onClose={closeBookFormHandler}
+			>
+				<BookForm roomNumber={selectedRoom?.number} onClose={closeBookFormHandler} />
+			</Dialog>
 		</>
 	)
 }
