@@ -19,6 +19,10 @@ export const AccountPopover = (props) => {
     [onClose, auth, router]
   );
 
+  const handleRouteToSettings = () => {
+    router.push('/account')
+  }
+
   return (
     <Popover
       anchorEl={anchorEl}
@@ -57,7 +61,7 @@ export const AccountPopover = (props) => {
           }
         }}
       >
-        <MenuItem onClick={handleSignOut}>
+        <MenuItem onClick={handleRouteToSettings}>
           Settings
         </MenuItem>
       </MenuList>
