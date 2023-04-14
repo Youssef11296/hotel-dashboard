@@ -30,6 +30,7 @@
     "dayjs": "^1.11.7",
     "formik": "2.2.9",
     "miragejs": "^0.1.47",
+    "mui-image-slider": "^1.0.7",
     "next": "13.1.6",
     "nprogress": "0.2.0",
     "prop-types": "15.8.1",

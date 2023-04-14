@@ -12,6 +12,7 @@ import { Room } from '../../models/Room';
 import { rooms } from '../../data/rooms';
 import AddRoomForm from '../../sections/rooms/AddRoomForm';
 import { useAuth } from '../../hooks/use-auth';
+import RoomsGrid from '../../sections/rooms/rooms-grid';
 
 const now = new Date();
 
@@ -114,19 +115,7 @@ const Rooms = () => {
                             }
                         </Stack>
                         <RoomsSearch />
-                        <RoomsTable
-                            count={data.length}
-                            items={rooms}
-                            onDeselectAll={roomsSelection.handleDeselectAll}
-                            onDeselectOne={roomsSelection.handleDeselectOne}
-                            onPageChange={handlePageChange}
-                            onRowsPerPageChange={handleRowsPerPageChange}
-                            onSelectAll={roomsSelection.handleSelectAll}
-                            onSelectOne={roomsSelection.handleSelectOne}
-                            page={page}
-                            rowsPerPage={rowsPerPage}
-                            selected={roomsSelection.selected}
-                        />
+                        <RoomsGrid rooms={rooms} />
                     </Stack>
                 </Container>
             </Box>

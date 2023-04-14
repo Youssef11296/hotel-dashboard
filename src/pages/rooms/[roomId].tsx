@@ -1,14 +1,17 @@
 import { useRouter } from 'next/router'
 import { Layout as DashboardLayout } from '../../layouts/dashboard/layout';
 import { Grid, Typography } from '@mui/material'
+import { rooms } from '../../data/rooms';
 
 const Page = () => {
 	const router = useRouter()
 	const { roomId } = router.query
 
+	const room = rooms.find(room => room.id === roomId)
+
 	return (
 		<Grid>
-			<Typography>Room ID: {roomId}</Typography>
+			<Typography>{room.number}</Typography>
 		</Grid>
 	)
 }

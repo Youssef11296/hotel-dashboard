@@ -3,8 +3,7 @@ import { Room } from "../models/Room";
 export const rooms: Room[] = [
   {
     id: "111",
-    image:
-      "https://www.shutterstock.com/image-photo/poster-above-white-cabinet-plant-260nw-1173139144.jpg",
+    image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
       "https://assets.architecturaldigest.in/photos/60084dd6cce5700439e12bf7/16:9/pass/modern-living-room-decor-1366x768.jpg",
@@ -23,8 +22,7 @@ export const rooms: Room[] = [
   },
   {
     id: "222",
-    image:
-      "https://www.shutterstock.com/image-photo/poster-above-white-cabinet-plant-260nw-1173139144.jpg",
+    image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
       "https://assets.architecturaldigest.in/photos/60084dd6cce5700439e12bf7/16:9/pass/modern-living-room-decor-1366x768.jpg",
@@ -43,8 +41,7 @@ export const rooms: Room[] = [
   },
   {
     id: "300",
-    image:
-      "https://www.shutterstock.com/image-photo/poster-above-white-cabinet-plant-260nw-1173139144.jpg",
+    image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
       "https://assets.architecturaldigest.in/photos/60084dd6cce5700439e12bf7/16:9/pass/modern-living-room-decor-1366x768.jpg",
@@ -63,8 +60,7 @@ export const rooms: Room[] = [
   },
   {
     id: "300",
-    image:
-      "https://www.shutterstock.com/image-photo/poster-above-white-cabinet-plant-260nw-1173139144.jpg",
+    image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
       "https://assets.architecturaldigest.in/photos/60084dd6cce5700439e12bf7/16:9/pass/modern-living-room-decor-1366x768.jpg",
@@ -83,8 +79,7 @@ export const rooms: Room[] = [
   },
   {
     id: "300",
-    image:
-      "https://www.shutterstock.com/image-photo/poster-above-white-cabinet-plant-260nw-1173139144.jpg",
+    image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
       "https://assets.architecturaldigest.in/photos/60084dd6cce5700439e12bf7/16:9/pass/modern-living-room-decor-1366x768.jpg",
@@ -103,8 +98,7 @@ export const rooms: Room[] = [
   },
   {
     id: "300",
-    image:
-      "https://www.shutterstock.com/image-photo/poster-above-white-cabinet-plant-260nw-1173139144.jpg",
+    image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
       "https://assets.architecturaldigest.in/photos/60084dd6cce5700439e12bf7/16:9/pass/modern-living-room-decor-1366x768.jpg",
@@ -123,8 +117,7 @@ export const rooms: Room[] = [
   },
   {
     id: "300",
-    image:
-      "https://www.shutterstock.com/image-photo/poster-above-white-cabinet-plant-260nw-1173139144.jpg",
+    image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
       "https://assets.architecturaldigest.in/photos/60084dd6cce5700439e12bf7/16:9/pass/modern-living-room-decor-1366x768.jpg",

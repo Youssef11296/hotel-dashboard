@@ -1,6 +1,6 @@
-export const BRAND_NAME = "HOTEL COCKPIT";
+export const BRAND_NAME = "CATCH";
 export const BRAND_BRIEF = "Your hotel management assistant.";
-export const BRAND_MAIL = "info@hotelmanager.com";
+export const BRAND_MAIL = "info@catch.com";
 
 export const USER_ROLE = {
   CUSTOMER: "CUSTOMER",

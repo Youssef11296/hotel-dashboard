@@ -49,6 +49,15 @@ export const items: NavItem[] = [
     )
   },
   {
+    title: 'Floors',
+    path: '/floors',
+    icon: (
+      <SvgIcon fontSize="small">
+        <XCircleIcon />
+      </SvgIcon>
+    )
+  },
+  {
     title: 'Rooms',
     path: '/rooms',
     icon: (
