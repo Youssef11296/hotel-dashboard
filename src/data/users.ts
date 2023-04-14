@@ -12,6 +12,7 @@ export const users: User[] = [
     nationalId: "30003033327279",
     age: 23,
     role: "Admin",
+    isVerified: true,
   },
   {
     id: "111",
@@ -24,6 +25,7 @@ export const users: User[] = [
     nationalId: "30003033327279",
     age: 23,
     role: "Customer",
+    isVerified: true,
   },
   {
     id: "333",
@@ -36,6 +38,7 @@ export const users: User[] = [
     nationalId: "30023033327279",
     age: 24,
     role: "Customer",
+    isVerified: false,
   },
   {
     id: "444",
@@ -48,5 +51,6 @@ export const users: User[] = [
     nationalId: "30002233327279",
     age: 40,
     role: "Customer",
+    isVerified: false,
   },
 ];

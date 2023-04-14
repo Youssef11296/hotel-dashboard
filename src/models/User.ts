@@ -12,4 +12,5 @@ export interface User {
   nationalId: string | number;
   age: number;
   role: Role;
+  isVerified: boolean;
 }

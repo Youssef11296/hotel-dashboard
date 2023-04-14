@@ -14,24 +14,23 @@ import { roombooks } from '../data/roombooks';
 import { rooms } from '../data/rooms';
 import { OverviewTotalBookings } from '../sections/overview/overview-total-bookings';
 import { OverviewTotalProfit } from '../sections/overview/overview-total-profit';
+import { useState } from 'react';
+import { Room } from '../models/Room';
+import { User } from '../models/User';
+import { RoomBook } from '../models/RoomBook';
 
 const now = new Date();
 
+type Period = "All Time" | "Last Week" | "Last 2-Weeks" | "Last Month" | "Last 6-Months" | "Last Year"
+
 const Page = () => {
-  const auth: any = useAuth()
-  const user = auth.user
-
-  const isAdmin = user?.role === "Admin"
-
-  const router = useRouter()
-
-  if (!isAdmin) {
-    return <Rooms />
-  }
-
-  const periods = [
+  const periods: Period[] = [
     "All Time", "Last Week", "Last 2-Weeks", "Last Month", "Last 6-Months", "Last Year"
   ]
+
+  const [periodValue, setPeriodValue] = useState<Period>("All Time")
+
+  const changePeriodValueHandler = (period: Period) => setPeriodValue(period)
 
   return (
     <>
@@ -57,7 +56,9 @@ const Page = () => {
                 {periods.map(period => (
                   <Grid key={period} item xs={12} md={2}>
                     <Box>
-                      <Button variant="outlined">{period}</Button>
+                      <Button fullWidth variant={period === periodValue ? "contained" : 'outlined'}
+                        onClick={() => changePeriodValueHandler(period)}
+                      >{period}</Button>
                     </Box>
                   </Grid>
                 ))}

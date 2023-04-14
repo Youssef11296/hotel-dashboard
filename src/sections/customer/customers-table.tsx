@@ -3,8 +3,10 @@ import { format } from 'date-fns';
 import {
   Avatar,
   Box,
+  Button,
   Card,
   Checkbox,
+  Grid,
   Stack,
   Table,
   TableBody,
@@ -72,10 +74,7 @@ export const CustomersTable = (props) => {
                   Age
                 </TableCell>
                 <TableCell>
-                  Phone
-                </TableCell>
-                <TableCell>
-                  WhatsApp
+                  Actions & More
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -128,10 +127,18 @@ export const CustomersTable = (props) => {
                       {customer.age}
                     </TableCell>
                     <TableCell>
-                      {customer.phone}
-                    </TableCell>
-                    <TableCell>
-                      {customer?.whatsApp}
+                      <Grid container xs={12} md={9} spacing={1}>
+                        <Grid item xs={12} md={6}>
+                          <Button size="small" variant="contained">
+                            Contact
+                          </Button>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <Button size="small" variant="outlined">
+                            Manage
+                          </Button>
+                        </Grid>
+                      </Grid>
                     </TableCell>
                   </TableRow>
                 );

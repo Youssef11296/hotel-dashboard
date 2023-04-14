@@ -3,6 +3,7 @@ import CurrencyDollarIcon from '@heroicons/react/24/solid/CurrencyDollarIcon';
 import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
 import { rooms } from '../../data/rooms';
 import { useEffect, useState } from 'react';
+import { currencyFormatter } from '../../utils/format-currency';
 
 export const OverviewTotalProfit = (props) => {
 	const { sx } = props;
@@ -31,7 +32,7 @@ export const OverviewTotalProfit = (props) => {
 							Total Profit
 						</Typography>
 						<Typography variant="h4">
-							{value} EGP
+							{currencyFormatter(value)}
 						</Typography>
 					</Stack>
 					<Avatar
