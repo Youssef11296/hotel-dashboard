@@ -10,166 +10,89 @@ const CardStyle = {
 	maxWidth: '60vw',
 }
 
+type FormType = "EDIT" | "CREATE"
 
-const AddFloorForm: FC<{ floorNumber?: Floor["number"], onClose: () => void }> = ({ floorNumber, onClose }) => {
-	const formik: any = useFormik({
-		initialValues: {
-			floorNumber,
-			dayCost: 100,
-			totalBeds: '',
-			capacity: '',
-			currency: 'EGP',
-			submit: null
-		},
-		validationSchema: Yup.object({
-			floorNumber: Yup
-				.number()
-				.max(5)
-				.required('Floor number is required'),
-			dayCost: Yup
-				.string()
-				.max(100)
-				.required('Day cost is required'),
-			currency: Yup
-				.string()
-				.required('Currency is required'),
-			totalBeds: Yup
-				.number()
-				.max(5)
-				.required('Total beds is required'),
-			capacity: Yup
-				.number()
-				.max(5)
-				.required('Capacity is required'),
-		}),
-		onSubmit: async (values, helpers) => {
-			try {
-				onClose()
-			} catch (err) {
-				helpers.setStatus({ success: false });
-				helpers.setErrors({ submit: err.message });
-				helpers.setSubmitting(false);
+const AddFloorForm: FC<{ formType: FormType, floorId?: Floor["floorId"], floorNumber?: Floor["number"], onClose: () => void }> =
+	({ formType, floorId, floorNumber, onClose }) => {
+		const formik: any = useFormik({
+			initialValues: {
+				floorNumber: floorNumber ?? "",
+				floorId: floorId ?? '',
+				submit: null
+			},
+			validationSchema: Yup.object({
+				floorNumber: Yup
+					.number()
+					.max(5)
+					.required('Floor number is required'),
+				floorId: Yup
+					.string()
+					.max(100)
+					.required('Floor ID is required'),
+			}),
+			onSubmit: async (values, helpers) => {
+				try {
+					onClose()
+				} catch (err) {
+					helpers.setStatus({ success: false });
+					helpers.setErrors({ submit: err.message });
+					helpers.setSubmitting(false);
+				}
 			}
-		}
-	});
+		});
 
-	return (
-		<Card sx={CardStyle}>
-			<form onSubmit={formik.handleSubmit}>
-				<Box
-					display="flex"
-					flexDirection="column"
-					mb={2}
-				>
-					<TextField
-						error={!!(formik.touched.floorNumber && formik.errors.floorNumber)}
-						fullWidth
-						helperText={formik.touched.floorNumber && formik.errors.floorNumber}
-						label="Floor Number"
-						name="floorNumber"
-						disabled={true}
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						type="string"
-						value={formik.values.floorNumber}
-					/>
-				</Box>
-				{/* <Typography variant="body1" mb={1}>Day cost</Typography> */}
-				<Grid
-					container
-					mb={2}
-					spacing={2}
-				>
-					<Grid
-						item
-						xs={12}
-						md={6}
+		return (
+			<Card sx={CardStyle}>
+				<form onSubmit={formik.handleSubmit}>
+					<Box
+						display="flex"
+						flexDirection="column"
+						mb={2}
 					>
-						<Select
-							error={!!(formik.touched.dayCost && formik.errors.dayCost)}
+						<TextField
+							error={!!(formik.touched.floorNumber && formik.errors.floorNumber)}
 							fullWidth
-							label="Day cost"
-							name="dayCost"
+							helperText={formik.touched.floorNumber && formik.errors.floorNumber}
+							label="Floor Number"
+							name="floorNumber"
+							disabled={formType === "EDIT"}
 							onBlur={formik.handleBlur}
 							onChange={formik.handleChange}
 							type="string"
-							value={formik.values.dayCost}
-							defaultValue={100}
-						>
-							<MenuItem value={100}>100</MenuItem>
-							<MenuItem value={200}>200</MenuItem>
-							<MenuItem value={300}>300</MenuItem>
-						</Select>
-						<FormHelperText color="error">{formik.touched.dayCost && formik.errors.dayCost}</FormHelperText>
-					</Grid>
-					<Grid
-						item
-						xs={12}
-						md={6}
+							value={formik.values.floorNumber}
+						/>
+					</Box>
+					{/* <Typography variant="body1" mb={1}>Day cost</Typography> */}
+					<Box
+						display="flex"
+						flexDirection="column"
+						mb={2}
 					>
-						<Select
-							error={!!(formik.touched.currency && formik.errors.currency)}
+						<TextField
+							error={!!(formik.touched.floorId && formik.errors.floorId)}
 							fullWidth
-							label="Day cost"
-							name="currency"
+							helperText={formik.touched.floorId && formik.errors.floorId}
+							label="Floor ID"
+							name="floorId"
 							onBlur={formik.handleBlur}
 							onChange={formik.handleChange}
 							type="string"
-							value={formik.values.currency}
-						>
-							<MenuItem value={"EGP"}>EGP</MenuItem>
-							<MenuItem value={"USD"}>USD</MenuItem>
-							<FormHelperText color="error">{formik.touched.currency && formik.errors.currency}</FormHelperText>
-						</Select>
-					</Grid>
-				</Grid>
-				<Box
-					display="flex"
-					flexDirection="column"
-					mb={2}
-				>
-					<TextField
-						error={!!(formik.touched.totalBeds && formik.errors.totalBeds)}
-						fullWidth
-						helperText={formik.touched.totalBeds && formik.errors.totalBeds}
-						label="Total beds"
-						name="totalBeds"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						type="number"
-						value={formik.values.totalBeds}
-					/>
-				</Box>
-				<Box
-					display="flex"
-					flexDirection="column"
-					mb={2}
-				>
-					<TextField
-						error={!!(formik.touched.capacity && formik.errors.capacity)}
-						fullWidth
-						helperText={formik.touched.capacity && formik.errors.capacity}
-						label="Capacity"
-						name="capacity"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						type="number"
-						value={formik.values.capacity}
-					/>
-				</Box>
-				<Button
-					type="submit"
-					variant="contained"
-					sx={{
-						display: 'block',
-						margin: 'auto',
-					}}
-				>
-					Submit
-				</Button>
-			</form >
-		</Card >
-	)
-}
+							value={formik.values.floorId}
+						/>
+					</Box>
+					<Button
+						type="submit"
+						variant="contained"
+						sx={{
+							display: 'block',
+							margin: 'auto',
+						}}
+					>
+						Submit
+					</Button>
+				</form >
+			</Card >
+		)
+	}
 
 export default AddFloorForm

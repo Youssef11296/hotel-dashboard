@@ -134,7 +134,7 @@ export const FloorsTable = (props) => {
 														variant="contained"
 														color="primary"
 														size="small"
-														disabled={floor.isEmpty}
+														disabled={!floor.isEmpty}
 														onClick={() => openFloorHandler(floor)}
 													>
 														Edit
@@ -145,14 +145,9 @@ export const FloorsTable = (props) => {
 														variant="outlined"
 														color="primary"
 														size="small"
-														disabled={floor.isEmpty}
+														disabled={!floor.isEmpty}
 													>
-														<Link
-															href={`floors/${floor.id}`}
-															style={LinkStyle}
-														>
-															Delete
-														</Link>
+														Delete
 													</Button>
 												</Grid>
 											</Grid>
@@ -168,7 +163,7 @@ export const FloorsTable = (props) => {
 				open={openFloorForm}
 				onClose={closeFloorHandler}
 			>
-				<AddFloorForm floorNumber={selectedFloor?.number} onClose={closeFloorHandler} />
+				<AddFloorForm formType='EDIT' floorNumber={selectedFloor?.number} onClose={closeFloorHandler} />
 			</Dialog>
 			<TablePagination
 				component="div"

@@ -7,6 +7,7 @@ export const floors: Floor[] = [
     number: 1,
     totalRooms: 10,
     isComplete: true,
+    isEmpty: true,
   },
   {
     id: "2222",
@@ -14,6 +15,7 @@ export const floors: Floor[] = [
     number: 2,
     totalRooms: 20,
     isComplete: false,
+    isEmpty: false,
   },
   {
     id: "3333",
@@ -21,6 +23,7 @@ export const floors: Floor[] = [
     number: 3,
     totalRooms: 20,
     isComplete: false,
+    isEmpty: true,
   },
   {
     id: "4444",
@@ -28,5 +31,6 @@ export const floors: Floor[] = [
     number: 4,
     totalRooms: 20,
     isComplete: true,
+    isEmpty: false,
   },
 ];

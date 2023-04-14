@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { subDays, subHours } from 'date-fns';
-import { Box, Container, Grid } from '@mui/material';
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import { Layout as DashboardLayout } from '../layouts/dashboard/layout';
 import { OverviewLatestBookings } from '../sections/overview/overview-latest-bookings';
 import { OverviewSales } from '../sections/overview/overview-sales';
@@ -29,6 +29,10 @@ const Page = () => {
     return <Rooms />
   }
 
+  const periods = [
+    "All Time", "Last Week", "Last 2-Weeks", "Last Month", "Last 6-Months", "Last Year"
+  ]
+
   return (
     <>
       <Head>
@@ -48,6 +52,17 @@ const Page = () => {
             container
             spacing={3}
           >
+            <Container>
+              <Grid sx={{ width: '100%' }} container spacing={3}>
+                {periods.map(period => (
+                  <Grid key={period} item xs={12} md={2}>
+                    <Box>
+                      <Button variant="outlined">{period}</Button>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
             <Grid
               xs={12}
               sm={6}

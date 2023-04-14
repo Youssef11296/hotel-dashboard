@@ -108,7 +108,7 @@ const Floors = () => {
 										open={openAddFloorForm}
 										onClose={closeAddFloorFormHandler}
 									>
-										<AddFloorForm onClose={closeAddFloorFormHandler} />
+										<AddFloorForm formType='CREATE' onClose={closeAddFloorFormHandler} />
 									</Dialog>
 								</> : null
 							}
