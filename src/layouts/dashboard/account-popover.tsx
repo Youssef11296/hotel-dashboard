@@ -1,8 +1,9 @@
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
-import { Box, Divider, MenuItem, MenuList, Popover, Typography } from '@mui/material';
+import { Box, Divider, MenuItem, MenuList, Popover, Button, Typography } from '@mui/material';
 import { useAuth } from '../../hooks/use-auth';
+import Link from 'next/link';
 
 export const AccountPopover = (props) => {
   const { anchorEl, onClose, open } = props;
@@ -50,7 +51,22 @@ export const AccountPopover = (props) => {
         disablePadding
         dense
         sx={{
-          p: '8px',
+          py: '8px',
+          '& > *': {
+            borderRadius: 1
+          }
+        }}
+      >
+        <MenuItem onClick={handleSignOut}>
+          Settings
+        </MenuItem>
+      </MenuList>
+      <Divider />
+      <MenuList
+        disablePadding
+        dense
+        sx={{
+          py: '8px',
           '& > *': {
             borderRadius: 1
           }

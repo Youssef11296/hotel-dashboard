@@ -27,15 +27,6 @@ export const publicItems: NavItem[] = [
       </SvgIcon>
     )
   },
-  {
-    title: 'Account',
-    path: '/account',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserIcon />
-      </SvgIcon>
-    )
-  },
 ];
 
 export const items: NavItem[] = [
@@ -81,15 +72,6 @@ export const items: NavItem[] = [
     icon: (
       <SvgIcon fontSize="small">
         <CogIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Account',
-    path: '/account',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserIcon />
       </SvgIcon>
     )
   },

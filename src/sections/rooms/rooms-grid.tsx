@@ -29,8 +29,8 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 						xs={12}
 						md={3}
 						sx={{
-							borderRadius: 3,
-							boxShadow: '0 4px 4px rgba(0,0,0,.2)'
+							borderRadius: '12px',
+							boxShadow: '0 2px 2px rgba(0,0,0,.2)'
 						}}
 					>
 						<Box sx={{ padding: 2 }}>
@@ -90,8 +90,8 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 									flexDirection="column"
 									justifyContent="start"
 								>
-									<Typography variant="caption" color="primary">Floor Number</Typography>
-									<Typography># {room.floor.floorNumber}</Typography>
+									<Typography variant="caption" color="primary">Floor ID / Number</Typography>
+									<Typography>{room.floor.floorId} / {room.floor.floorNumber}</Typography>
 								</Box>
 							</Box>
 							<Button

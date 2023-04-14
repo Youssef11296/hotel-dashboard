@@ -21,8 +21,6 @@ const SIDE_NAV_WIDTH = 280;
 const TOP_NAV_HEIGHT = 64;
 
 export const TopNav = (props) => {
-  const { onNavOpen } = props;
-  const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));
   const accountPopover = usePopover();
 
   return (
@@ -57,26 +55,7 @@ export const TopNav = (props) => {
             alignItems="center"
             direction="row"
             spacing={2}
-          >
-            {!lgUp && (
-              <IconButton onClick={onNavOpen}>
-                <SvgIcon fontSize="small">
-                  <Bars3Icon />
-                </SvgIcon>
-              </IconButton>
-            )}
-            <Tooltip title="Search">
-              <IconButton>
-                <SvgIcon fontSize="small">
-                  <MagnifyingGlassIcon />
-                </SvgIcon>
-              </IconButton>
-            </Tooltip>
-          </Stack>
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={2}
+            ml="auto"
           >
             <Avatar
               onClick={accountPopover.handleOpen}
