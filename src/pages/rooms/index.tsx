@@ -4,8 +4,6 @@ import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
 import { Box, Button, Container, Stack, SvgIcon, Typography, Dialog } from '@mui/material';
 import { useSelection } from '../../hooks/use-selection';
 import { Layout as DashboardLayout } from '../../layouts/dashboard/layout';
-import { RoomsTable } from '../../sections/rooms/rooms-table';
-import { RoomsSearch } from '../../sections/rooms/rooms-search';
 import { applyPagination } from '../../utils/apply-pagination';
 import { BRAND_NAME } from '../../constants';
 import { Room } from '../../models/Room';
@@ -114,7 +112,6 @@ const Rooms = () => {
                                 </> : null
                             }
                         </Stack>
-                        <RoomsSearch />
                         <RoomsGrid rooms={rooms} />
                     </Stack>
                 </Container>

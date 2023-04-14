@@ -5,7 +5,6 @@ import { Box, Button, Container, Stack, SvgIcon, Typography, Dialog } from '@mui
 import { useSelection } from '../../hooks/use-selection';
 import { Layout as DashboardLayout } from '../../layouts/dashboard/layout';
 import { FloorsTable } from '../../sections/floors/floors-table';
-import { FloorsSearch } from '../../sections/floors/floors-search';
 import { applyPagination } from '../../utils/apply-pagination';
 import { BRAND_NAME } from '../../constants';
 import { Floor } from '../../models/Floor';
@@ -113,7 +112,6 @@ const Floors = () => {
 								</> : null
 							}
 						</Stack>
-						<FloorsSearch />
 						<FloorsTable
 							count={data.length}
 							items={floors}

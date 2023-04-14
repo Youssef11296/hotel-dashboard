@@ -1,14 +1,9 @@
 import { useCallback, useMemo, useState } from 'react';
 import Head from 'next/head';
-import { subDays, subHours } from 'date-fns';
-import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
-import ArrowUpOnSquareIcon from '@heroicons/react/24/solid/ArrowUpOnSquareIcon';
-import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
-import { Box, Button, Container, Stack, SvgIcon, Typography } from '@mui/material';
+import { Box, Container, Stack, Typography } from '@mui/material';
 import { useSelection } from '../hooks/use-selection';
 import { Layout as DashboardLayout } from '../layouts/dashboard/layout';
 import { CustomersTable } from '../sections/customer/customers-table';
-import { CustomersSearch } from '../sections/customer/customers-search';
 import { applyPagination } from '../utils/apply-pagination';
 import { BRAND_NAME } from '../constants';
 import { users } from '../data/users';
@@ -89,7 +84,6 @@ const Page = () => {
                 </Typography>
               </Stack>
             </Stack>
-            <CustomersSearch />
             <CustomersTable
               count={data.length}
               items={customers}

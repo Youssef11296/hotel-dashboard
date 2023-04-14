@@ -1,20 +1,14 @@
 import { useCallback, useMemo, useState } from 'react';
 import Head from 'next/head';
-import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
-import { Box, Button, Container, Stack, SvgIcon, Typography } from '@mui/material';
+import { Box, Container, Stack, Typography } from '@mui/material';
 import { useSelection } from '../../hooks/use-selection';
 import { Layout as DashboardLayout } from '../../layouts/dashboard/layout';
 import { BookingsTable } from '../../sections/bookings/bookings-table';
-import { BookingsSearch } from '../../sections/bookings/bookings-search';
 import { applyPagination } from '../../utils/apply-pagination';
 import { BRAND_NAME } from '../../constants';
 import { roombooks } from '../../data/roombooks';
 import { RoomBook } from '../../models/RoomBook';
 import { useAuth } from '../../hooks/use-auth';
-import { useEffect } from 'react'
-import axios from 'axios'
-
-const now = new Date();
 
 const data: RoomBook[] = roombooks
 
@@ -89,7 +83,6 @@ const Page = () => {
                                 </Typography>
                             </Stack>
                         </Stack>
-                        <BookingsSearch />
                         <BookingsTable
                             count={data.length}
                             items={bookings}
