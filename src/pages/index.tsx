@@ -1,22 +1,17 @@
+/* eslint-disable react/jsx-max-props-per-line */
 import Head from 'next/head';
-import { subDays, subHours } from 'date-fns';
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import { Box, Button, Container, Grid } from '@mui/material';
 import { Layout as DashboardLayout } from '../layouts/dashboard/layout';
 import { OverviewLatestBookings } from '../sections/overview/overview-latest-bookings';
 import { OverviewSales } from '../sections/overview/overview-sales';
 import { OverviewTotalRooms } from '../sections/overview/overview-total-rooms';
 import { OverviewTotalCustomers } from '../sections/overview/overview-total-customers';
 import { BRAND_NAME } from '../constants';
-import { useAuth } from '../hooks/use-auth';
-import { useRouter } from 'next/router';
-import Rooms from './rooms';
 import { roombooks } from '../data/roombooks';
 import { rooms } from '../data/rooms';
 import { OverviewTotalBookings } from '../sections/overview/overview-total-bookings';
 import { OverviewTotalProfit } from '../sections/overview/overview-total-profit';
 import { useState } from 'react';
-
-const now = new Date();
 
 type Period = "All Time" | "Last Week" | "Last 2-Weeks" | "Last Month" | "Last 6-Months" | "Last Year"
 

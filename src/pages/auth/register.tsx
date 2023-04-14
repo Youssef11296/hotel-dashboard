@@ -16,6 +16,11 @@ const Page = () => {
       email: '',
       name: '',
       password: '',
+      phone: '',
+      whatsApp: '',
+      address: '',
+      nationalId: '',
+      age: 20,
       submit: null
     },
     validationSchema: Yup.object({
@@ -31,11 +36,34 @@ const Page = () => {
       password: Yup
         .string()
         .max(255)
-        .required('Password is required')
+        .required('Password is required'),
+      phone: Yup
+        .string()
+        .max(255)
+        .required('Phone is required'),
+      whatsApp: Yup
+        .string()
+        .max(255)
+        .required('WhatsApp is required'),
+      address: Yup
+        .string()
+        .max(255)
+        .required('Address is required'),
+      nationalId: Yup
+        .string()
+        .max(255)
+        .required('National ID is required'),
+      age: Yup
+        .number()
+        .max(100)
+        .min(20)
+        .required('Age is required'),
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await auth.signUp(values.email, values.name, values.password);
+        // await auth.signUp(values.email, values.name, values.password
+        //   , values.phone, values.whatsApp, values.address, values.nationalId, values.age
+        // );
         router.push('/');
       } catch (err) {
         helpers.setStatus({ success: false });
@@ -128,6 +156,57 @@ const Page = () => {
                   onChange={formik.handleChange}
                   type="password"
                   value={formik.values.password}
+                />
+                <TextField
+                  error={!!(formik.touched.phone && formik.errors.phone)}
+                  fullWidth
+                  helperText={formik.touched.phone && formik.errors.phone}
+                  label="Phone"
+                  name="phone"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.phone}
+                />
+                <TextField
+                  error={!!(formik.touched.whatsApp && formik.errors.whatsApp)}
+                  fullWidth
+                  helperText={formik.touched.whatsApp && formik.errors.whatsApp}
+                  label="whatsApp"
+                  name="whatsApp"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.whatsApp}
+                />
+                <TextField
+                  error={!!(formik.touched.nationalId && formik.errors.nationalId)}
+                  fullWidth
+                  helperText={formik.touched.nationalId && formik.errors.nationalId}
+                  label="nationalId"
+                  name="nationalId"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.nationalId}
+                />
+                <TextField
+                  error={!!(formik.touched.age && formik.errors.age)}
+                  fullWidth
+                  helperText={formik.touched.age && formik.errors.age}
+                  label="age"
+                  name="age"
+                  type="number"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.age}
+                />
+                <TextField
+                  error={!!(formik.touched.address && formik.errors.address)}
+                  fullWidth
+                  helperText={formik.touched.address && formik.errors.address}
+                  label="address"
+                  name="address"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.address}
                 />
               </Stack>
               {formik.errors.submit && (
