@@ -1,3 +1,5 @@
+import { Floor } from "./Floor";
+
 export interface Room {
   id: string;
   image: string;
@@ -9,8 +11,8 @@ export interface Room {
   numOfBeds: number;
   capacity: number;
   floor: {
-    floorNumber: number;
-    floorId: string;
+    floorNumber: Floor["number"];
+    floorId: Floor["floorId"];
   };
   sales: {
     currentMonthInEGP: number;
