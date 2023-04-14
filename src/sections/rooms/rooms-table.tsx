@@ -22,7 +22,7 @@ import { SeverityPill } from '../../components/severity-pill';
 import BookForm from './BookForm';
 import { useState } from 'react'
 
-const LinkStyle = { color: "#fff", textDecoration: 'none' }
+const LinkStyle = { color: "#000", textDecoration: 'none' }
 
 export const RoomsTable = (props) => {
   const {
@@ -90,7 +90,7 @@ export const RoomsTable = (props) => {
                   Status
                 </TableCell>
                 <TableCell>
-                  More
+                  Actions & More
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -134,8 +134,8 @@ export const RoomsTable = (props) => {
                       </SeverityPill>
                     </TableCell>
                     <TableCell>
-                      <Grid container spacing={2}>
-                        <Grid item xs={12} md={12}>
+                      <Grid xs={12} md={9} container spacing={1}>
+                        <Grid item xs={12} md={6}>
                           <Button
                             variant="contained"
                             color="primary"
@@ -144,6 +144,20 @@ export const RoomsTable = (props) => {
                             onClick={() => openBookFormHandler(room)}
                           >
                             Book now
+                          </Button>
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <Button
+                            variant="outlined"
+                            color="primary"
+                            size="small"
+                          >
+                            <Link
+                              href={`rooms/${room.id}`}
+                              style={LinkStyle}
+                            >
+                              View
+                            </Link>
                           </Button>
                         </Grid>
                       </Grid>

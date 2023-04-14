@@ -1,4 +1,3 @@
-import { useCallback, useState } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -21,8 +20,8 @@ const Page = () => {
   const auth: any = useAuth();
   const formik: any = useFormik({
     initialValues: {
-      email: 'admon@test.com',
-      password: '123123',
+      email: 'admin@test.com',
+      password: 'admin',
       submit: null
     },
     validationSchema: Yup.object({

@@ -11,6 +11,8 @@ import { BRAND_NAME } from '../../constants';
 import { roombooks } from '../../data/roombooks';
 import { RoomBook } from '../../models/RoomBook';
 import { useAuth } from '../../hooks/use-auth';
+import { useEffect } from 'react'
+import axios from 'axios'
 
 const now = new Date();
 
@@ -59,6 +61,11 @@ const Page = () => {
     const auth: any = useAuth()
     const user = auth.user
     const isAdmin = user?.role === "Admin"
+
+    useEffect(() => {
+        const res = axios.get("https://web01.usn.no/~240179/tilkobling/booking")
+        console.log({ res })
+    }, [])
 
     return (
         <>
