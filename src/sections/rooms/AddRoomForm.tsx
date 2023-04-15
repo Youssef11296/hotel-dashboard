@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import { FC } from 'react';
 import * as Yup from 'yup';
 import { floors } from '../../data/floors';
-import { PetsAvailability, RoomType } from '../../models/Room';
+import { PetsAvailability, Room, RoomType } from '../../models/Room';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
 
 const CardStyle = {
@@ -25,17 +25,17 @@ interface FormikValueTypes {
 	submit: null
 }
 
-const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
+const AddRoomForm: FC<{ type: "EDIT" | "CREATE", room?: Room, onClose: () => void }> = ({ type, room, onClose }) => {
 	const formik: any = useFormik({
 		initialValues: {
-			roomNumber: '',
-			dayCost: 100,
-			totalBeds: 0,
-			capacity: 1,
+			roomNumber: room ? room.number : '',
+			dayCost: room ? Number(room.dayCost) : 100,
+			totalBeds: room ? room.numOfBeds : 0,
+			capacity: room ? room.capacity : 1,
 			currency: 'EGP',
-			floorNumber: 1,
-			type: 'MEETING_ROOM',
-			petsAvailability: "PERMITTED",
+			floorNumber: room ? room.floor.floorNumber : 1,
+			type: room ? room.type : 'MEETING_ROOM',
+			petsAvailability: room ? room.petsAvailability : "PERMITTED",
 			submit: null
 		},
 		validationSchema: Yup.object({
@@ -90,7 +90,7 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 		<Card sx={CardStyle}>
 			<form onSubmit={formik.handleSubmit}>
 				<Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-					<Typography variant="h5">Create a new Room</Typography>
+					<Typography variant="h5">{type === "EDIT" ? "Edit Room" : "Create a new Room"}</Typography>
 					<XCircleIcon width={20} height={20} color="primary" style={{
 						marginLeft: 'auto',
 						display: 'block',

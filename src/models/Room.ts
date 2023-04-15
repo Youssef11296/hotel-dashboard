@@ -12,6 +12,7 @@ export interface Room {
   petsAvailability: PetsAvailability;
   dayCost: string;
   isReserved: boolean;
+  isEmpty?: boolean;
   currentTotalResidents: number;
   numOfBeds: number;
   capacity: number;

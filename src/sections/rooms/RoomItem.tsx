@@ -1,12 +1,27 @@
 /* eslint-disable react/jsx-max-props-per-line */
-import { Grid, Box, Typography, Button } from '@mui/material'
+import { Grid, Box, Typography, IconButton, Button, Popover, Dialog } from '@mui/material'
 import Link from 'next/link'
 import { FC } from 'react'
 import { Room } from '../../models/Room'
-import { useRouter } from 'next/router'
+import { MoreVert } from '@mui/icons-material'
+import { useState } from 'react'
+import AddRoomForm from './AddRoomForm'
 
 const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: boolean }> = ({ withBookBtn, room, openBookFormHandler }) => {
-	const { pathname } = useRouter()
+	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+	const [openEditRoom, setOpenEditRoom] = useState<boolean>(false)
+	const [openConfirmDelete, setOpenConfirmDelete] = useState<boolean>(false)
+
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
+	const open = Boolean(anchorEl);
+	const id = open ? 'simple-popover' : undefined;
 
 	return (
 		<Grid
@@ -19,6 +34,30 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 				boxShadow: '0 2px 2px rgba(0,0,0,.2)'
 			}}
 		>
+			<IconButton aria-describedby={id} onClick={handleClick} sx={{ display: 'block', marginLeft: 'auto' }}>
+				<MoreVert sx={{ padding: 0 }} />
+			</IconButton>
+			<Popover
+				id={id}
+				open={open}
+				anchorEl={anchorEl}
+				onClose={handleClose}
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'left',
+				}}
+			>
+				<Box
+					sx={{
+						boxShadow: '0 2px 2px rgba(0,0,0,.4)',
+						display: 'flex',
+						flexDirection: 'column'
+					}}
+				>
+					<Button variant="text" onClick={() => setOpenEditRoom(true)}>Edit</Button>
+					<Button variant="text" onClick={() => setOpenConfirmDelete(true)}>Delete</Button>
+				</Box>
+			</Popover>
 			<Box sx={{ padding: 2 }}>
 				<Box
 					display="flex"
@@ -90,6 +129,23 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 					Book Now!
 				</Button> : null}
 			</Box>
+
+			<Dialog open={openEditRoom}>
+				<AddRoomForm type="EDIT" onClose={() => setOpenEditRoom(false)} room={room} />
+			</Dialog>
+			<Dialog open={openConfirmDelete} onClose={() => setOpenConfirmDelete(false)}>
+				<Box>
+					<Typography variant='h6'>Do you really want to delete this room?</Typography>
+					<Grid container spacing={2}>
+						<Grid item xs={12} md={6}>
+							<Button variant="contained">Yes, delete it.</Button>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Button variant="outlined">No, cancel.</Button>
+						</Grid>
+					</Grid>
+				</Box>
+			</Dialog>
 		</Grid>
 	)
 }

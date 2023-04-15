@@ -24,7 +24,7 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 
 	const auth: any = useAuth()
 	const { user } = auth
-	const isAdmin = user.role === "Admin"
+	const isAdmin = user?.role === "Admin"
 
 	return (
 		<>
