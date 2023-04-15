@@ -36,7 +36,7 @@ const Rooms = () => {
             >
                 {!isAdmin ? <Box
                     sx={{
-                        marginBottom: '1rem',
+                        marginBottom: '2rem',
                         display: "grid",
                         position: 'relative',
                         height: 500,
