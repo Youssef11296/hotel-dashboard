@@ -2,6 +2,7 @@ import { TextField, Button, Card, Box, Select, MenuItem, FormHelperText, Grid, T
 import { useFormik } from 'formik';
 import { FC } from 'react';
 import * as Yup from 'yup';
+import { floors } from '../../data/floors';
 
 const CardStyle = {
 	padding: '2rem',
@@ -18,6 +19,9 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 			totalBeds: '',
 			capacity: '',
 			currency: 'EGP',
+			floorNumber: 1,
+			type: 'MEETING_ROOM',
+			petsAvailability: "PERMITTED",
 			submit: null
 		},
 		validationSchema: Yup.object({
@@ -29,6 +33,18 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 				.string()
 				.max(100)
 				.required('Day cost is required'),
+			floorNumber: Yup
+				.number()
+				.max(100)
+				.required('Floor number is required'),
+			type: Yup
+				.string()
+				.max(100)
+				.required('Room type is required'),
+			petsAvailability: Yup
+				.string()
+				.max(100)
+				.required('Pets availability is required'),
 			currency: Yup
 				.string()
 				.required('Currency is required'),
@@ -119,6 +135,71 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 							<MenuItem value={"USD"}>USD</MenuItem>
 							<FormHelperText color="error">{formik.touched.currency && formik.errors.currency}</FormHelperText>
 						</Select>
+					</Grid>
+					<Grid
+						item
+						xs={12}
+						md={6}
+					>
+						<Select
+							error={!!(formik.touched.type && formik.errors.type)}
+							fullWidth
+							label="Type"
+							name="type"
+							onBlur={formik.handleBlur}
+							onChange={formik.handleChange}
+							type="string"
+							value={formik.values.type}
+						>
+							<MenuItem value={"BED_ROOM"}>BED_ROOM</MenuItem>
+							<MenuItem value={"MEETING_ROOM"}>MEETING_ROOM</MenuItem>
+							<FormHelperText color="error">{formik.touched.type && formik.errors.type}</FormHelperText>
+						</Select>
+					</Grid>
+				</Grid>
+				<Grid container>
+					<Grid
+						item
+						xs={12}
+						md={6}
+					>
+						<Select
+							error={!!(formik.touched.floorNumber && formik.errors.floorNumber)}
+							fullWidth
+							label="Day cost"
+							name="floorNumber"
+							onBlur={formik.handleBlur}
+							onChange={formik.handleChange}
+							type="string"
+							value={formik.values.floorNumber}
+							defaultValue={100}
+						>
+							{floors.map(floor => (
+								<MenuItem key={floor.id} value={floor.number}>{floor.number}</MenuItem>
+							))}
+						</Select>
+						<FormHelperText color="error">{formik.touched.floorNumber && formik.errors.floorNumber}</FormHelperText>
+					</Grid>
+					<Grid
+						item
+						xs={12}
+						md={6}
+					>
+						<Select
+							error={!!(formik.touched.petsAvailability && formik.errors.petsAvailability)}
+							fullWidth
+							label="Day cost"
+							name="petsAvailability"
+							onBlur={formik.handleBlur}
+							onChange={formik.handleChange}
+							type="string"
+							value={formik.values.petsAvailability}
+							defaultValue={100}
+						>
+							<MenuItem value={"PERMITTED"}>PERMITTED</MenuItem>
+							<MenuItem value={"NOT PERMITTED"}>NOT PERMITTED</MenuItem>
+						</Select>
+						<FormHelperText color="error">{formik.touched.petsAvailability && formik.errors.petsAvailability}</FormHelperText>
 					</Grid>
 				</Grid>
 				<Box

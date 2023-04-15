@@ -19,8 +19,8 @@ export interface RoomBook {
   customer: User;
   participants?: Individual[];
   roomNumber: Room["number"];
-  from: string;
-  to: string;
+  from: string | number;
+  to: string | number;
   pets?: Individual[];
   securityCode: string;
   totalCost: string;

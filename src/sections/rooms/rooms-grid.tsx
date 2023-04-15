@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-props-per-line */
 import { FC, useState } from 'react'
 import { Room } from '../../models/Room'
 import { Box, Button, Container, Dialog, Grid, Stack, Typography } from '@mui/material'
@@ -40,7 +41,7 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 								alignItems="center"
 								sx={{ width: '100%' }}
 							>
-								<Typography variant="h6">{room.number}</Typography>
+								<Typography variant="h6" color="primary">{room.number}</Typography>
 								<Typography>{room.dayCost}</Typography>
 							</Box>
 							<Link href={`rooms/${room.id}`}
@@ -64,8 +65,8 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 									flexDirection="column"
 									justifyContent="start"
 								>
-									<Typography variant="caption" color="primary">Total Beds</Typography>
-									<Typography>{room.numOfBeds} Beds</Typography>
+									<Typography variant="caption" color="primary">Type</Typography>
+									<Typography textTransform="capitalize">{room.type}</Typography>
 								</Box>
 								<Box
 									display="flex"
@@ -82,8 +83,8 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 									flexDirection="column"
 									justifyContent="start"
 								>
-									<Typography variant="caption" color="primary">Status</Typography>
-									<Typography>{room.isReserved ? "Reserved" : "Available"}</Typography>
+									<Typography variant="caption" color="primary">Pets Availability</Typography>
+									<Typography>{room.petsAvailability ? "Permitted" : "Not Permitted"}</Typography>
 								</Box>
 								<Box
 									display="flex"
@@ -98,7 +99,6 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 								variant="contained"
 								size="small"
 								fullWidth
-								disabled={room.isReserved}
 								sx={{ margin: '1rem auto 0', display: 'block' }}
 								onClick={() => openBookFormHandler(room)}
 							>
