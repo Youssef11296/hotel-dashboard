@@ -91,7 +91,7 @@ const Rooms = () => {
                                     <Dialog
                                         open={openAddRoomForm}
                                     >
-                                        <AddRoomForm onClose={closeAddRoomFormHandler} />
+                                        <AddRoomForm type="CREATE" onClose={closeAddRoomFormHandler} />
                                     </Dialog>
                                 </> : null
                             }

@@ -21,7 +21,7 @@ export const roombooks: RoomBook[] = [
     ],
     participants: [],
     customerEmail: users[3].email,
-    totalCost: "1000 EGP",
+    totalCost: "$1000",
     status: "PENDING",
   },
   {
@@ -34,7 +34,7 @@ export const roombooks: RoomBook[] = [
     pets: [],
     participants: [],
     customerEmail: users[3].email,
-    totalCost: "1000 EGP",
+    totalCost: "$1000",
     status: "ACCEPTED",
   },
   {
@@ -54,7 +54,7 @@ export const roombooks: RoomBook[] = [
     ],
     participants: [],
     customerEmail: users[3].email,
-    totalCost: "1000 EGP",
+    totalCost: "$1000",
     status: "REJECTED",
   },
   {
@@ -74,7 +74,7 @@ export const roombooks: RoomBook[] = [
     ],
     participants: [],
     customerEmail: users[3].email,
-    totalCost: "1000 EGP",
+    totalCost: "$1000",
     status: "PENDING",
   },
   {
@@ -94,7 +94,7 @@ export const roombooks: RoomBook[] = [
     ],
     participants: [],
     customerEmail: users[3].email,
-    totalCost: "1000 EGP",
+    totalCost: "$1000",
     status: "PENDING",
   },
   {
@@ -114,7 +114,7 @@ export const roombooks: RoomBook[] = [
     ],
     participants: [],
     customerEmail: users[3].email,
-    totalCost: "1000 EGP",
+    totalCost: "$1000",
     status: "PENDING",
   },
   {
@@ -134,7 +134,7 @@ export const roombooks: RoomBook[] = [
     ],
     participants: [],
     customerEmail: users[3].email,
-    totalCost: "1000 EGP",
+    totalCost: "$1000",
     status: "PENDING",
   },
   {
@@ -154,7 +154,7 @@ export const roombooks: RoomBook[] = [
     ],
     participants: [],
     customerEmail: users[3].email,
-    totalCost: "1000 EGP",
+    totalCost: "$1000",
     status: "REJECTED",
   },
 ];
