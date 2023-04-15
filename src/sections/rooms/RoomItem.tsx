@@ -3,8 +3,11 @@ import { Grid, Box, Typography, Button } from '@mui/material'
 import Link from 'next/link'
 import { FC } from 'react'
 import { Room } from '../../models/Room'
+import { useRouter } from 'next/router'
 
 const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: boolean }> = ({ withBookBtn, room, openBookFormHandler }) => {
+	const { pathname } = useRouter()
+
 	return (
 		<Grid
 			key={room.id}

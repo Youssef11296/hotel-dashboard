@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-max-props-per-line */
 import { useRouter } from 'next/router'
 import { Layout as DashboardLayout } from '../../layouts/dashboard/layout';
-import { Button, Container, Grid, Paper, Typography } from '@mui/material'
+import { Container, Grid, Paper, Typography } from '@mui/material'
 import { rooms } from '../../data/rooms';
 import { FC } from 'react';
 import Carousel from 'react-material-ui-carousel'
@@ -12,24 +12,6 @@ import "react-multi-carousel/lib/styles.css";
 interface InfoBlock {
 	title: string, value: string | number | boolean
 }
-
-const responsive = {
-	desktop: {
-		breakpoint: { max: 3000, min: 1024 },
-		items: 3,
-		slidesToSlide: 3 // optional, default to 1.
-	},
-	tablet: {
-		breakpoint: { max: 1024, min: 464 },
-		items: 2,
-		slidesToSlide: 2 // optional, default to 1.
-	},
-	mobile: {
-		breakpoint: { max: 464, min: 0 },
-		items: 1,
-		slidesToSlide: 1 // optional, default to 1.
-	}
-};
 
 const InfoBlockItem: FC<InfoBlock> = ({ title, value }) => {
 	return (
@@ -97,6 +79,24 @@ const Page = () => {
 
 	var items = [...room.photos, room.image]
 
+	const responsive = {
+		desktop: {
+			breakpoint: { max: 3000, min: 1024 },
+			items: 3,
+			slidesToSlide: 3 // optional, default to 1.
+		},
+		tablet: {
+			breakpoint: { max: 1024, min: 464 },
+			items: 2,
+			slidesToSlide: 2 // optional, default to 1.
+		},
+		mobile: {
+			breakpoint: { max: 464, min: 0 },
+			items: 1,
+			slidesToSlide: 1 // optional, default to 1.
+		}
+	};
+
 	return (
 		<Container sx={{
 			py: 8
@@ -114,7 +114,7 @@ const Page = () => {
 						<InfoBlockItem key={dataItem.title} title={dataItem.title} value={dataItem.value} />
 					))}
 				</Grid>
-				<Typography variant="h5" my={2}>Similar Rooms</Typography>
+				<Typography variant="h4" mt={4} mb={1}>Similar Rooms</Typography>
 				<MultiCarousel
 					swipeable={false}
 					draggable={false}
