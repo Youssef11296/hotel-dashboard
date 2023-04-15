@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-props-per-line */
 import { useState } from 'react';
 import Head from 'next/head';
 import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
@@ -33,6 +34,34 @@ const Rooms = () => {
                     py: 8
                 }}
             >
+                {!isAdmin ? <Box
+                    sx={{
+                        marginBottom: '1rem',
+                        display: "grid",
+                        position: 'relative',
+                        height: 500,
+                        width: '100vw',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundImage: `url(https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/4/2022/02/01073127/Cover-1.png)`
+                    }}
+                >
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            zIndex: 1,
+                            width: '100%',
+                            height: '100%',
+                            background: "rgba(0,0,0,.4)"
+                        }}
+                    />
+                    <Box margin="auto" position="relative" zIndex={2}>
+                        <Typography variant="h1" sx={{ color: "#fff" }}>Catch your room in seconds</Typography>
+                    </Box>
+                </Box> : null}
                 <Container maxWidth="xl">
                     <Stack spacing={3}>
                         <Stack
@@ -60,7 +89,6 @@ const Rooms = () => {
                                     </Button>
                                     <Dialog
                                         open={openAddRoomForm}
-                                        onClose={closeAddRoomFormHandler}
                                     >
                                         <AddRoomForm onClose={closeAddRoomFormHandler} />
                                     </Dialog>

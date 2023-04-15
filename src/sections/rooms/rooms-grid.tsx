@@ -91,8 +91,8 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 									flexDirection="column"
 									justifyContent="start"
 								>
-									<Typography variant="caption" color="primary">Floor ID / Number</Typography>
-									<Typography>{room.floor.floorId} / {room.floor.floorNumber}</Typography>
+									<Typography variant="caption" color="primary">Floor Number</Typography>
+									<Typography># {room.floor.floorNumber}</Typography>
 								</Box>
 							</Box>
 							<Button

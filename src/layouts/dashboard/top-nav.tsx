@@ -1,27 +1,25 @@
 import PropTypes from 'prop-types';
 import BellIcon from '@heroicons/react/24/solid/BellIcon';
 import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
-import Bars3Icon from '@heroicons/react/24/solid/Bars3Icon';
-import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
 import {
   Avatar,
-  Badge,
   Box,
-  IconButton,
   Stack,
-  SvgIcon,
-  Tooltip,
-  useMediaQuery
 } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { usePopover } from '../../hooks/use-popover';
 import { AccountPopover } from './account-popover';
-
-const SIDE_NAV_WIDTH = 280;
-const TOP_NAV_HEIGHT = 64;
+import { useAuth } from '../../hooks/use-auth';
 
 export const TopNav = (props) => {
   const accountPopover = usePopover();
+
+  const auth: any = useAuth()
+  const { user } = auth
+  const isAdmin = user?.role === "Admin"
+
+  const TOP_NAV_HEIGHT = 64
+  const SIDE_NAV_WIDTH = isAdmin ? 280 : 0;
 
   return (
     <>

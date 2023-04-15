@@ -12,6 +12,8 @@ import { rooms } from '../data/rooms';
 import { OverviewTotalBookings } from '../sections/overview/overview-total-bookings';
 import { OverviewTotalProfit } from '../sections/overview/overview-total-profit';
 import { useState } from 'react';
+import { useAuth } from '../hooks/use-auth';
+import Rooms from './rooms';
 
 type Period = "All Time" | "Last Week" | "Last 2-Weeks" | "Last Month" | "Last 6-Months" | "Last Year"
 
@@ -23,6 +25,12 @@ const Page = () => {
   const [periodValue, setPeriodValue] = useState<Period>("All Time")
 
   const changePeriodValueHandler = (period: Period) => setPeriodValue(period)
+
+  const auth: any = useAuth()
+  const { user } = auth
+  const isAdmin = user?.role === "Admin"
+
+  if (!isAdmin) return <Rooms />
 
   return (
     <>

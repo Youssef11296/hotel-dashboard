@@ -1,8 +1,11 @@
+/* eslint-disable react/jsx-max-props-per-line */
 import { TextField, Button, Card, Box, Select, MenuItem, FormHelperText, Grid, Typography } from '@mui/material'
 import { useFormik } from 'formik';
 import { FC } from 'react';
 import * as Yup from 'yup';
 import { floors } from '../../data/floors';
+import { PetsAvailability, RoomType } from '../../models/Room';
+import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
 
 const CardStyle = {
 	padding: '2rem',
@@ -10,14 +13,25 @@ const CardStyle = {
 	maxWidth: '60vw',
 }
 
+interface FormikValueTypes {
+	roomNumber: string,
+	dayCost: number,
+	totalBeds: number,
+	capacity: number,
+	currency: 'EGP' | "USD",
+	floorNumber: number,
+	type: RoomType,
+	petsAvailability: PetsAvailability,
+	submit: null
+}
 
 const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 	const formik: any = useFormik({
 		initialValues: {
 			roomNumber: '',
 			dayCost: 100,
-			totalBeds: '',
-			capacity: '',
+			totalBeds: 0,
+			capacity: 1,
 			currency: 'EGP',
 			floorNumber: 1,
 			type: 'MEETING_ROOM',
@@ -26,8 +40,9 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 		},
 		validationSchema: Yup.object({
 			roomNumber: Yup
-				.number()
-				.max(5)
+				.string()
+				.min(2)
+				.max(20)
 				.required('Room number is required'),
 			dayCost: Yup
 				.string()
@@ -50,15 +65,18 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 				.required('Currency is required'),
 			totalBeds: Yup
 				.number()
+				.min(0)
 				.max(5)
 				.required('Total beds is required'),
 			capacity: Yup
 				.number()
+				.min(1)
 				.max(5)
 				.required('Capacity is required'),
 		}),
-		onSubmit: async (values, helpers) => {
+		onSubmit: async (values: FormikValueTypes, helpers) => {
 			try {
+				console.log({ values })
 				onClose()
 			} catch (err) {
 				helpers.setStatus({ success: false });
@@ -71,9 +89,20 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 	return (
 		<Card sx={CardStyle}>
 			<form onSubmit={formik.handleSubmit}>
+				<Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+					<Typography variant="h5">Create a new Room</Typography>
+					<XCircleIcon width={20} height={20} color="primary" style={{
+						marginLeft: 'auto',
+						display: 'block',
+						cursor: 'pointer'
+					}}
+						onClick={onClose}
+					/>
+				</Box>
 				<Box
 					display="flex"
 					flexDirection="column"
+					mt={2}
 					mb={2}
 				>
 					<TextField
@@ -92,6 +121,7 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 				<Grid
 					container
 					mb={2}
+					marginTop="1px"
 					spacing={2}
 				>
 					<Grid
@@ -109,6 +139,9 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 							type="string"
 							value={formik.values.dayCost}
 							defaultValue={100}
+							inputProps={{
+								name: "Day Cost"
+							}}
 						>
 							<MenuItem value={100}>100</MenuItem>
 							<MenuItem value={200}>200</MenuItem>
@@ -139,7 +172,7 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 					<Grid
 						item
 						xs={12}
-						md={6}
+						md={12}
 					>
 						<Select
 							error={!!(formik.touched.type && formik.errors.type)}
@@ -157,11 +190,28 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 						</Select>
 					</Grid>
 				</Grid>
-				<Grid container>
+				{formik.values.type === "BED_ROOM" ? <Box
+					display="flex"
+					flexDirection="column"
+					mb={2}
+				>
+					<TextField
+						error={!!(formik.touched.totalBeds && formik.errors.totalBeds)}
+						fullWidth
+						helperText={formik.touched.totalBeds && formik.errors.totalBeds}
+						label="Total beds"
+						name="totalBeds"
+						onBlur={formik.handleBlur}
+						onChange={formik.handleChange}
+						type="number"
+						value={formik.values.totalBeds}
+					/>
+				</Box> : null}
+				<Grid container spacing={2}>
 					<Grid
 						item
 						xs={12}
-						md={6}
+						md={12}
 					>
 						<Select
 							error={!!(formik.touched.floorNumber && formik.errors.floorNumber)}
@@ -183,7 +233,7 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 					<Grid
 						item
 						xs={12}
-						md={6}
+						md={12}
 					>
 						<Select
 							error={!!(formik.touched.petsAvailability && formik.errors.petsAvailability)}
@@ -202,40 +252,27 @@ const AddRoomForm: FC<{ onClose: () => void }> = ({ onClose }) => {
 						<FormHelperText color="error">{formik.touched.petsAvailability && formik.errors.petsAvailability}</FormHelperText>
 					</Grid>
 				</Grid>
-				<Box
-					display="flex"
-					flexDirection="column"
-					mb={2}
-				>
-					<TextField
-						error={!!(formik.touched.totalBeds && formik.errors.totalBeds)}
-						fullWidth
-						helperText={formik.touched.totalBeds && formik.errors.totalBeds}
-						label="Total beds"
-						name="totalBeds"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						type="number"
-						value={formik.values.totalBeds}
-					/>
-				</Box>
-				<Box
-					display="flex"
-					flexDirection="column"
-					mb={2}
-				>
-					<TextField
-						error={!!(formik.touched.capacity && formik.errors.capacity)}
-						fullWidth
-						helperText={formik.touched.capacity && formik.errors.capacity}
-						label="Capacity"
-						name="capacity"
-						onBlur={formik.handleBlur}
-						onChange={formik.handleChange}
-						type="number"
-						value={formik.values.capacity}
-					/>
-				</Box>
+				<Grid container spacing={2} mt={.5}>
+					<Grid item xs={12} md={12}>
+						<Box
+							display="flex"
+							flexDirection="column"
+							mb={2}
+						>
+							<TextField
+								error={!!(formik.touched.capacity && formik.errors.capacity)}
+								fullWidth
+								helperText={formik.touched.capacity && formik.errors.capacity}
+								label="Capacity"
+								name="capacity"
+								onBlur={formik.handleBlur}
+								onChange={formik.handleChange}
+								type="number"
+								value={formik.values.capacity}
+							/>
+						</Box>
+					</Grid>
+				</Grid>
 				<Button
 					type="submit"
 					variant="contained"

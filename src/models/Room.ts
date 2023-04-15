@@ -1,6 +1,7 @@
 import { Floor } from "./Floor";
 
 export type RoomType = "BED_ROOM" | "MEETING_ROOM";
+export type PetsAvailability = "PERMITTED" | "NOT_PERMITTED";
 
 export interface Room {
   id: string;
@@ -8,7 +9,7 @@ export interface Room {
   photos?: string[];
   number: string;
   type: RoomType;
-  petsAvailability: boolean;
+  petsAvailability: PetsAvailability;
   dayCost: string;
   isReserved: boolean;
   currentTotalResidents: number;

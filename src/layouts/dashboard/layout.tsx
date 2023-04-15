@@ -4,17 +4,9 @@ import { styled } from '@mui/material/styles';
 import { withAuthGuard } from '../../hocs/with-auth-guard';
 import { SideNav } from './side-nav';
 import { TopNav } from './top-nav';
+import { useAuth } from '../../hooks/use-auth';
 
 const SIDE_NAV_WIDTH = 280;
-
-const LayoutRoot = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flex: '1 1 auto',
-  maxWidth: '100%',
-  [theme.breakpoints.up('lg')]: {
-    paddingLeft: SIDE_NAV_WIDTH
-  }
-}));
 
 const LayoutContainer = styled('div')({
   display: 'flex',
@@ -45,13 +37,26 @@ export const Layout = withAuthGuard((props) => {
     [pathname]
   );
 
+  const LayoutRoot = styled('div')(({ theme }) => ({
+    display: 'flex',
+    flex: '1 1 auto',
+    maxWidth: '100%',
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: isAdmin ? SIDE_NAV_WIDTH : 0
+    }
+  }));
+
+  const auth: any = useAuth()
+  const { user } = auth
+  const isAdmin = user?.role === "Admin"
+
   return (
     <>
       <TopNav onNavOpen={() => setOpenNav(true)} />
-      <SideNav
+      {isAdmin ? <SideNav
         onClose={() => setOpenNav(false)}
         open={openNav}
-      />
+      /> : null}
       <LayoutRoot>
         <LayoutContainer>
           {children}

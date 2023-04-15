@@ -18,6 +18,9 @@ import { BRAND_NAME } from '../../constants';
 const Page = () => {
   const router = useRouter();
   const auth: any = useAuth();
+  const { user } = auth
+  const isAdmin = user?.role === "Admin"
+
   const formik: any = useFormik({
     initialValues: {
       email: 'admin@test.com',
@@ -38,7 +41,7 @@ const Page = () => {
     onSubmit: async (values, helpers) => {
       try {
         await auth.signIn(values.email, values.password);
-        router.push('/');
+        router.push('/')
       } catch (err) {
         helpers.setStatus({ success: false });
         helpers.setErrors({ submit: err.message });
