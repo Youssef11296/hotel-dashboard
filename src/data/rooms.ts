@@ -55,7 +55,7 @@ export const rooms: Room[] = [
     },
   },
   {
-    id: "300",
+    id: "300090",
     image:
       "https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/4/2022/02/01073127/Cover-1.png",
     photos: [
@@ -82,7 +82,7 @@ export const rooms: Room[] = [
     },
   },
   {
-    id: "300",
+    id: "323400",
     image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
@@ -134,7 +134,7 @@ export const rooms: Room[] = [
     },
   },
   {
-    id: "300",
+    id: "39800",
     image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
@@ -160,7 +160,7 @@ export const rooms: Room[] = [
     },
   },
   {
-    id: "300",
+    id: "334400",
     image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",
     photos: [
       "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923__480.jpg",

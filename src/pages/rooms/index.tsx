@@ -59,7 +59,7 @@ const Rooms = () => {
                         }}
                     />
                     <Box margin="auto" position="relative" zIndex={2}>
-                        <Typography variant="h1" sx={{ color: "#fff" }}>Catch your room in seconds</Typography>
+                        <Typography variant="h1" sx={{ color: "#fff" }}>Catch & Book your room <br /> in seconds ...</Typography>
                     </Box>
                 </Box> : null}
                 <Container maxWidth="xl">
