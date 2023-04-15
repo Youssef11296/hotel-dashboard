@@ -281,7 +281,7 @@ const AddRoomForm: FC<{ type: "EDIT" | "CREATE", room?: Room, onClose: () => voi
 						margin: 'auto',
 					}}
 				>
-					Submit
+					{type === "EDIT" ? "Save" : "Submit"}
 				</Button>
 			</form >
 		</Card >

@@ -20,6 +20,16 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 		setAnchorEl(null);
 	};
 
+	const openEditRoomHandler = () => {
+		setOpenEditRoom(true)
+		handleClose()
+	}
+
+	const openConfirmDeleteHandler = () => {
+		setOpenConfirmDelete(true)
+		handleClose()
+	}
+
 	const open = Boolean(anchorEl);
 	const id = open ? 'simple-popover' : undefined;
 
@@ -54,8 +64,8 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 						flexDirection: 'column'
 					}}
 				>
-					<Button variant="text" onClick={() => setOpenEditRoom(true)}>Edit</Button>
-					<Button variant="text" onClick={() => setOpenConfirmDelete(true)}>Delete</Button>
+					<Button variant="text" onClick={openEditRoomHandler}>Edit</Button>
+					<Button variant="text" onClick={openConfirmDeleteHandler}>Delete</Button>
 				</Box>
 			</Popover>
 			<Box sx={{ padding: 2 }}>
@@ -134,14 +144,14 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 				<AddRoomForm type="EDIT" onClose={() => setOpenEditRoom(false)} room={room} />
 			</Dialog>
 			<Dialog open={openConfirmDelete} onClose={() => setOpenConfirmDelete(false)}>
-				<Box>
+				<Box sx={{ minWidth: 400, padding: 2 }}>
 					<Typography variant='h6'>Do you really want to delete this room?</Typography>
-					<Grid container spacing={2}>
+					<Grid container spacing={2} mt={2}>
 						<Grid item xs={12} md={6}>
-							<Button variant="contained">Yes, delete it.</Button>
+							<Button variant="contained" size="small" fullWidth>Yes, delete it.</Button>
 						</Grid>
 						<Grid item xs={12} md={6}>
-							<Button variant="outlined">No, cancel.</Button>
+							<Button variant="outlined" size="small" fullWidth>No, cancel.</Button>
 						</Grid>
 					</Grid>
 				</Box>
