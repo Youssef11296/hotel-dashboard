@@ -53,7 +53,6 @@ const Page = () => {
         .string()
         .min(4)
         .max(10)
-        .required('Authenticating number is required')
     }),
     onSubmit: async (values, helpers) => {
       try {
