@@ -80,7 +80,7 @@ export const AccountProfileDetails = () => {
                   name="firstName"
                   onChange={handleChange}
                   required
-                  value={values.firstName}
+                  value={values.name}
                 />
               </Grid>
               <Grid
@@ -105,7 +105,7 @@ export const AccountProfileDetails = () => {
                   label="Phone Number"
                   name="phone"
                   onChange={handleChange}
-                  type="number"
+                  type="string"
                   value={values.phone}
                 />
               </Grid>
@@ -115,11 +115,11 @@ export const AccountProfileDetails = () => {
               >
                 <TextField
                   fullWidth
-                  label="Country"
-                  name="country"
+                  label="WhatsApp"
+                  name="whatsApp"
                   onChange={handleChange}
-                  required
-                  value={values.country}
+                  type="string"
+                  value={values.whatsApp}
                 />
               </Grid>
               <Grid
@@ -128,23 +128,38 @@ export const AccountProfileDetails = () => {
               >
                 <TextField
                   fullWidth
-                  label="Select State"
-                  name="state"
+                  label="Age"
+                  name="age"
+                  onChange={handleChange}
+                  type="string"
+                  value={values.age}
+                />
+              </Grid>
+              <Grid
+                xs={12}
+                md={6}
+              >
+                <TextField
+                  fullWidth
+                  label="Address"
+                  name="address"
                   onChange={handleChange}
                   required
-                  select
-                  SelectProps={{ native: true }}
-                  value={values.state}
-                >
-                  {states.map((option) => (
-                    <option
-                      key={option.value}
-                      value={option.value}
-                    >
-                      {option.label}
-                    </option>
-                  ))}
-                </TextField>
+                  value={values.address}
+                />
+              </Grid>
+              <Grid
+                xs={12}
+                md={6}
+              >
+                <TextField
+                  fullWidth
+                  label="National ID"
+                  name="phone"
+                  onChange={handleChange}
+                  type="string"
+                  value={values.nationalId}
+                />
               </Grid>
             </Grid>
           </Box>

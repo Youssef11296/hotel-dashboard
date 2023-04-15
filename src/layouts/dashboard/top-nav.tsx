@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import BellIcon from '@heroicons/react/24/solid/BellIcon';
-import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
+import NextLink from 'next/link';
 import {
   Avatar,
   Box,
@@ -10,6 +9,7 @@ import { alpha } from '@mui/material/styles';
 import { usePopover } from '../../hooks/use-popover';
 import { AccountPopover } from './account-popover';
 import { useAuth } from '../../hooks/use-auth';
+import { Logo } from '../../components/logo';
 
 export const TopNav = (props) => {
   const accountPopover = usePopover();
@@ -49,6 +49,17 @@ export const TopNav = (props) => {
             px: 2
           }}
         >
+          {!isAdmin ? <Box
+            component={NextLink}
+            href="/"
+            sx={{
+              display: 'inline-flex',
+              height: 32,
+              width: 32
+            }}
+          >
+            <Logo />
+          </Box> : null}
           <Stack
             alignItems="center"
             direction="row"

@@ -22,7 +22,7 @@ const BookForm: FC<{ roomNumber: string, onClose: () => void }> = ({ roomNumber,
 	const formik: any = useFormik({
 		initialValues: {
 			roomNumber,
-			securityCode: '',
+			customerEmail: user?.email,
 			from: '',
 			to: '',
 			submit: null
@@ -32,10 +32,10 @@ const BookForm: FC<{ roomNumber: string, onClose: () => void }> = ({ roomNumber,
 				.string()
 				.max(20)
 				.required('Room number is required'),
-			securityCode: Yup
+			customerEmail: Yup
 				.string()
 				.max(5)
-				.required('Security code is required'),
+				.required('Customer Email is required'),
 			from: Yup
 				.number()
 				.max(5)
@@ -103,15 +103,16 @@ const BookForm: FC<{ roomNumber: string, onClose: () => void }> = ({ roomNumber,
 					mb={2}
 				>
 					<TextField
-						error={!!(formik.touched.securityCode && formik.errors.securityCode)}
+						error={!!(formik.touched.customerEmail && formik.errors.customerEmail)}
 						fullWidth
-						helperText={formik.touched.securityCode && formik.errors.securityCode}
-						label="Security code"
-						name="securityCode"
+						helperText={formik.touched.customerEmail && formik.errors.customerEmail}
+						label="Customer Email"
+						name="customerEmail"
+						disabled
 						onBlur={formik.handleBlur}
 						onChange={formik.handleChange}
 						type="string"
-						value={formik.values.securityCode}
+						value={formik.values.customerEmail}
 					/>
 				</Box>
 				{/* <Typography variant="body1" mb={1}>Day cost</Typography> */}

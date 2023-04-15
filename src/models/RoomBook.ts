@@ -22,7 +22,7 @@ export interface RoomBook {
   from: string | number;
   to: string | number;
   pets?: Individual[];
-  securityCode: string;
+  customerEmail: string;
   totalCost: string;
   status: Status;
 }

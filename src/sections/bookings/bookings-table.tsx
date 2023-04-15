@@ -81,7 +81,7 @@ export const BookingsTable = (props) => {
                                     Room Number
                                 </TableCell>
                                 <TableCell>
-                                    Security Code
+                                    Customer Email
                                 </TableCell>
                                 <TableCell>
                                     Total Cost
@@ -126,7 +126,7 @@ export const BookingsTable = (props) => {
                                             {booking.roomNumber}
                                         </TableCell>
                                         <TableCell>
-                                            {booking.securityCode}
+                                            {booking.customerEmail}
                                         </TableCell>
                                         <TableCell>
                                             {booking.totalCost}

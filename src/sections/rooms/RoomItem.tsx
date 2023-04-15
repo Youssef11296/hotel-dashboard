@@ -59,7 +59,7 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 						justifyContent="start"
 					>
 						<Typography variant="caption" color="primary">Capacity</Typography>
-						<Typography>{room.capacity} Individuals</Typography>
+						<Typography>{room.capacity} Persons</Typography>
 					</Box>
 				</Box>
 				<Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>

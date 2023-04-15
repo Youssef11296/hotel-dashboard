@@ -11,7 +11,7 @@ interface Props {
 const BookingItem: FC<Props> = ({ booking }) => {
 	return (
 		<Container sx={{ padding: '1rem' }}>
-			<Typography variant="h6" mb={2} textAlign="center" sx={{ marginBottom: '2rem' }}>Booking Details</Typography>
+			<Typography variant="h5" mb={2} textAlign="center" sx={{ marginBottom: '2rem' }}>Booking Details</Typography>
 			<Grid sx={{ width: '100%', minHeight: 225 }} container spacing={3}>
 				<Grid item xs={12} md={8}>
 					<Grid container spacing={3}>
@@ -59,8 +59,8 @@ const BookingItem: FC<Props> = ({ booking }) => {
 									md={12}
 									sx={{ borderBottom: '1px solid #000', paddingBottom: '1rem' }}
 								>
-									<Typography variant="caption">Security Code:</Typography>
-									<Typography>{booking.securityCode}</Typography>
+									<Typography variant="caption">Customer Email:</Typography>
+									<Typography>{booking.customerEmail}</Typography>
 								</Grid>
 								<Grid
 									display="flex"
