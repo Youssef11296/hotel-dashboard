@@ -5,6 +5,7 @@ import { Box, Button, Container, Dialog, Grid, Stack, Typography } from '@mui/ma
 import Link from 'next/link'
 import BookForm from './BookForm'
 import RoomItem from './RoomItem'
+import { useAuth } from '../../hooks/use-auth'
 
 const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 	const [openBookForm, setOpenBookForm] = useState<boolean>(false)
@@ -21,8 +22,28 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 		}, 250)
 	}
 
+	const auth: any = useAuth()
+	const { user } = auth
+	const isAdmin = user.role === "Admin"
+
 	return (
 		<>
+			{
+				!isAdmin ?
+					<>
+						<Typography variant='h4'>Your Previous Bookings</Typography>
+						<Grid container spacing={2}>
+							{
+								rooms.slice(0, 3).map(room => (
+									<RoomItem key={room.id} withBookBtn room={room} openBookFormHandler={() => openBookFromHandler(room)} />
+								))
+							}
+						</Grid>
+					</> : null
+			}
+			<Typography variant="h4">
+				Rooms
+			</Typography>
 			<Grid container spacing={1}>
 				{rooms.map(room => (
 					<RoomItem key={room.id} withBookBtn room={room} openBookFormHandler={() => openBookFormHandler(room)} />

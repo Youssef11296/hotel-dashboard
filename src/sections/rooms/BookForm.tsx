@@ -115,7 +115,6 @@ const BookForm: FC<{ roomNumber: string, onClose: () => void }> = ({ roomNumber,
 						value={formik.values.customerEmail}
 					/>
 				</Box>
-				{/* <Typography variant="body1" mb={1}>Day cost</Typography> */}
 				<Box
 					display="flex"
 					flexDirection="column"
