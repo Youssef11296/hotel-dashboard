@@ -8,9 +8,12 @@ import {
   Button,
   Link,
   Stack,
+  Tab,
+  Tabs,
   TextField,
   Typography
 } from '@mui/material';
+import { useCallback, useState } from 'react'
 import { useAuth } from '../../hooks/use-auth';
 import { Layout as AuthLayout } from '../../layouts/auth/layout';
 import { BRAND_NAME } from '../../constants';
@@ -20,6 +23,15 @@ const Page = () => {
   const auth: any = useAuth();
   const { user } = auth
   const isAdmin = user?.role === "Admin"
+
+  const [method, setMethod] = useState('email');
+
+  const handleMethodChange = useCallback(
+    (event, value) => {
+      setMethod(value);
+    },
+    []
+  );
 
   const formik: any = useFormik({
     initialValues: {
@@ -36,7 +48,12 @@ const Page = () => {
       password: Yup
         .string()
         .max(255)
-        .required('Password is required')
+        .required('Password is required'),
+      authNumber: Yup
+        .string()
+        .min(4)
+        .max(10)
+        .required('Authenticating number is required')
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -75,6 +92,20 @@ const Page = () => {
           }}
         >
           <div>
+            <Tabs
+              onChange={handleMethodChange}
+              sx={{ mb: 3 }}
+              value={method}
+            >
+              <Tab
+                label="Email"
+                value="email"
+              />
+              <Tab
+                label="Google Authenticator"
+                value="Google Authenticator"
+              />
+            </Tabs>
             <Stack
               spacing={1}
               sx={{ mb: 3 }}
@@ -98,7 +129,7 @@ const Page = () => {
                 </Link>
               </Typography>
             </Stack>
-            <form
+            {method === "email" ? <form
               noValidate
               onSubmit={formik.handleSubmit}
             >
@@ -144,7 +175,45 @@ const Page = () => {
               >
                 Continue
               </Button>
-            </form>
+            </form> : null}
+            {
+              method !== "email" ? <form
+                noValidate
+                onSubmit={formik.handleSubmit}
+              >
+                <Stack spacing={3}>
+                  <TextField
+                    error={!!(formik.touched.authNumber && formik.errors.authNumber)}
+                    fullWidth
+                    helperText={formik.touched.authNumber && formik.errors.authNumber}
+                    label="Authenticating Number"
+                    name="authenticatingNumber"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="authNumber"
+                    value={formik.values.authNumber}
+                  />
+                </Stack>
+                {formik.errors.submit && (
+                  <Typography
+                    color="error"
+                    sx={{ mt: 3 }}
+                    variant="body2"
+                  >
+                    {formik.errors.submit}
+                  </Typography>
+                )}
+                <Button
+                  fullWidth
+                  size="large"
+                  sx={{ mt: 3 }}
+                  type="submit"
+                  variant="contained"
+                >
+                  Continue
+                </Button>
+              </form> : null
+            }
           </div>
         </Box>
       </Box>
