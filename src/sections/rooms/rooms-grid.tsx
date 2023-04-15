@@ -35,7 +35,7 @@ const RoomsGrid: FC<{ rooms: Room[] }> = ({ rooms }) => {
 						<Grid container spacing={2}>
 							{
 								rooms.slice(0, 3).map(room => (
-									<RoomItem key={room.id} withBookBtn room={room} openBookFormHandler={() => openBookFromHandler(room)} />
+									<RoomItem key={room.id} withBookBtn room={room} openBookFormHandler={() => openBookFormHandler(room)} />
 								))
 							}
 						</Grid>
