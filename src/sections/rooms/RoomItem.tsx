@@ -36,7 +36,7 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 
 	const auth: any = useAuth()
 	const { user } = auth
-	const isAdmin = user.role === "Admin"
+	const isAdmin = user?.role === "Admin"
 
 	return (
 		<Grid
