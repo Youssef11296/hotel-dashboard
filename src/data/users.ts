@@ -13,6 +13,7 @@ export const users: User[] = [
     age: 23,
     role: "Admin",
     isVerified: true,
+    authNumber: 12345,
   },
   {
     id: "111",
@@ -26,6 +27,7 @@ export const users: User[] = [
     age: 23,
     role: "Customer",
     isVerified: true,
+    authNumber: 12345,
   },
   {
     id: "333",
@@ -39,6 +41,7 @@ export const users: User[] = [
     age: 24,
     role: "Customer",
     isVerified: false,
+    authNumber: 12345,
   },
   {
     id: "444",
@@ -52,5 +55,6 @@ export const users: User[] = [
     age: 40,
     role: "Customer",
     isVerified: false,
+    authNumber: 12345,
   },
 ];

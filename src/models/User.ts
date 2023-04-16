@@ -13,4 +13,5 @@ export interface User {
   age: number;
   role: Role;
   isVerified: boolean;
+  authNumber: number;
 }

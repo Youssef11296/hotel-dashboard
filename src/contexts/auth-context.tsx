@@ -103,10 +103,10 @@ export const AuthProvider = (props) => {
     []
   );
 
-  const signIn = async (email, password) => {
-    const user = users.find((user) => user.email === email && user.password === password)
+  const signIn = async (email, password, authNumber) => {
+    const user = users.find((user) => user.email === email && user.password === password && user.authNumber === authNumber)
     if (!user) {
-      throw new Error('Please check your email and password');
+      throw new Error('Please check your email, password, and provide an active authenticating number.');
     }
 
     try {

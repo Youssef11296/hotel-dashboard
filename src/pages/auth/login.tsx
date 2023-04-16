@@ -37,7 +37,7 @@ const Page = () => {
     initialValues: {
       email: 'admin@test.com',
       password: 'admin',
-      authNumber: null,
+      authNumber: 12345,
       submit: null
     },
     validationSchema: Yup.object({
@@ -58,7 +58,7 @@ const Page = () => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await auth.signIn(values.email, values.password);
+        await auth.signIn(values.email, values.password, values.authNumber);
         router.push('/')
       } catch (err) {
         helpers.setStatus({ success: false });
@@ -151,7 +151,7 @@ const Page = () => {
                   name="authenticatingNumber"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  type="authNumber"
+                  type="string"
                   value={formik.values.authNumber}
                 />
               </Stack>
