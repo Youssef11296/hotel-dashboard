@@ -59,7 +59,7 @@ const BookingItem: FC<Props> = ({ booking }) => {
 									md={12}
 									sx={{ borderBottom: '1px solid #000', paddingBottom: '1rem' }}
 								>
-									<Typography variant="caption">Customer Email:</Typography>
+									<Typography variant="caption">Email:</Typography>
 									<Typography>{booking.customerEmail}</Typography>
 								</Grid>
 								<Grid
