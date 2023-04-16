@@ -25,6 +25,7 @@ import { Scrollbar } from '../../components/scrollbar';
 import { getInitials } from '../../utils/get-initials';
 import { User as Customer, User } from '../../models/User';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
+import { SeverityPill } from '../../components/severity-pill';
 
 export const CustomersTable = (props) => {
   const {
@@ -47,6 +48,7 @@ export const CustomersTable = (props) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
   const [openConfirmDelete, setOpenConfirmDelete] = useState<boolean>(false)
+  const [openConfirmVerify, setOpenConfirmVerify] = useState<boolean>(false)
   const [openContactInfo, setOpenContactInfo] = useState<boolean>(false)
 
   const open = Boolean(anchorEl);
@@ -60,10 +62,24 @@ export const CustomersTable = (props) => {
     setAnchorEl(null);
   };
 
+  const handleClickVerify = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseVerify = () => {
+    setAnchorEl(null);
+  };
+
   const openConfirmDeleteHandler = (user: User) => {
     setSelectedUser(user)
     setOpenConfirmDelete(true)
     handleClose()
+  }
+
+  const openConfirmVerifyHandler = (user: User) => {
+    setSelectedUser(user)
+    setOpenConfirmVerify(true)
+    handleCloseVerify()
   }
 
   const openContactInfoHandler = (user: User) => {
@@ -74,6 +90,11 @@ export const CustomersTable = (props) => {
 
   const closeConfirmDeleteHandler = () => {
     setOpenConfirmDelete(false)
+    setSelectedUser(null)
+  }
+
+  const closeConfirmVerifyHandler = () => {
+    setOpenConfirmVerify(false)
     setSelectedUser(null)
   }
 
@@ -116,6 +137,9 @@ export const CustomersTable = (props) => {
                 </TableCell>
                 <TableCell>
                   Age
+                </TableCell>
+                <TableCell>
+                  Status
                 </TableCell>
                 <TableCell>
                   Actions & More
@@ -171,6 +195,11 @@ export const CustomersTable = (props) => {
                       {customer.age}
                     </TableCell>
                     <TableCell>
+                      <SeverityPill color={customer.isVerified ? "success" : "info"}>
+                        {customer.isVerified ? "Verified" : "Not verified"}
+                      </SeverityPill>
+                    </TableCell>
+                    <TableCell>
                       <Grid container xs={12} md={9} spacing={1}>
                         <Grid item xs={12} md={6}>
                           <IconButton aria-describedby={id}
@@ -196,6 +225,9 @@ export const CustomersTable = (props) => {
                             >
                               <Button size="small" variant="text" onClick={() => openContactInfoHandler(customer)}>
                                 Contact
+                              </Button>
+                              <Button size="small" variant="text" onClick={() => openConfirmVerifyHandler(customer)}>
+                                Verify
                               </Button>
                               <Button variant="text" onClick={() => openConfirmDeleteHandler(customer)}>Delete</Button>
                             </Box>
@@ -223,7 +255,24 @@ export const CustomersTable = (props) => {
           </Box>
         </Dialog>
 
-        <Dialog open={openContactInfo} onClose={closeConfirmDeleteHandler}>
+        <Dialog open={openConfirmVerify} onClose={closeConfirmVerifyHandler}>
+          <Box sx={{ minWidth: 400, padding: 2 }}>
+            <Typography variant='h6'>
+              {selectedUser?.isVerified ? "This user is already verified, Do you really want to un-verify him?" :
+                "Do you really want to verify this user?"}
+            </Typography>
+            <Grid container spacing={2} mt={2}>
+              <Grid item xs={12} md={6}>
+                <Button onClick={closeConfirmVerifyHandler} variant="contained" size="small" fullWidth>Yes, verify it.</Button>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Button onClick={closeConfirmVerifyHandler} variant="outlined" size="small" fullWidth>No, cancel.</Button>
+              </Grid>
+            </Grid>
+          </Box>
+        </Dialog>
+
+        <Dialog open={openContactInfo} onClose={closeContactInfoHandler}>
           <Box sx={{ minWidth: 400, padding: 2 }}>
             <Box sx={{
               display: 'flex',
