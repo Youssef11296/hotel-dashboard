@@ -30,7 +30,7 @@ export const users: User[] = [
   {
     id: "333",
     name: "Ayman",
-    email: "memeo@test.com",
+    email: "ayman@test.com",
     phone: "+0201020303030",
     whatsApp: "+0201020303030",
     address: "Cairo, Egypt",
