@@ -6,6 +6,7 @@ import { Room } from '../../models/Room'
 import { MoreVert } from '@mui/icons-material'
 import { useState } from 'react'
 import AddRoomForm from './AddRoomForm'
+import { useAuth } from '../../hooks/use-auth'
 
 const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: boolean }> = ({ withBookBtn, room, openBookFormHandler }) => {
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -33,6 +34,10 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 	const open = Boolean(anchorEl);
 	const id = open ? 'simple-popover' : undefined;
 
+	const auth: any = useAuth()
+	const { user } = auth
+	const isAdmin = user.role === "Admin"
+
 	return (
 		<Grid
 			key={room.id}
@@ -44,30 +49,35 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 				boxShadow: '0 2px 2px rgba(0,0,0,.2)'
 			}}
 		>
-			<IconButton aria-describedby={id} onClick={handleClick} sx={{ display: 'block', marginLeft: 'auto' }}>
-				<MoreVert sx={{ padding: 0 }} />
-			</IconButton>
-			<Popover
-				id={id}
-				open={open}
-				anchorEl={anchorEl}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left',
-				}}
-			>
-				<Box
-					sx={{
-						boxShadow: '0 2px 2px rgba(0,0,0,.4)',
-						display: 'flex',
-						flexDirection: 'column'
-					}}
-				>
-					<Button variant="text" onClick={openEditRoomHandler}>Edit</Button>
-					<Button variant="text" onClick={openConfirmDeleteHandler}>Delete</Button>
-				</Box>
-			</Popover>
+			{
+				isAdmin ?
+					<>
+						<IconButton aria-describedby={id} onClick={handleClick} sx={{ display: 'block', marginLeft: 'auto' }}>
+							<MoreVert sx={{ padding: 0 }} />
+						</IconButton>
+						<Popover
+							id={id}
+							open={open}
+							anchorEl={anchorEl}
+							onClose={handleClose}
+							anchorOrigin={{
+								vertical: 'bottom',
+								horizontal: 'left',
+							}}
+						>
+							<Box
+								sx={{
+									boxShadow: '0 2px 2px rgba(0,0,0,.4)',
+									display: 'flex',
+									flexDirection: 'column'
+								}}
+							>
+								<Button variant="text" onClick={openEditRoomHandler}>Edit</Button>
+								<Button variant="text" onClick={openConfirmDeleteHandler}>Delete</Button>
+							</Box>
+						</Popover>
+					</> : null
+			}
 			<Box sx={{ padding: 2 }}>
 				<Box
 					display="flex"
