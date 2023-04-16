@@ -37,6 +37,7 @@ const Page = () => {
     initialValues: {
       email: 'admin@test.com',
       password: 'admin',
+      authNumber: null,
       submit: null
     },
     validationSchema: Yup.object({
