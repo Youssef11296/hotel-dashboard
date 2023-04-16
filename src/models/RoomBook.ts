@@ -1,6 +1,5 @@
 import { User } from "./User";
 import { Room } from "./Room";
-import { BOOKING_STATUS } from "../constants";
 
 type RelationToCustomer = "son" | "daughter" | "sister" | "brother" | "friend";
 

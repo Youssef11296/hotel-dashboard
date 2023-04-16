@@ -53,6 +53,7 @@ const Page = () => {
         .string()
         .min(4)
         .max(10)
+        .required('Authenticating number is required')
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -91,20 +92,6 @@ const Page = () => {
           }}
         >
           <div>
-            <Tabs
-              onChange={handleMethodChange}
-              sx={{ mb: 3 }}
-              value={method}
-            >
-              <Tab
-                label="Email"
-                value="email"
-              />
-              <Tab
-                label="Google Authenticator"
-                value="Google Authenticator"
-              />
-            </Tabs>
             <Stack
               spacing={1}
               sx={{ mb: 3 }}
@@ -128,7 +115,7 @@ const Page = () => {
                 </Link>
               </Typography>
             </Stack>
-            {method === "email" ? <form
+            <form
               noValidate
               onSubmit={formik.handleSubmit}
             >
@@ -155,6 +142,17 @@ const Page = () => {
                   type="password"
                   value={formik.values.password}
                 />
+                <TextField
+                  error={!!(formik.touched.authNumber && formik.errors.authNumber)}
+                  fullWidth
+                  helperText={formik.touched.authNumber && formik.errors.authNumber}
+                  label="Authenticating Number"
+                  name="authenticatingNumber"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  type="authNumber"
+                  value={formik.values.authNumber}
+                />
               </Stack>
               {formik.errors.submit && (
                 <Typography
@@ -174,45 +172,7 @@ const Page = () => {
               >
                 Continue
               </Button>
-            </form> : null}
-            {
-              method !== "email" ? <form
-                noValidate
-                onSubmit={formik.handleSubmit}
-              >
-                <Stack spacing={3}>
-                  <TextField
-                    error={!!(formik.touched.authNumber && formik.errors.authNumber)}
-                    fullWidth
-                    helperText={formik.touched.authNumber && formik.errors.authNumber}
-                    label="Authenticating Number"
-                    name="authenticatingNumber"
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    type="authNumber"
-                    value={formik.values.authNumber}
-                  />
-                </Stack>
-                {formik.errors.submit && (
-                  <Typography
-                    color="error"
-                    sx={{ mt: 3 }}
-                    variant="body2"
-                  >
-                    {formik.errors.submit}
-                  </Typography>
-                )}
-                <Button
-                  fullWidth
-                  size="large"
-                  sx={{ mt: 3 }}
-                  type="submit"
-                  variant="contained"
-                >
-                  Continue
-                </Button>
-              </form> : null
-            }
+            </form>
           </div>
         </Box>
       </Box>

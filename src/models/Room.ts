@@ -1,6 +1,6 @@
 import { Floor } from "./Floor";
 
-export type RoomType = "BED_ROOM" | "MEETING_ROOM";
+export type RoomType = "GROUP_ROOM" | "MEETING_ROOM" | "QUIET_ROOM" | "ATRIUM_ROOM";
 export type PetsAvailability = "PERMITTED" | "NOT_PERMITTED";
 
 export interface Room {
