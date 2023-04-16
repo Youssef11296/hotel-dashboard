@@ -169,6 +169,12 @@ const BookingItem: FC<Props> = ({ booking }) => {
 					</Grid>
 				</Grid>
 			</Grid>
+			<Grid container spacing={2} textAlign="center" justifyContent="center" alignItems="center" mb={2}>
+				{booking.status === "COMPLETED" && booking?.customerFeedback ? <Container>
+					<Typography variant="h5" mb={2}>Customer Feedback</Typography>
+					<Typography variant="body1">{booking.customerFeedback}</Typography>
+				</Container> : <Typography>No feedback is there yet.</Typography>}
+			</Grid>
 			<Grid container spacing={2}>
 				<Grid item xs={12} md={6}>
 					<Button disabled={booking.status !== "PENDING"} variant="contained" fullWidth>Accept</Button>

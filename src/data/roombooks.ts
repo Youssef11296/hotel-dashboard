@@ -15,14 +15,15 @@ export const roombooks: RoomBook[] = [
       {
         id: "1234",
         name: "Maram",
-        age: 22,
-        relationToCustomer: "daughter",
+        age: 2,
       },
     ],
     participants: [],
     customerEmail: users[3].email,
     totalCost: "$1000",
-    status: "PENDING",
+    status: "COMPLETED",
+    customerFeedback:
+      "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: "111",
@@ -36,6 +37,8 @@ export const roombooks: RoomBook[] = [
     customerEmail: users[3].email,
     totalCost: "$1000",
     status: "ACCEPTED",
+    customerFeedback:
+      "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: "333",
@@ -48,14 +51,15 @@ export const roombooks: RoomBook[] = [
       {
         id: "1234",
         name: "Maram",
-        age: 22,
-        relationToCustomer: "daughter",
+        age: 2,
       },
     ],
     participants: [],
     customerEmail: users[3].email,
     totalCost: "$1000",
     status: "REJECTED",
+    customerFeedback:
+      "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: "444",
@@ -68,14 +72,15 @@ export const roombooks: RoomBook[] = [
       {
         id: "1234",
         name: "Maram",
-        age: 22,
-        relationToCustomer: "daughter",
+        age: 2,
       },
     ],
     participants: [],
     customerEmail: users[3].email,
     totalCost: "$1000",
     status: "PENDING",
+    customerFeedback:
+      "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: "555",
@@ -88,14 +93,15 @@ export const roombooks: RoomBook[] = [
       {
         id: "1234",
         name: "Maram",
-        age: 22,
-        relationToCustomer: "daughter",
+        age: 2,
       },
     ],
     participants: [],
     customerEmail: users[3].email,
     totalCost: "$1000",
     status: "PENDING",
+    customerFeedback:
+      "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: "666",
@@ -108,14 +114,15 @@ export const roombooks: RoomBook[] = [
       {
         id: "1234",
         name: "Maram",
-        age: 22,
-        relationToCustomer: "daughter",
+        age: 2,
       },
     ],
     participants: [],
     customerEmail: users[3].email,
     totalCost: "$1000",
     status: "PENDING",
+    customerFeedback:
+      "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: "777",
@@ -128,14 +135,15 @@ export const roombooks: RoomBook[] = [
       {
         id: "1234",
         name: "Maram",
-        age: 22,
-        relationToCustomer: "daughter",
+        age: 2,
       },
     ],
     participants: [],
     customerEmail: users[3].email,
     totalCost: "$1000",
     status: "PENDING",
+    customerFeedback:
+      "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
   {
     id: "888",
@@ -148,13 +156,14 @@ export const roombooks: RoomBook[] = [
       {
         id: "1234",
         name: "Maram",
-        age: 22,
-        relationToCustomer: "daughter",
+        age: 2,
       },
     ],
     participants: [],
     customerEmail: users[3].email,
     totalCost: "$1000",
-    status: "REJECTED",
+    status: "COMPLETED",
+    customerFeedback:
+      "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
   },
 ];

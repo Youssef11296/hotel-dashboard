@@ -158,10 +158,10 @@ const RoomItem: FC<{ openBookFormHandler?: () => void, room: Room, withBookBtn: 
 					<Typography variant='h6'>Do you really want to delete this room?</Typography>
 					<Grid container spacing={2} mt={2}>
 						<Grid item xs={12} md={6}>
-							<Button variant="contained" size="small" fullWidth>Yes, delete it.</Button>
+							<Button onClick={() => setOpenConfirmDelete(false)} variant="contained" size="small" fullWidth>Yes, delete it.</Button>
 						</Grid>
 						<Grid item xs={12} md={6}>
-							<Button variant="outlined" size="small" fullWidth>No, cancel.</Button>
+							<Button onClick={() => setOpenConfirmDelete(false)} variant="outlined" size="small" fullWidth>No, cancel.</Button>
 						</Grid>
 					</Grid>
 				</Box>

@@ -8,10 +8,10 @@ interface Individual {
   id: string;
   name: string;
   age: number;
-  relationToCustomer: RelationToCustomer;
+  relationToCustomer?: RelationToCustomer;
 }
 
-type Status = "ACCEPTED" | "REJECTED" | "PENDING";
+type Status = "ACCEPTED" | "REJECTED" | "PENDING" | "COMPLETED";
 
 export interface RoomBook {
   id: string;
@@ -25,4 +25,5 @@ export interface RoomBook {
   customerEmail: string;
   totalCost: string;
   status: Status;
+  customerFeedback?: string;
 }
