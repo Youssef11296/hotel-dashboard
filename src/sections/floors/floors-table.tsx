@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-props-per-line */
 import PropTypes from 'prop-types';
 import {
 	Box,
@@ -6,7 +7,7 @@ import {
 	Checkbox,
 	Dialog,
 	Grid,
-	Stack,
+	Typography,
 	Table,
 	TableBody,
 	TableCell,
@@ -51,6 +52,28 @@ export const FloorsTable = (props) => {
 	const closeFloorHandler = () => {
 		setSelectedFloor(null)
 		setOpenFloorForm(false)
+	}
+
+	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+	const [openEditFloor, setOpenEditFloor] = useState<boolean>(false)
+	const [openConfirmDelete, setOpenConfirmDelete] = useState<boolean>(false)
+
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
+	const openEditFloorHandler = () => {
+		setOpenEditFloor(true)
+		handleClose()
+	}
+
+	const openConfirmDeleteHandler = () => {
+		setOpenConfirmDelete(true)
+		handleClose()
 	}
 
 
@@ -146,6 +169,7 @@ export const FloorsTable = (props) => {
 														color="primary"
 														size="small"
 														disabled={!floor.isEmpty}
+														onClick={openConfirmDeleteHandler}
 													>
 														Delete
 													</Button>
@@ -158,6 +182,19 @@ export const FloorsTable = (props) => {
 						</TableBody>
 					</Table>
 				</Box>
+				<Dialog open={openConfirmDelete} onClose={() => setOpenConfirmDelete(false)}>
+					<Box sx={{ minWidth: 400, padding: 2 }}>
+						<Typography variant='h6'>Do you really want to delete this floor?</Typography>
+						<Grid container spacing={2} mt={2}>
+							<Grid item xs={12} md={6}>
+								<Button onClick={() => setOpenConfirmDelete(false)} variant="contained" size="small" fullWidth>Yes, delete it.</Button>
+							</Grid>
+							<Grid item xs={12} md={6}>
+								<Button onClick={() => setOpenConfirmDelete(false)} variant="outlined" size="small" fullWidth>No, cancel.</Button>
+							</Grid>
+						</Grid>
+					</Box>
+				</Dialog>
 			</Scrollbar>
 			<Dialog
 				open={openFloorForm}

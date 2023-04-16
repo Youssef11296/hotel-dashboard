@@ -48,7 +48,7 @@ export const BookingsTable = (props) => {
         setViewBooking(false)
         setTimeout(() => {
             setSelectedBooking(null)
-        }, 300)
+        }, 500)
     }
 
     return (
@@ -133,9 +133,10 @@ export const BookingsTable = (props) => {
                                         </TableCell>
                                         <TableCell>
                                             <SeverityPill color={
-                                                booking.status === "ACCEPTED" ? "success" :
-                                                    booking.status === "REJECTED" ? "error" :
-                                                        booking.status === "PENDING" ? 'primary' : ''
+                                                booking.status === "COMPLETED" ? "info" :
+                                                    booking.status === "ACCEPTED" ? "success" :
+                                                        booking.status === "REJECTED" ? "error" :
+                                                            booking.status === "PENDING" ? 'primary' : ''
                                             }>
                                                 {booking.status}
                                             </SeverityPill>
