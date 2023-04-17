@@ -28,18 +28,11 @@ const Page = () => {
 
   const [method, setMethod] = useState('email');
 
-  const handleMethodChange = useCallback(
-    (event, value) => {
-      setMethod(value);
-    },
-    []
-  );
-
   const formik: any = useFormik({
     initialValues: {
       email: 'admin@test.com',
       password: 'admin',
-      authNumber: 12345,
+      authNumber: "12345",
       submit: null
     },
     validationSchema: Yup.object({
@@ -54,8 +47,8 @@ const Page = () => {
         .required('Password is required'),
       authNumber: Yup
         .string()
-        .min(4)
-        .max(10)
+        .min(4, "Authenticating number must have at least 4 characters.")
+        .max(10, "Authenticating number can not contain more than 10 charcters.")
         .required('Authenticating number is required')
     }),
     onSubmit: async (values, helpers) => {
@@ -192,7 +185,7 @@ const Page = () => {
                     fullWidth
                     helperText={formik.touched.authNumber && formik.errors.authNumber}
                     label="Authenticating Number"
-                    name="authenticatingNumber"
+                    name="authNumber"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     type="string"
