@@ -7,3 +7,7 @@
 - Start the server: `npm run dev` or `yarn dev`
 
 - Views are on: `localhost:3000`
+
+## Contact Me
+
+Email: youssefshaaban112000@gmail.com
