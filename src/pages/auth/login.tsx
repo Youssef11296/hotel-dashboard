@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-props-per-line */
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -6,6 +7,7 @@ import * as Yup from 'yup';
 import {
   Box,
   Button,
+  Grid,
   Link,
   Stack,
   Tab,
@@ -93,6 +95,22 @@ const Page = () => {
           }}
         >
           <div>
+            <Tabs
+              // onChange={handleMethodChange}
+              sx={{ mb: 3 }}
+              value={method}
+            >
+              <Tab
+                label="Email"
+                value="email"
+                disabled
+              />
+              <Tab
+                label="Google Authenticator"
+                value="Google Authenticator"
+                disabled
+              />
+            </Tabs>
             <Stack
               spacing={1}
               sx={{ mb: 3 }}
@@ -120,59 +138,101 @@ const Page = () => {
               noValidate
               onSubmit={formik.handleSubmit}
             >
-              <Stack spacing={3}>
-                <TextField
-                  error={!!(formik.touched.email && formik.errors.email)}
-                  fullWidth
-                  helperText={formik.touched.email && formik.errors.email}
-                  label="Email Address"
-                  name="email"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  type="email"
-                  value={formik.values.email}
-                />
-                <TextField
-                  error={!!(formik.touched.password && formik.errors.password)}
-                  fullWidth
-                  helperText={formik.touched.password && formik.errors.password}
-                  label="Password"
-                  name="password"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  type="password"
-                  value={formik.values.password}
-                />
-                <TextField
-                  error={!!(formik.touched.authNumber && formik.errors.authNumber)}
-                  fullWidth
-                  helperText={formik.touched.authNumber && formik.errors.authNumber}
-                  label="Authenticating Number"
-                  name="authenticatingNumber"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  type="string"
-                  value={formik.values.authNumber}
-                />
-              </Stack>
-              {formik.errors.submit && (
-                <Typography
-                  color="error"
-                  sx={{ mt: 3 }}
-                  variant="body2"
-                >
-                  {formik.errors.submit}
-                </Typography>
-              )}
-              <Button
-                fullWidth
-                size="large"
-                sx={{ mt: 3 }}
-                type="submit"
-                variant="contained"
-              >
-                Continue
-              </Button>
+              {method === "email" ?
+                <>
+                  <Stack spacing={3}>
+                    <TextField
+                      error={!!(formik.touched.email && formik.errors.email)}
+                      fullWidth
+                      helperText={formik.touched.email && formik.errors.email}
+                      label="Email Address"
+                      name="email"
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      type="email"
+                      value={formik.values.email}
+                    />
+                    <TextField
+                      error={!!(formik.touched.password && formik.errors.password)}
+                      fullWidth
+                      helperText={formik.touched.password && formik.errors.password}
+                      label="Password"
+                      name="password"
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      type="password"
+                      value={formik.values.password}
+                    />
+                  </Stack>
+                  {formik.errors.submit && (
+                    <Typography
+                      color="error"
+                      sx={{ mt: 3 }}
+                      variant="body2"
+                    >
+                      {formik.errors.submit}
+                    </Typography>
+                  )}
+                  <Button
+                    fullWidth
+                    size="large"
+                    sx={{ mt: 3 }}
+                    disabled={formik.errors.password || formik.errors.email}
+                    onClick={() => setMethod("Google Authenticator")}
+                    variant="contained"
+                  >
+                    Next
+                  </Button>
+                </>
+                : null}
+              {method !== "email" ?
+                <>
+                  <TextField
+                    error={!!(formik.touched.authNumber && formik.errors.authNumber)}
+                    fullWidth
+                    helperText={formik.touched.authNumber && formik.errors.authNumber}
+                    label="Authenticating Number"
+                    name="authenticatingNumber"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="string"
+                    value={formik.values.authNumber}
+                  />
+                  {formik.errors.submit && (
+                    <Typography
+                      color="error"
+                      sx={{ mt: 3 }}
+                      variant="body2"
+                    >
+                      {formik.errors.submit}
+                    </Typography>
+                  )}
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
+                      <Button
+                        fullWidth
+                        size="large"
+                        sx={{ mt: 3 }}
+                        variant="contained"
+                        onClick={() => setMethod("email")}
+                      >
+                        Back
+                      </Button>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Button
+                        fullWidth
+                        size="large"
+                        sx={{ mt: 3 }}
+                        type="submit"
+                        variant="contained"
+                      >
+                        Continue
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </>
+                : null}
             </form>
           </div>
         </Box>
